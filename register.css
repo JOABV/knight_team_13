@@ -1,0 +1,18 @@
+body {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    color: rgba(255, 255, 255, 1.0);
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.require {
+    color: rgb(221, 221, 221)
+}
