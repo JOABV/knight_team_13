@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="icon.ico">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap-4.0.0-dist/css/bootstrap.min.css">
+
+    <link rel="styleSheet" href="homepage.css" />
+    <title>Hibernia-Sino -你的旅行保障</title>
+     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- Custom styles for this template -->
+    <script src="homepage.js"></script>
+</head>
+
+<body class="text-center bg-image">
+
+
+    <div class="container d-flex h-100 p-3 flex-column">
+
+        <header class="w-100">
+            <div class="d-flex">
+                <div class="mr-auto align-items-center d-flex flex-row">
+                    <img src="icon.png" height="100" />
+                    <!-- <p class="lead font-weight-bold text-secondary">Hibernia-Sino <br> Travel Insurance</p> -->
+                </div>
+
+                <ul class="nav nav-style align-items-center justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                            aria-controls="home" aria-selected="true">主页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="account-tab" data-toggle="tab" href="#account" role="tab"
+                            aria-controls="account" aria-selected="false">账户</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                            aria-controls="contact" aria-selected="false">联系我们</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                语言
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item disabled" href="#">English</a>
+                                <a class="dropdown-item" href="#">中文</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- <div class="dropdown ml-2">
+                    <button class="btn btn-outline-light btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Language
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item disabled" href="#">English</a>
+                        <a class="dropdown-item" href="#">Chinese</a>
+                    </div>
+                </div> -->
+            </div>
+        </header>
+
+        <main role="main" class="inner mt-5">
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <h1 class="cover-heading">遗失行李的旅行保险</h1>
+                                <p class="lead p-3 pb-5">你的旅行保障</p>
+                                <p class="lead mt-5">
+                                    <a href="#" class="btn btn-outline-light btn-secondary">关于我们</a>
+                                </p>
+                            </div>
+                            <div class="carousel-item">
+                                <h1 class="cover-heading">对丢失的行李提出索赔</h1>
+                                <p class="lead p-3 pb-5">网上索赔</p>
+                                <p class="lead mt-5">
+                                    <a href="#" class="btn btn-outline-light btn-secondary">如何索赔</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        <ol class="carousel-indicators" style="position:relative;top:0.5rem;">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
+                    <form class="login-form text-left">
+                        <div>
+                            <h2>登录</h2>
+                            <p>如果你不是会员，请 <a data-toggle="modal" href="#signup"><i>注册</i></a>
+                                先.</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username">账户</label>
+                            <input type="text" id="username" class="form-control" placeholder="手机号码" required
+                                autofocus>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">密码</label>
+                            <input type="password" id="password" class="form-control" placeholder="密码" required>
+                        </div>
+
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me"> 记住我
+                            </label>
+                        </div>
+                        <a id="signin-tab" data-toggle="tab" href="#" role="tab"
+                        aria-controls="contact" aria-selected="false" class="btn btn-lg btn-primary btn-block">登录</a>
+
+                    </form>
+                </div>
+
+                <div id="signup" class="modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content text-dark">
+                            <div class="modal-header">
+                                <div class="text-left">
+                                    <h2>注册</h2>
+                                    <p class="font-weight-light m-0" style="color:red">*代表您必须填充</p>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="text-left">
+                                    <div class="form-column m-0">
+                                        <div class="form-group">
+                                            <span class="require">*</span>
+                                            <label for="username">用户名</label>
+                                            <div class="username-input">
+                                                <input type="text" id="Username" 
+                                                 onchange="checkusrn()"class="form-control"
+                                                    placeholder="Username" required autofocus />
+                                                    <span id="checktext1"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <span class="require">*</span>
+                                            <label for="userPassword">密码</label>
+                                            <div class="userPassword-input">
+                                                <input type="password" id="Password"  onchange="checkpwd()"  class="form-control"
+                                                    placeholder="Password" required />
+                                                    <span id="checktext2"></span> 
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <span class="require">*</span>
+                                            <label for="userRePassword">确认密码</label>
+                                            <div class="userRePassword-input">
+                                                <input type="password" id="RePassword"
+                                                onchange="checkpwdc()" class="form-control"
+                                                    placeholder="Confirm Password" required />
+                                                    <span id="checktext3"></span> 
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-column">
+                                        <div class="form-group">
+                                            <span class="require">*</span>
+                                            <label for="userPhone">电话</label>
+                                            <div class="input-group">
+                                                <input type="text" id="UserPhone"
+                                                onchange="validatemobile()" class="form-control"
+                                                    placeholder="Telphone Number" aria-label="tel" required />
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-dark" type="button">验证码</button>
+                                                    <span id="checktext4">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <span class="require">*</span>
+                                            <label for="userCode">安全码</label>
+
+                                            <div class="userCode-input">
+                                                <input type="text" id="userCode" class="form-control" placeholder="Code"
+                                                    required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-lg btn-primary btn-block mt-2 mb-2" type="submit" id="yep" 
+                             
+                                >注册</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                </div>
+
+            </div>
+
+
+
+        </main>
+
+        <footer class="mt-auto text-light pb-0">
+            <div class="inner">
+                <p class="footer-style">由团队13</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="bootstrap-4.0.0-dist/others/jquery-3.3.1.slim.min.js"></script>
+    <script src="bootstrap-4.0.0-dist/others/popper.min.js"></script>
+    <script src="bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+
+    <script src="homepage.js"></script>
+</body>
+
+</html>
