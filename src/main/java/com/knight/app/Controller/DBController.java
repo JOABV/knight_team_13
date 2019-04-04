@@ -48,7 +48,7 @@ public class DBController {
                 return "wrong password ";
             }
 		}else{
-            return "user.html";
+            return "user.html-zh";
 		}
 	}
 
