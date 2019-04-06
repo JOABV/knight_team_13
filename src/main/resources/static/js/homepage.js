@@ -86,7 +86,40 @@ function check() {
  var check = checkusrn() && checkpwd() && checkpwdc(); 
  return check; 
   
-} 
+}
+
+$(document).ready(function () {
+    function connect(address, params){
+        $.ajax({
+            type: "POST",
+            url: "http://101.132.96.76:8080/"+address,
+            // url: "http://localhost:8080/"+address,
+            dataType: "text",
+            data: params,
+            success:function(data) {
+                alert("success: "+data)
+            },
+            error:function(jqXHR) {
+                alert("wrong: "+jqXHR.status)
+            }
+        });
+    }
+
+    $("#user_sign_in").click(function(){
+        var params = {}
+        params.phone = $('#username_lo').val()
+        params.password = $('#password_lo').val()
+        connect("user/login", params)
+    });
+
+    $("#user_sign_up").click(function(){
+        var params = {}
+        params.phone = $('#username_re').val()
+        params.password = $('#password_re').val()
+        connect("user/register", params)
+    });
+
+});
 
 
 
