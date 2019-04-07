@@ -98,7 +98,7 @@
   "date":"dd/mm/yyyy",
   "reason":"xxxxxxxxxxxxxxxxx",
   "remark":"xxxxxxxxxxxxx",
-  "pricy":"xxxx"        // It has to be in dollars
+  "price":"xxxx"        // It has to be in dollars
 }
 ```
 - ResponseBody
@@ -115,7 +115,7 @@
   "it aleady exists"
 }
 ```
-## 2. Staff
+## Staff
 >.../staff
 
 ### 1. login
@@ -168,7 +168,7 @@
   "date":"dd/mm/yyyy",
   "reason":"xxxxxxxxxxxxxxxxx",
   "remark":"xxxxxxxxxxxxx",
-  "pricy":"xxxx"        // It has to be in dollars
+  "price":"xxxx"        // It has to be in dollars
 }
 ```
 ```
