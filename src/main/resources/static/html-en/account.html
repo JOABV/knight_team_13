@@ -123,11 +123,11 @@
                         <div class="card-header">Policy Number</div>
                         <div class="card-body">
                             <p class="card-text">
-                                时间：<br>
-                                地点：<br>
-                                原因：<br>
-                                备注：<br>
-                                预估理赔价格：
+                                Time<br>
+                                Place<br>
+                                Reason<br>
+                                Details<br>
+                                Expected Compensation
                             </p>
                         </div>
                     </div>
@@ -156,27 +156,27 @@
                                     <form class="text-left" action=""
                                         method="post" name="claimForm" id="claimForm" enctype="multipart/form-data">
                                         <fieldset>
-                                            <legend>被保险人(索赔申请人)资料</legend>
+                                            <legend>Applicant Information</legend>
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="inputPolicyNo">保险单号码:</label>
+                                                    <label for="inputPolicyNo">Policy Number</label>
                                                     <input type="text" class="form-control" id="inputPolicyNo"
-                                                        placeholder="保险单号码">
+                                                        placeholder="Policy Number">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="inputName">姓名:</label>
+                                                    <label for="inputName">Name</label>
                                                     <input type="text" class="form-control" id="inputName"
-                                                        placeholder="姓名">
+                                                        placeholder="name">
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="inputID">身份证/护照号码:</label>
+                                                    <label for="inputID">ID/Passport</label>
                                                     <input type="text" class="form-control" id="inputID">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="inputTel">手机:</label>
+                                                    <label for="inputTel">Telphone</label>
                                                     <input type="text" class="form-control" id="inputTel">
                                                 </div>
                                             </div>
@@ -199,34 +199,34 @@
                                         </fieldset>
                                         <hr>
                                         <fieldset>
-                                            <legend>申请项目</legend>
+                                            <legend>Items to Claim</legend>
                                             <div class="form d-flex flex-row justify-content-start mt-3">
                                                 <div class="col-3 custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input"
                                                         id="customCheck1">
-                                                    <label class="custom-control-label" for="customCheck1">行李箱</label>
+                                                    <label class="custom-control-label" for="customCheck1">Baggage</label>
                                                 </div>
                                                 <div class="col-3 custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input"
                                                         id="customCheck2">
-                                                    <label class="custom-control-label" for="customCheck2">身份证</label>
+                                                    <label class="custom-control-label" for="customCheck2">Identity Card</label>
                                                 </div>
                                                 <div class="col-3 custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input"
                                                         id="customCheck3">
-                                                    <label class="custom-control-label" for="customCheck3">钱包</label>
+                                                    <label class="custom-control-label" for="customCheck3">Wallet</label>
                                                 </div>
                                                 <div class="col-3 custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input"
                                                         id="customCheck4">
-                                                    <label class="custom-control-label" for="customCheck4">手机</label>
+                                                    <label class="custom-control-label" for="customCheck4">Mobile Phone</label>
                                                 </div>
 
                                             </div>
                                             <div
                                                 class="custom-control custom-checkbox d-flex flex-row justify-content-start align-items-center mt-4">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck5">
-                                                <label class="custom-control-label" for="customCheck5">其他</label>
+                                                <label class="custom-control-label" for="customCheck5">Else</label>
 
                                                 <input type="text" id="elseInput" class="form-control ml-3 col-6"
                                                     style="display: none;" placeholder="Else" />
@@ -243,38 +243,38 @@
                                         </fieldset>
                                         <hr>
                                         <fieldset>
-                                            <legend>银行账户资料</legend>
-                                            <p> 赔款将通过银行转帐支付，请务必详细填写!</p>
+                                            <legend>Bank Account</legend>
+                                            <p> Compensation will be paid by bank transfer, please fill in details.</p>
                                             <form>
                                                 <div class="form-row">
                                                     <div class="col-3 mb-3">
-                                                        <label for="formBankName">开户：</label>
+                                                        <label for="formBankName">Account Name</label>
                                                         <input type="text" class="form-control" id="formBankName"
                                                             placeholder="Name" required>
                                                     </div>
                                                     <div class="col-7 mb-3">
-                                                        <label for="formBankAccount">账号:</label>
+                                                        <label for="formBankAccount">Account Number</label>
                                                         <input type="text" class="form-control" id="formBankAccount"
                                                             placeholder="Bank Account" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-3 mb-3">
-                                                        <label for="formBankName">银行：</label>
+                                                        <label for="formBankName">Bank</label>
                                                         <select class="form-control">
                                                             <option>Bank1</option>
                                                             <option>Bank2</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-3 mb-3">
-                                                        <label for="formBankAccount">市:</label>
+                                                        <label for="formBankAccount">City</label>
                                                         <select class="form-control">
                                                             <option>City1</option>
                                                             <option>City2</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-4 mb-3">
-                                                        <label for="formBankAccount">支行:</label>
+                                                        <label for="formBankAccount">Branch</label>
                                                         <select class="form-control">
                                                             <option>Branch1</option>
                                                             <option>Branch2</option>
@@ -285,17 +285,17 @@
                                         </fieldset>
 
                                         <fieldset>
-                                            <legend>申请赔偿事由</legend>
+                                            <legend>More Details</legend>
                                             <form>
                                                 <div class="form-row">
                                                     <div class="col-7 mb-3">
-                                                        <label for="formPlace">事故发生地点:</label>
+                                                        <label for="formPlace">Place</label>
                                                         <input type="text" class="form-control" id="formPlace"
-                                                            placeholder="事故发生地点" required>
+                                                            placeholder="Place" required>
                                                     </div>
                                                     <div class="col-3 mb-3">
-                                                        <label for="formPlace">事故发生日期:</label>
-                                                        <input type="date" class="form-control" id="date">
+                                                        <label for="formPlace">Date</label>
+                                                        <input type="date" class="form-control" id="formDate">
                                                     </div>
                                                     <div class="input-group col-10">
                                                         <div class="input-group-prepend">
@@ -313,7 +313,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Save</button>
-                                    <button type="button" class="btn btn-primary">Submit</button>
+                                    <button id="form_submit" type="button" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -337,7 +337,7 @@
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../resources/bootstrap-4.0.0-dist/others/jquery-3.3.1.slim.min.js"></script>
+    <script src="../resources/bootstrap-4.0.0-dist/others/jquery-3.3.1.js"></script>
     <script src="../resources/bootstrap-4.0.0-dist/others/popper.min.js"></script>
     <script src="../resources/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
 

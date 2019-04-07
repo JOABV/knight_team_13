@@ -24,35 +24,35 @@
         <div class="p-3 m-3" style="border: solid rgba(0, 0, 0, 0.5);border-radius: 10px;">
             <form class="text-left">
                 <fieldset>
-                    <legend>被保险人(索赔申请人)资料</legend>
+                    <legend>Applicant Information</legend>
                     <hr>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <p>保险单号码: xxxxxxxxx</p>
+                            <p>Policy Number: xxxxxxxxx</p>
                         </div>
                         <div class="form-group col-md-4">
-                            <p>姓名: xxx</p>
+                            <p>Name: xxx</p>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <p>身份证/护照号码: xxxxxxxxx</p>
+                            <p>ID/Password: xxxxxxxxx</p>
                         </div>
                         <div class="form-group col-md-4">
-                            <p>手机: xxxx-xxxxxxxx</p>
+                            <p>Telphone: xxxx-xxxxxxxx</p>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-5">
-                            <p>地址: </p>
+                            <p>Address: </p>
                             <address> xxxx xxxxx xxxxx</address>
                         </div>
                     </div>
                 </fieldset>
                 <hr>
                 <fieldset>
-                    <legend>申请项目</legend>
+                    <legend>Items to Claim</legend>
                     <hr>
                     <div class="form d-flex flex-row justify-content-start mt-3">
                         <ul>
@@ -60,8 +60,8 @@
                             <li>xxxx</li>
                         </ul>
                         <div class="ml-auto col-3">
-                            <button class="btn btn-dark" id="viewFileButton">View File</button>
-                            <img style="display: none;" src="../resources/img/icon.png" class="figure-img img-fluid rounded"
+                            <button type="button" class="btn btn-dark" id="viewFileButton">View File</button>
+                            <img id="fileImage" style="display: none;" src="../resources/img/icon.png" class="figure-img img-fluid rounded"
                                 alt="Fail to load file">
                         </div>
                     </div>
@@ -124,7 +124,7 @@
                                 <option value="2">Deny</option>
                                 <option value="3">Leave Information</option>
                             </select>
-                            <div style="display: none;">
+                            <div id="more_info" style="display: none;">
                                 <div class="input-group">
                                     <textarea class="form-control" aria-label="With textarea"></textarea>
                                 </div>
@@ -147,6 +147,8 @@
     <script src="../resources/bootstrap-4.0.0-dist/others/jquery-3.3.1.slim.min.js"></script>
     <script src="../resources/bootstrap-4.0.0-dist/others/popper.min.js"></script>
     <script src="../resources/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+
+    <script src="../js/claimdetail.js"></script>
 </body>
 
 </html>

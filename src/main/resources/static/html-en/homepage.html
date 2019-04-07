@@ -50,16 +50,6 @@
                         </div>
                     </li>
                 </ul>
-                <!-- <div class="dropdown ml-2">
-                    <button class="btn btn-outline-light btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Language
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item disabled" href="#">English</a>
-                        <a class="dropdown-item" href="#">Chinese</a>
-                    </div>
-                </div> -->
             </div>
         </header>
 
@@ -110,15 +100,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="username">Account</label>
-                            <input type="text" id="username" class="form-control" placeholder="Phone number" required
+                            <label for="username_lo">Account</label>
+                            <input type="text" id="username_lo" class="form-control" placeholder="Phone number" required
                                 autofocus>
 
                         </div>
 
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" class="form-control" placeholder="Password" required>
+                            <label for="password_lo">Password</label>
+                            <input type="password" id="password_lo" class="form-control" placeholder="Password"
+                                required>
                         </div>
 
                         <div class="checkbox mb-3">
@@ -126,7 +117,7 @@
                                 <input type="checkbox" value="remember-me"> Remember me
                             </label>
                         </div>
-                        <button id="signin" class="btn btn-lg btn-secondary btn-block">Sign in</button>
+                        <button id="user_sign_in" class="btn btn-lg btn-secondary btn-block">Sign in</button>
 
                     </form>
                 </div>
@@ -148,20 +139,35 @@
                             <div class="modal-body">
                                 <form class="text-left">
                                     <div class="form-column m-0">
-                                        <div class="form-group">
-                                            <span class="require">*</span>
-                                            <label for="username">Username</label>
-                                            <div class="username-input">
-                                                <input type="text" id="username" class="form-control"
-                                                    placeholder="Username" required autofocus />
+                                        <div class="form-column">
+                                            <div class="form-group">
+                                                <span class="require">*</span>
+                                                <label for="username_re">Tel</label>
+                                                <div class="input-group">
+                                                    <input type="text" id="username_re" class="form-control"
+                                                        placeholder="Telphone Number" aria-label="tel" required />
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-dark" type="button">Code</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <span class="require">*</span>
+                                                <label for="securityCode">Security Code</label>
+
+                                                <div class="userCode-input">
+                                                    <input type="text" id="securityCode" class="form-control"
+                                                        placeholder="Code" required />
+                                                </div>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <span class="require">*</span>
-                                            <label for="userPassword">Password</label>
+                                            <label for="password_re">Password</label>
                                             <div class="userPassword-input">
-                                                <input type="password" id="userPassword" class="form-control"
+                                                <input type="password" id="password_re" class="form-control"
                                                     placeholder="Password" required />
                                             </div>
                                         </div>
@@ -176,33 +182,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-column">
-                                        <div class="form-group">
-                                            <span class="require">*</span>
-                                            <label for="userPhone">Tel</label>
-                                            <div class="input-group">
-                                                <input type="text" id="userPhone" class="form-control"
-                                                    placeholder="Telphone Number" aria-label="tel" required />
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-dark" type="button">Code</button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <span class="require">*</span>
-                                            <label for="userCode">Security Code</label>
-
-                                            <div class="userCode-input">
-                                                <input type="text" id="userCode" class="form-control" placeholder="Code"
-                                                    required />
-                                            </div>
-                                        </div>
-                                    </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button class="btn btn-lg btn-primary btn-block mt-2 mb-2" type="submit">Sign
+                                <button id="user_sign_up" class="btn btn-lg btn-primary btn-block mt-2 mb-2" type="submit">Sign
                                     up</button>
                             </div>
 
@@ -230,7 +213,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../resources/bootstrap-4.0.0-dist/others/jquery-3.3.1.slim.min.js"></script>
+    <script src="../resources/bootstrap-4.0.0-dist/others/jquery-3.3.1.js"></script>
     <script src="../resources/bootstrap-4.0.0-dist/others/popper.min.js"></script>
     <script src="../resources/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
 
