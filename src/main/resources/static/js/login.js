@@ -7,7 +7,7 @@ $(document).ready(function () {
             dataType: "text",
             data: params,
             success: function (data) {
-                window.location.href = '../html-en/employee.html';
+                window.location.href = '../../templates/employee.html';
             },
             error: function (jqXHR) {
                 alert("wrong: " + jqXHR.status)

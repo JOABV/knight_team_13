@@ -17,35 +17,39 @@ public class UserController {
 	private UserRepository userRepository;
 	private PolicyRepository policyRepository;
 
+	@GetMapping("/homepage")
+	public String index(){
+		return "homepage";
+	}
+
 	@PostMapping(path="/register") // Map ONLY GET Requests
-	public @ResponseBody String addNewUser (@RequestParam String phone
-			, @RequestParam String password) {
+	public @ResponseBody String addNewUser (@RequestBody User user
+			/*, @RequestBody String password*/) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
 
-		if (userRepository.existsById(Integer.valueOf(phone))){
+		if (userRepository.existsById(Integer.valueOf(user.getPhone()))){
 			return "Wrong: the user already exists";
 		}
 
 		User n = new User();
-		n.setPhone(phone);
-		n.setPassword(password);
-		n.setId(Integer.parseInt(phone));
+		n.setPhone(user.getPhone());
+		n.setPassword(user.getPassword());
+		n.setId(Integer.parseInt(user.getPhone()));
 		userRepository.save(n);
 		return "Success Saved id:"+n.getId();
 
 	}
 
 	@PostMapping(path="/login") // Map ONLY POST Requests
-	public @ResponseBody String login (@RequestParam String phone
-			, @RequestParam String password) {
+	public @ResponseBody String login (@RequestBody User user) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
 
-        User user = userRepository.findById(Integer.valueOf(phone)).orElse(null);
+        User user1 = userRepository.findById(Integer.valueOf(user.getPhone())).orElse(null);
 
-		if (user == null){
-            if (! userRepository.existsById(Integer.valueOf(phone))){
+		if (user1 == null){
+            if (! userRepository.existsById(Integer.valueOf(user.getPhone()))){
                 return "not exist";
             }else{
                 return "wrong password ";
@@ -56,7 +60,7 @@ public class UserController {
 	}
 
 	@PostMapping(path="/lost_luggage") // Map ONLY POST Requests
-	public @ResponseBody String lost_luggage (@RequestParam Policy policy) {
+	public @ResponseBody String lost_luggage (@RequestBody Policy policy) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
 

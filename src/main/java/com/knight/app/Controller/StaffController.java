@@ -1,5 +1,6 @@
 package com.knight.app.Controller;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.knight.app.Model.Policy;
 import com.knight.app.Model.Staff;
 import com.knight.app.Model.User;
@@ -39,15 +40,14 @@ public class StaffController {
 //	}
 
 	@PostMapping(path="/login") // Map ONLY POST Requests
-	public @ResponseBody String login (@RequestParam String phone
-			, @RequestParam String password) {
+	public @ResponseBody String login (@RequestBody Staff staff) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
 
-        Staff staff = staffRepository.findById(Integer.valueOf(phone)).orElse(null);
+        Staff staff1 = staffRepository.findById(Integer.valueOf(staff.getPhone())).orElse(null);
 
-		if (staff == null){
-            if (! staffRepository.existsById(Integer.valueOf(phone))){
+		if (staff1 == null){
+            if (! staffRepository.existsById(Integer.valueOf(staff.getPhone()))){
                 return "not exist";
             }else{
                 return "wrong password ";
@@ -58,9 +58,11 @@ public class StaffController {
 	}
 
 	@PostMapping(path="/lost_luggage") // Map ONLY POST Requests
-	public @ResponseBody Policy lost_luggage (@RequestParam String policy_number) {
+	public @ResponseBody Policy lost_luggage (@RequestBody String policy_number) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
+
+//        JSONPObject a = new JSONPObject(policy_number);
 
 		if (! policyRepository.existsById(Integer.valueOf(policy_number))){
 			return new Policy();
