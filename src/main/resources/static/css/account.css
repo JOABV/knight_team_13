@@ -15,7 +15,7 @@ body {
 }
 
 .bg-image {
-    background-image: url("background.png");
+    background-image: url("../resources/img/background.png");
     background-position: center 0;
     background-repeat: no-repeat;
     background-attachment: fixed;

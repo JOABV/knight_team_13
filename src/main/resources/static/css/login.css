@@ -1,5 +1,5 @@
 .bg-image {
-    background-image: url("login.jpg");
+    background-image: url("../resources/img/login.jpg");
     background-position: center 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
