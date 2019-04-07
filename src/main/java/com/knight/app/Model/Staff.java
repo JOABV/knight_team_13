@@ -1,12 +1,10 @@
 package com.knight.app.Model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity // This tells Hibernate to make a table out of this class
-public class User {
+@Entity
+public class Staff {
     @Id
 //    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
@@ -15,10 +13,10 @@ public class User {
 
     private String password;
 
-    public User() {
+    public Staff() {
     }
 
-    public User(String phone, String password) {
+    public Staff(String phone, String password) {
         this.phone = phone;
         this.password = password;
     }
@@ -49,11 +47,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Staff{" +
                 "id=" + id +
                 ", phone='" + phone + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
 }
-
