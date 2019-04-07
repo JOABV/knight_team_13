@@ -24,8 +24,13 @@
 
 ----
 #  API
-## 1. User: http://101.132.96.76:8080/user
-- ### register
+## Server url:
+>### http://101.132.96.76:8080
+
+## User:
+>.../user
+
+### 1. register
 > .../register
 
 - RequestBody
@@ -51,7 +56,7 @@
 }
 ```
 
-- ### login
+### 2. login
 > .../login
 
 - RequestBody
@@ -67,7 +72,7 @@
 ```
 //success
 {
-  "user.html-zh"
+  "account.html"
 }
 ```
 ```
@@ -79,5 +84,96 @@
 //password is wrong
 {
     "Wrong password"
+}
+```
+### 3. lost luggage service
+>.../lost_luggage
+
+- RequestBody
+
+```
+{
+  "police_number":"123",
+  "time":"hh:mm",
+  "date":"dd/mm/yyyy",
+  "reason":"xxxxxxxxxxxxxxxxx",
+  "remark":"xxxxxxxxxxxxx",
+  "pricy":"xxxx"        // It has to be in dollars
+}
+```
+- ResponseBody
+
+```
+//success
+{
+  "Saved"  
+}
+```
+```
+//error
+{
+  "it aleady exists"
+}
+```
+## 2. Staff
+>.../staff
+
+### 1. login
+> .../login
+
+- RequestBody
+
+```
+{
+  "username":"13123456789",
+  "password":"123456"
+}
+```
+- ResponseBody
+
+```
+//success
+{
+  "account.html"
+}
+```
+```
+//error
+// user is not existed
+{
+  "not exist"
+}
+//password is wrong
+{
+    "Wrong password"
+}
+```
+### 2. lost luggage service
+>.../lost_luggage
+
+- RequestBody
+
+```
+{
+  "police_number":"123"
+}
+```
+- ResponseBody
+
+```
+//success
+{
+  "police_number":"123",
+  "time":"hh:mm",
+  "date":"dd/mm/yyyy",
+  "reason":"xxxxxxxxxxxxxxxxx",
+  "remark":"xxxxxxxxxxxxx",
+  "pricy":"xxxx"        // It has to be in dollars
+}
+```
+```
+//error
+{
+  "it doesn't exist"
 }
 ```
