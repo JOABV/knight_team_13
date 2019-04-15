@@ -20,7 +20,7 @@ function checkusrn() {
     var check = false;
     var username = document.getElementById("Username").value;
     if (username.length > 10) {
-        document.getElementById("checktext1").innerHTML = " × 不要多于10位";
+        document.getElementById("checktext1").innerHTML = " × less than 10 digits";
         check = false;
     } else {
         document.getElementById("checktext1").innerHTML = " √";
@@ -33,7 +33,7 @@ function checkpwd() {
     var check = false;
     var password = document.getElementById("Password").value;
     if (password.length < 6) {
-        document.getElementById("checktext2").innerHTML = " × 不要少于6位";
+        document.getElementById("checktext2").innerHTML = " × less than 6 digits";
         check = false;
     } else {
         document.getElementById("checktext2").innerHTML = " √";
@@ -47,7 +47,7 @@ function checkpwdc() {
     var password = document.getElementById("Password").value;
     var pwdc = document.getElementById("RePassword").value;
     if (password != pwdc) {
-        document.getElementById("checktext3").innerHTML = " × 两次输入密码不一致";
+        document.getElementById("checktext3").innerHTML = " × not the same input";
         check = false;
     } else {
         document.getElementById("checktext3").innerHTML = " √";
@@ -60,13 +60,13 @@ function validatemobile() {
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
     var mobile = document.getElementById("UserPhone").value;
     if (mobile.length == 0) {
-        document.getElementById("checktext4").innerHTML = " × 手机号码不能为空！";
+        document.getElementById("checktext4").innerHTML = " × cannot be empty";
         return false;
     } else if (mobile.length != 11) {
-        document.getElementById("checktext4").innerHTML = " × 请输入有效的手机号码，需是11位！";
+        document.getElementById("checktext4").innerHTML = " × invalid phone numbers, must be 11 digits";
         return false;
     } else if (!myreg.test(mobile)) {
-        document.getElementById("checktext4").innerHTML = " × 请输入有效的手机号码！";
+        document.getElementById("checktext4").innerHTML = " × invalid phone numbers";
         return false;
     } else {
         document.getElementById("checktext4").innerHTML = " √";
@@ -116,20 +116,3 @@ $(document).ready(function () {
     });
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

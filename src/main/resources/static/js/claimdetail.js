@@ -9,8 +9,6 @@ $(document).ready(function () {
             $("#fileImage").show();
             $(this).text("Hide");
         }
-        
-        
     });
 
     $("#resultDropdown").change(function(){

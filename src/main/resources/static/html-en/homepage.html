@@ -38,16 +38,9 @@
                             aria-controls="contact" aria-selected="false">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <div class="dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Language
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">English</a>
-                                <a class="dropdown-item" href="#">Chinese</a>
-                            </div>
-                        </div>
+                        <a class="nav-link" id="changeButton">
+                            Chinese
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -101,8 +94,11 @@
 
                         <div class="form-group">
                             <label for="username_lo">Account</label>
-                            <input type="text" id="username_lo" class="form-control" placeholder="Phone number" required
-                                autofocus>
+                            <input type="text" id="username_lo" class="form-control is-valid" placeholder="Phone number"
+                                required autofocus>
+                            <div style="display: none;" class="invalid-feedback">
+                                Phone number already exists, <a>forget password</a>
+                            </div>
 
                         </div>
 
@@ -185,7 +181,8 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button id="user_sign_up" class="btn btn-lg btn-primary btn-block mt-2 mb-2" type="submit">Sign
+                                <button id="user_sign_up" class="btn btn-lg btn-primary btn-block mt-2 mb-2"
+                                    type="submit">Sign
                                     up</button>
                             </div>
 
@@ -216,6 +213,7 @@
     <script src="../resources/bootstrap-4.0.0-dist/others/jquery-3.3.1.js"></script>
     <script src="../resources/bootstrap-4.0.0-dist/others/popper.min.js"></script>
     <script src="../resources/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+    <script src="../resources/bootstrap-4.0.0-dist/js/language.js"></script>
 
     <script src="../js/homepage.js"></script>
 </body>
