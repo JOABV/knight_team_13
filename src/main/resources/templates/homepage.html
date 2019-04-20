@@ -4,17 +4,16 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <title class="i18n" name='title'></title>
-    <meta id="i18n_pagename" content="index-common">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="../static/resources/img/icon.ico">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../static/resources/bootstrap-4.0.0-dist/css/bootstrap.min.css">
 
-    <link rel="styleSheet" href="../css/homepage.css" />
+    <link rel="styleSheet" href="../static/css/homepage.css" />
+    <title>Hibernia-Sino - Your Safety Guard</title>
 </head>
 
-<body class="en text-center bg-image">
+<body class="text-center bg-image">
 
     <div class="container d-flex h-100 p-3 flex-column">
 
@@ -27,22 +26,28 @@
 
                 <ul class="nav nav-style align-items-center justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link active i18n" name="homepage" id="home-tab" data-toggle="tab" href="#home"
-                            role="tab" aria-controls="home" aria-selected="true"></a>
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                            aria-controls="home" aria-selected="true">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link i18n" name="account" id="account-tab" data-toggle="tab" href="#account"
-                            role="tab" aria-controls="account" aria-selected="false"></a>
+                        <a class="nav-link" id="account-tab" data-toggle="tab" href="#account" role="tab"
+                            aria-controls="account" aria-selected="false">Account</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link i18n" name="contact" id="contact-tab" data-toggle="tab" href="#contact"
-                            role="tab" aria-controls="contact" aria-selected="false"></a>
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                            aria-controls="contact" aria-selected="false">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <select class="nav-link select-style" id="language">
-                            <option class="select-item" value="zh-CN">中文简体</option>
-                            <option class="select-item" value="en">English</option>
-                        </select>
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Language
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">English</a>
+                                <a class="dropdown-item" href="#">Chinese</a>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -54,19 +59,17 @@
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <h1 class="cover-heading i18n" name="slide1_title"></h1>
-                                <p class="lead p-3 pb-5 i18n" name="slide1_content"></p>
+                                <h1 class="cover-heading">Travel Insurance For Lost Luggage.</h1>
+                                <p class="lead p-3 pb-5">Your Personal Safe Gaurd</p>
                                 <p class="lead mt-5">
-                                    <a href="#" class="btn btn-outline-light btn-secondary i18n"
-                                        name="slide1_button"></a>
+                                    <a href="#" class="btn btn-outline-light btn-secondary">About Us</a>
                                 </p>
                             </div>
                             <div class="carousel-item">
-                                <h1 class="cover-heading i18n" name="slide2_title"></h1>
-                                <p class="lead p-3 pb-5 i18n" name="slide2_content"></p>
+                                <h1 class="cover-heading">Make Claims For Lost Luggage.</h1>
+                                <p class="lead p-3 pb-5">Make Claims Online</p>
                                 <p class="lead mt-5">
-                                    <a href="#" class="btn btn-outline-light btn-secondary i18n"
-                                        name="slide2_button"></a>
+                                    <a href="#" class="btn btn-outline-light btn-secondary">How To Claim</a>
                                 </p>
                             </div>
                         </div>
@@ -91,36 +94,30 @@
                 <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
                     <form class="login-form text-left">
                         <div>
-                            <h2 class="i18n" name="signin_title"></h2>
-                            <div class="d-inline-flex">
-                                <p class="i18n" name="signin_info1"></p>
-                                <a data-toggle="modal" href="#signup"><i class="m-1 i18n" name="signin_signup"></i></a>
-                                <p class="i18n" name="signin_info2"></p>
-                            </div>
+                            <h2>Sign-in</h2>
+                            <p>If you are not a member, please <a data-toggle="modal" href="#signup"><i>sign up</i></a>
+                                first.</p>
                         </div>
 
                         <div class="form-group">
-                            <label for="username_lo" class="i18n" name="signin_account"></label>
-                            <input type="text" id="username_lo" class="form-control is-valid i18n-input"
-                                selectname="signin_account_placeholder" selectattr="placeholder" required autofocus>
-                            <div style="display: none;" class="invalid-feedback">
-                                Phone number already exists, <a>forget password</a>
-                            </div>
+                            <label for="username_lo">Account</label>
+                            <input type="text" id="username_lo" class="form-control" placeholder="Phone number" required
+                                autofocus>
 
                         </div>
 
                         <div class="form-group">
-                            <label for="password_lo" class="i18n" name="signin_password"></label>
-                            <input type="password" id="password_lo" class="form-control i18n-input"
-                                selectname="signin_password_placeholder" selectattr="placeholder" required>
+                            <label for="password_lo">Password</label>
+                            <input type="password" id="password_lo" class="form-control" placeholder="Password"
+                                required>
                         </div>
 
                         <div class="checkbox mb-3">
-                            <input type="checkbox" value="remember-me">
-                            <label class="i18n" name="signin_remember"></label>
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
                         </div>
-                        <button id="user_sign_in" class="btn btn-lg btn-secondary btn-block i18n"
-                            name="signin_button"></button>
+                        <button id="user_sign_in" class="btn btn-lg btn-secondary btn-block">Sign in</button>
 
                     </form>
                 </div>
@@ -132,8 +129,8 @@
                         <div class="modal-content text-dark">
                             <div class="modal-header">
                                 <div class="text-left">
-                                    <h2 class="i18n" name="signup_title"></h2>
-                                    <p class="font-weight-light m-0 i18n" name="signup_info" style="color:red"></p>
+                                    <h2>Sign-up</h2>
+                                    <p class="font-weight-light m-0" style="color:red">* refers to necessary filling</p>
                                 </div>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -145,48 +142,42 @@
                                         <div class="form-column">
                                             <div class="form-group">
                                                 <span class="require">*</span>
-                                                <label for="username_re" class="i18n" name="signup_tel"></label>
+                                                <label for="username_re">Tel</label>
                                                 <div class="input-group">
-                                                    <input type="text" id="username_re" class="form-control i18n-input"
-                                                        selectname="signup_tel_placeholder" selectattr="placeholder"
-                                                        aria-label="tel" required />
+                                                    <input type="text" id="username_re" class="form-control"
+                                                        placeholder="Telphone Number" aria-label="tel" required />
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-dark i18n" name="signup_code_button"
-                                                            type="button"></button>
+                                                        <button class="btn btn-dark" type="button">Code</button>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <span class="require">*</span>
-                                                <label for="securityCode" class="i18n" name="signup_code"></label>
+                                                <label for="securityCode">Security Code</label>
 
                                                 <div class="userCode-input">
-                                                    <input type="text" id="securityCode" class="form-control i18n-input"
-                                                        selectname="signup_code_placeholder" selectattr="placeholder"
-                                                        required />
+                                                    <input type="text" id="securityCode" class="form-control"
+                                                        placeholder="Code" required />
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <span class="require">*</span>
-                                            <label for="password_re" class="i18n" name="signup_password"></label>
+                                            <label for="password_re">Password</label>
                                             <div class="userPassword-input">
-                                                <input type="password" id="password_re" class="form-control i18n-input"
-                                                    selectname="signup_password_placeholder" selectattr="placeholder"
-                                                    required />
+                                                <input type="password" id="password_re" class="form-control"
+                                                    placeholder="Password" required />
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <span class="require">*</span>
-                                            <label for="userRePassword" class="i18n" name="signup_confirm"></label>
+                                            <label for="userRePassword">Confirm Password</label>
                                             <div class="userRePassword-input">
-                                                <input type="password" id="userRePassword"
-                                                    class="form-control i18n-input"
-                                                    selectname="signup_confirm_placeholder" selectattr="placeholder"
-                                                    required />
+                                                <input type="password" id="userRePassword" class="form-control"
+                                                    placeholder="Confirm Password" required />
                                             </div>
                                         </div>
                                     </div>
@@ -194,8 +185,8 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button id="user_sign_up" class="btn btn-lg btn-dark btn-block mt-2 mb-2 i18n"
-                                    name="signup_button" type="submit"></button>
+                                <button id="user_sign_up" class="btn btn-lg btn-primary btn-block mt-2 mb-2" type="submit">Sign
+                                    up</button>
                             </div>
 
                         </div>
@@ -226,10 +217,7 @@
     <script src="../static/resources/bootstrap-4.0.0-dist/others/popper.min.js"></script>
     <script src="../static/resources/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
 
-    <script src="../resources/i18n/jquery.i18n.properties.js"></script>
-    <script src="../resources/i18n/language.js"></script>
-
-    <script src="../js/homepage.js"></script>
+    <script src="../static/js/homepage.js"></script>
 </body>
 
 </html>
