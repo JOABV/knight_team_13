@@ -14,8 +14,8 @@ body {
     box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
 }
 
-#signup{
-    color:rgba(0, 0, 0);
+#signup {
+    color: rgba(0, 0, 0);
 }
 
 .bg-image {
@@ -33,7 +33,7 @@ body {
 .login-form {
     position: relative;
     top: -3rem;
-    left:25%;
+    left: 25%;
     width: 50%;
 }
 
@@ -71,6 +71,18 @@ body {
 .nav-style .active {
     color: rgba(255, 255, 255, 1.0);
     border-bottom-color: rgba(255, 255, 255, 1.0);
+}
+
+.select-style {
+    border: transparent;
+}
+
+/* .select-style:hover, .select-style:active, .select-style::selection {
+    box-shadow: 0 0 0 transparent;
+} */
+
+.select-item {
+    color: rgba(0, 0, 0, 1.0);
 }
 
 .cover .btn-lg {
