@@ -4,13 +4,13 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta id="i18n_pagename" content="index-common">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="../static/resources/img/icon.ico">
+    <title class="i18n" name='title'></title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../static/resources/bootstrap-4.0.0-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/css/account.css">
-
-    <title>Hibernia-Sino - Your Safety Guard</title>
 </head>
 
 <body class="text-center bg-image">
@@ -24,93 +24,76 @@
                 </div>
 
                 <ul id="myTab" class="nav nav-style align-items-center justify-content-end mr-5">
-                    <li class="nav-item active">
-                        <a class="nav-link" id="account-home-tab" data-toggle="tab" href="#account-home" role="tab"
-                            aria-controls="account-home" aria-selected="true">Home</a>
-                    </li>
                     <li class="nav-item">
-                        <div class="dropdown" id="myDropdown">
-                            <a class="dropdown-toggle nav-link" href="#" id="account-navbarDropdown"
-                                data-toggle="dropdown">Account</a>
-                            <div class="dropdown-menu">
-                                <ul class="nav nav-style">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#policy-tab" data-toggle="tab">My Policy</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#claim-tab" data-toggle="tab">My Claims</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-
-                            <!-- <ul class="dropdown-menu" role="menu" aria-labelledby="account-navbarDropdown">
-                                <li>
-                                    <a class="dropdown-item" href="#Policy-tab" data-toggle="tab">My Policy</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#claim-tab" data-toggle="tab">My Claims</a>
-                                </li>
-                            </ul> -->
-
-                        </div>
+                        <a class="nav-link i18n" name="homepage" id="account-home-tab" data-toggle="tab"
+                            href="#account-home" role="tab" aria-controls="account-home" aria-selected="true"></a>
                     </li>
 
+                    <li class="dropdown nav-item">
+
+                        <a class="nav-link active i18n" name="policy" id="account-policy-tab" data-toggle="tab"
+                            href="#policy-tab" role="tab" aria-controls="policy-tab" aria-selected="false"></a>
+
+                        <ul class="dropdown-menu" id="drop-item">
+                            <li>
+                                <a class="dropdown-item i18n" name="logout" href="homepage.html"></a>
+                            </li>
+                        </ul>
+
+                    </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" id="account-contact-tab" data-toggle="tab" href="#account-contact"
-                            role="tab" aria-controls="account-contact" aria-selected="false">Contact</a>
+                        <a class="nav-link i18n" name="contact" id="account-contact-tab" data-toggle="tab"
+                            href="#account-contact" role="tab" aria-controls="account-contact"
+                            aria-selected="false"></a>
                     </li>
                     <li class="nav-item">
-                        <div class="dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Language
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">English</a>
-                                <a class="dropdown-item" href="#">Chinese</a>
-                            </div>
-                        </div>
+                        <select class="nav-link select-style" id="language">
+                            <option class="select-item" value="zh-CN">中文简体</option>
+                            <option class="select-item" value="en">English</option>
+                        </select>
                     </li>
                 </ul>
             </div>
         </header>
 
-        <main role="main" class="inner mt-5">
+        <main role="main" class="inner">
 
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="account-home" role="tabpanel"
-                    aria-labelledby="account-home-tab">
-                    <div id="account-Controls" class="carousel slide" data-ride="carousel">
+                <div class="tab-pane fade mt-5" id="account-home" role="tabpanel" aria-labelledby="account-home-tab">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <h1 class="cover-heading">Travel Insurance For Lost Luggage.</h1>
-                                <p class="lead p-3 pb-5">Your Personal Safe Gaurd</p>
+                                <h1 class="cover-heading i18n" name="slide1_title"></h1>
+                                <p class="lead p-3 pb-5 i18n" name="slide1_content"></p>
                                 <p class="lead mt-5">
-                                    <a href="#" class="btn btn-outline-light btn-secondary">About Us</a>
+                                    <a href="#" class="btn btn-outline-light btn-secondary i18n"
+                                        name="slide1_button"></a>
                                 </p>
                             </div>
                             <div class="carousel-item">
-                                <h1 class="cover-heading">Make Claims For Lost Luggage.</h1>
-                                <p class="lead p-3 pb-5">Make Claims Online</p>
+                                <h1 class="cover-heading i18n" name="slide2_title"></h1>
+                                <p class="lead p-3 pb-5 i18n" name="slide2_content"></p>
                                 <p class="lead mt-5">
-                                    <a href="#" class="btn btn-outline-light btn-secondary">How To Claim</a>
+                                    <a href="#" class="btn btn-outline-light btn-secondary i18n"
+                                        name="slide2_button"></a>
                                 </p>
                             </div>
                         </div>
 
-                        <a class="carousel-control-prev" href="#account-Controls" role="button" data-slide="prev">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#account-Controls" role="button" data-slide="next">
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
                         <ol class="carousel-indicators" style="position:relative;top:0.5rem;">
-                            <li data-target="#account-Indicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#account-Indicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                         </ol>
                     </div>
                 </div>
@@ -118,69 +101,147 @@
                 <!-- <div class="d-flex flex-row justify-content-start"> -->
 
                 <!-- <div class="tab-content" id="v-pills-tabContent" style="position: relative;left:2%;top: -2rem;"> -->
-                <div class="tab-pane fade" id="policy-tab">
-                    <div class="card text-dark text-left bg-light mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Policy Number</div>
-                        <div class="card-body">
-                            <p class="card-text">
-                                Time<br>
-                                Place<br>
-                                Reason<br>
-                                Details<br>
-                                Expected Compensation
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <div class="tab-pane fade show active" id="policy-tab" role="tabpanel"
+                    aria-labelledby="account-policy-tab">
+                    <div class="d-flex flex-column">
 
-                <div class="tab-pane fade" id="claim-tab">
-                    <div class="card text-dark text-left bg-light mb-3" style="max-width: 18rem;">
-                        <div class="card-body">
-                            <button type="button" class="btn btn-outline-dark" data-toggle="modal"
-                                data-target="#formModal">Make a claim</button>
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col" class="i18n" name="number_title"></th>
+                                    <th scope="col" class="i18n" name="buyer_title"></th>
+                                    <th scope="col" class="i18n" name="time_title"></th>
+                                    <th scope="col" class="i18n" name="status_title"></th>
+                                    <!-- overdue, processing, finished(approved, denied, message) -->
+                                    <th scope="col" class="i18n" name="operation_title"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td>
+                                        <div class="dropdown dropright">
+                                            <a class="btn btn-sm btn-outline-light dropdown-toggle i18n" name="more"
+                                                role="button" data-toggle="dropdown">
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item i18n" name="details" data-toggle="modal"
+                                                    href="#detailModal"></a>
+                                                <a class="dropdown-item i18n" name="make_claim" data-toggle="modal"
+                                                    href="#formModal"></a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                    <td>
+                                        <div class="dropdown dropright">
+                                            <a class="btn btn-sm btn-outline-light dropdown-toggle i18n" name="more"
+                                                role="button" data-toggle="dropdown">
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item i18n" name="details" data-toggle="modal"
+                                                    href="#detailModal"></a>
+                                                <a class="dropdown-item i18n" name="make_claim" data-toggle="modal"
+                                                    href="#formModal"></a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                                    <td>
+                                        <div class="dropdown dropright">
+                                            <a class="btn btn-sm btn-outline-light dropdown-toggle i18n" name="more"
+                                                role="button" data-toggle="dropdown">
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item i18n" name="details" data-toggle="modal"
+                                                    href="#detailModal"></a>
+                                                <a class="dropdown-item i18n" name="make_claim" data-toggle="modal"
+                                                    href="#formModal"></a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- <div class="card text-dark text-left bg-light mb-3" style="width: 30%">
+                            <div class="card-header">Policy Number</div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    Time<br>
+                                    Place<br>
+                                    Reason<br>
+                                    Details<br>
+                                    Expected Compensation
+                                </p>
+                                <button type="button" class="btn btn-outline-dark">Make a claim</button>
+                            </div>
                         </div>
-                    </div>
 
+                        <div class="card text-dark text-left bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <button type="button" class="btn btn-outline-dark" data-toggle="modal"
+                                    data-target="#formModal">Make a claim</button>
+                            </div>
+                        </div> -->
+                    </div>
 
                     <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog modal-lg text-dark text-left modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Claim Application
+                                    <h5 class="modal-title i18n" name="claim_title">
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="text-left" action=""
-                                        method="post" name="claimForm" id="claimForm" enctype="multipart/form-data">
+                                    <form class="text-left" action="" method="post" name="claimForm" id="claimForm"
+                                        enctype="multipart/form-data">
                                         <fieldset>
-                                            <legend>Applicant Information</legend>
+                                            <legend class="i18n" name="applicant_title"></legend>
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="inputPolicyNo">Policy Number</label>
-                                                    <input type="text" class="form-control" id="inputPolicyNo"
-                                                        placeholder="Policy Number">
+                                                    <label for="inputPolicyNo" class="i18n"
+                                                        name="applicant_number"></label>
+                                                    <input type="text" class="form-control i18n-input"
+                                                        id="inputPolicyNo" selectname="signin_account_placeholder"
+                                                        selectattr="placeholder">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="inputName">Name</label>
-                                                    <input type="text" class="form-control" id="inputName"
-                                                        placeholder="name">
+                                                    <label for="inputName" class="i18n" name="applicant_name"></label>
+                                                    <input type="text" class="form-control i18n-input" id="inputName"
+                                                        selectname="applicant_name_placeholder"
+                                                        selectattr="placeholder">
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="inputID">ID/Passport</label>
-                                                    <input type="text" class="form-control" id="inputID">
+                                                    <label for="inputID" class="i18n" name="applicant_id"></label>
+                                                    <input type="text" class="form-control i18n-input" id="inputID"
+                                                        selectname="applicant_id_placeholder" selectattr="placeholder">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="inputTel">Telphone</label>
-                                                    <input type="text" class="form-control" id="inputTel">
+                                                    <label for="inputTel" class="i18n" name="applicant_tel"></label>
+                                                    <input type="text" class="form-control i18n-input" id="inputTel"
+                                                        selectname="applicant_tel_placeholder" selectattr="placeholder">
                                                 </div>
                                             </div>
-                                            <form>
+                                            <!-- <form>
                                                 <div class="form-row">
                                                     <div class="col-5">
                                                         <label>City:</label>
@@ -195,8 +256,158 @@
                                                         <input type="text" class="form-control" placeholder="Zip">
                                                     </div>
                                                 </div>
+                                            </form> -->
+                                        </fieldset>
+                                        <hr>
+                                        <fieldset>
+                                            <legend class="i18n" name="items_title"></legend>
+                                            <div class="form d-flex flex-row justify-content-start mt-3">
+                                                <div class="col-3 custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                        id="customCheck1">
+                                                    <label class="custom-control-label i18n" name="items_baggage"
+                                                        for="customCheck1"></label>
+                                                </div>
+                                                <div class="col-3 custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                        id="customCheck2">
+                                                    <label class="custom-control-label i18n" name="items_card"
+                                                        for="customCheck2"></label>
+                                                </div>
+                                                <div class="col-3 custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                        id="customCheck3">
+                                                    <label class="custom-control-label i18n" name="items_wallet"
+                                                        for="customCheck3"></label>
+                                                </div>
+                                                <div class="col-3 custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                        id="customCheck4">
+                                                    <label class="custom-control-label i18n" name="items_phone"
+                                                        for="customCheck4"></label>
+                                                </div>
+
+                                            </div>
+                                            <div
+                                                class="custom-control custom-checkbox d-flex flex-row justify-content-start mt-4">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck5">
+                                                <label class="custom-control-label i18n" name="items_else"
+                                                    for="customCheck5"></label>
+
+                                                <input type="text" id="elseInput"
+                                                    class="form-control ml-3 col-6 i18n-input" style="display: none;"
+                                                    selectname="items_else_placeholder" selectattr="placeholder" />
+                                            </div>
+                                            <div class="mt-3 col-7">
+                                                <div class="custom-file">
+                                                    <label class="custom-file-label i18n" name="items_file"
+                                                        for="customFile"></label>
+                                                    <input type="file" class="custom-file-input" id="formFile"
+                                                        accept="image/png, image/jpeg">
+
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <hr>
+                                        <fieldset>
+                                            <legend class="i18n" name="bank_title"></legend>
+                                            <p class="i18n" name="bank_info"></p>
+                                            <form>
+                                                <div class="form-row">
+                                                    <div class="col-3 mb-3">
+                                                        <label for="formBankName" class="i18n" name="bank_name"></label>
+                                                        <input type="text" class="form-control" id="formBankName"
+                                                            selectname="bank_name_placeholder" selectattr="placeholder"
+                                                            required>
+                                                    </div>
+                                                    <div class="col-7 mb-3">
+                                                        <label for="formBankAccount" class="i18n"
+                                                            name="bank_number"></label>
+                                                        <input type="text" class="form-control" id="formBankAccount"
+                                                            selectname="bank_number_placeholder"
+                                                            selectattr="placeholder" required>
+                                                    </div>
+                                                </div>
                                             </form>
                                         </fieldset>
+
+                                        <hr>
+                                        <fieldset>
+                                            <legend class="i18n" name="claim_detail_title"></legend>
+                                            <form>
+                                                <div class="form-row">
+                                                    <div class="col-7 mb-3">
+                                                        <label for="formPlace" class="i18n" name="claim_place"></label>
+                                                        <input type="text" class="form-control i18n-input"
+                                                            id="formPlace" selectname="claim_place_placeholder"
+                                                            selectattr="placeholder" required>
+                                                    </div>
+                                                    <div class="col-3 mb-3">
+                                                        <label for="formPlace" class="i18n" name="claim_date"></label>
+                                                        <input type="date" class="form-control" id="formDate">
+                                                    </div>
+                                                    <div class="input-group col-10">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text i18n"
+                                                                name="claim_detail"></span>
+                                                        </div>
+                                                        <textarea class="form-control"
+                                                            aria-label="With textarea"></textarea>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button id="form_submit" type="button" class="btn btn-dark i18n"
+                                        name="submit"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg text-dark text-left modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title i18n" name="claim_title"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="text-left" action="" method="post" name="claimForm" id="claimForm"
+                                    enctype="multipart/form-data">
+                                    <fieldset>
+                                        <legend class="i18n" name="applicant_title"></legend>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label class="i18n" name="applicant_number"></label>
+                                                <p>sjfhs</p>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label class="i18n" name="applicant_name"></label>
+                                                <p>sjfhs</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label class="i18n" name="applicant_id"></label>
+                                                <p>sjfhs</p>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputTel" class="i18n" name="applicant_tel"></label>
+                                                <p>sjfhs</p>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <div style="display: none;">
                                         <hr>
                                         <fieldset>
                                             <legend>Items to Claim</legend>
@@ -204,22 +415,26 @@
                                                 <div class="col-3 custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input"
                                                         id="customCheck1">
-                                                    <label class="custom-control-label" for="customCheck1">Baggage</label>
+                                                    <label class="custom-control-label"
+                                                        for="customCheck1">Baggage</label>
                                                 </div>
                                                 <div class="col-3 custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input"
                                                         id="customCheck2">
-                                                    <label class="custom-control-label" for="customCheck2">Identity Card</label>
+                                                    <label class="custom-control-label" for="customCheck2">Identity
+                                                        Card</label>
                                                 </div>
                                                 <div class="col-3 custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input"
                                                         id="customCheck3">
-                                                    <label class="custom-control-label" for="customCheck3">Wallet</label>
+                                                    <label class="custom-control-label"
+                                                        for="customCheck3">Wallet</label>
                                                 </div>
                                                 <div class="col-3 custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input"
                                                         id="customCheck4">
-                                                    <label class="custom-control-label" for="customCheck4">Mobile Phone</label>
+                                                    <label class="custom-control-label" for="customCheck4">Mobile
+                                                        Phone</label>
                                                 </div>
 
                                             </div>
@@ -258,32 +473,9 @@
                                                             placeholder="Bank Account" required>
                                                     </div>
                                                 </div>
-                                                <div class="form-row">
-                                                    <div class="col-3 mb-3">
-                                                        <label for="formBankName">Bank</label>
-                                                        <select class="form-control">
-                                                            <option>Bank1</option>
-                                                            <option>Bank2</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-3 mb-3">
-                                                        <label for="formBankAccount">City</label>
-                                                        <select class="form-control">
-                                                            <option>City1</option>
-                                                            <option>City2</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-4 mb-3">
-                                                        <label for="formBankAccount">Branch</label>
-                                                        <select class="form-control">
-                                                            <option>Branch1</option>
-                                                            <option>Branch2</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
                                             </form>
                                         </fieldset>
-
+                                        <hr>
                                         <fieldset>
                                             <legend>More Details</legend>
                                             <form>
@@ -309,17 +501,13 @@
 
                                             </form>
                                         </fieldset>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Save</button>
-                                    <button id="form_submit" type="button" class="btn btn-primary">Submit</button>
-                                </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-
                 </div>
+
 
                 <div class="tab-pane fade" id="account-contact" role="tabpanel" aria-labelledby="account-contact-tab">
 
@@ -340,6 +528,9 @@
     <script src="../static/resources/bootstrap-4.0.0-dist/others/jquery-3.3.1.js"></script>
     <script src="../static/resources/bootstrap-4.0.0-dist/others/popper.min.js"></script>
     <script src="../static/resources/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+
+    <script src="../static/resources/i18n/jquery.i18n.properties.js"></script>
+    <script src="../static/resources/i18n/language.js"></script>
 
     <script src="../static/js/account.js"></script>
 </body>

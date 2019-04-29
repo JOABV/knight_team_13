@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     function connect(address, params) {
         $.ajax({
             type: "POST",
@@ -14,6 +15,16 @@ $(document).ready(function () {
             }
         });
     }
+
+    $("#account-policy-tab").hover(
+        function () {
+            $("#drop-item").show();
+        });
+    $("#drop-item").hover(function () {
+        $(this).show();
+    }, function () {
+        $(this).hide();
+    });
 
     $("#form_submit").click(function () {
         var params = {}
