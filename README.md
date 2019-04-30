@@ -167,7 +167,7 @@
 ```
 
 ### 5. Update the Claim
->.../lost_luggage/Update
+>.../lost_luggage/update
 
 - RequestBody
 

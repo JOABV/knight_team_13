@@ -1,4 +1,4 @@
-package com.knight.app.Model;
+package com.knight.app.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -6,33 +6,14 @@ import javax.persistence.Id;
 @Entity
 public class Policy {
     @Id
-    int id;
     String policy_number;
     String time;
-    String date;
+    String place;
     String reason;
     String remark;
     String price;
-
-    public Policy() {
-    }
-
-    public Policy(String policy_number, String time, String date, String reason, String remark, String price) {
-        this.policy_number = policy_number;
-        this.time = time;
-        this.date = date;
-        this.reason = reason;
-        this.remark = remark;
-        this.price = price;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    String picture;
+    int claim_status;
 
     public String getPolicy_number() {
         return policy_number;
@@ -50,12 +31,12 @@ public class Policy {
         this.time = time;
     }
 
-    public String getDate() {
-        return date;
+    public String getPlace() {
+        return place;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setPlace(String place) {
+        this.place = place;
     }
 
     public String getReason() {
@@ -82,16 +63,33 @@ public class Policy {
         this.price = price;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public int getClaim_status() {
+        return claim_status;
+    }
+
+    public void setClaim_status(int claim_status) {
+        this.claim_status = claim_status;
+    }
+
     @Override
     public String toString() {
         return "Policy{" +
-                "id=" + id +
-                ", policy_number='" + policy_number + '\'' +
+                "policy_number='" + policy_number + '\'' +
                 ", time='" + time + '\'' +
-                ", date='" + date + '\'' +
+                ", place='" + place + '\'' +
                 ", reason='" + reason + '\'' +
                 ", remark='" + remark + '\'' +
                 ", price='" + price + '\'' +
+                ", picture='" + picture + '\'' +
+                ", claim_status=" + claim_status +
                 '}';
     }
 }
