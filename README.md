@@ -74,7 +74,6 @@
 ```
 
 
-
 ### 3. Get the policy list
 >.../policy/list
 
@@ -96,7 +95,7 @@
     "policy_number":"123",
     "policy_name":"xxxxxxxxxxxxx",
     "time":"yyyy/mm/dd/hh/mm",
-    "claim_status":"101"
+    "claim_states":"101"
     },
     {...}
     ...
@@ -138,7 +137,7 @@
       "reason":"xxxxxxxxxxxxxxxxx",
       "price":"xxxx"        // It has to be in dollars
       "picture":"x0123412edx3",
-      "claim_status": "101"
+      "claim_states": "101"
   }
 }
 ```
@@ -165,7 +164,7 @@
   "reason":"xxxxxxxxxxxxxxxxx",
   "price":"xxxx"        // It has to be in dollars
   "picture":"x0123412edx3",
-  "claim_status": "101"
+  "claim_states": "101"
 }
 ```
 - ResponseBody
@@ -208,7 +207,7 @@
   "reason":"xxxxxxxxxxxxxxxxx",
   "price":"xxxx"        // It has to be in dollars
   "picture":"x0123412edx3",
-  "claim_status": "101"
+  "claim_states": "101"
 }
 ```
 - ResponseBody
@@ -337,21 +336,21 @@
 ```
 {
   "length": 10,
-  "status": "101",
+  "states": "101",
       //101: to process
       //102: processing
       //103: processed
-      "time":"101",
-          //101: 正序 // default
-          //102: 倒序
-      "place":"xxxx",
-          //"all": default
-      "price": "101"
-          //0  : all // default
-          //101: 0- 100
-          //102: 100-1000
-          //103: 1000 - 10000
-          //104: 10000+
+  "time":"101",
+      //101: 正序 // default
+      //102: 倒序
+  "place":"xxxx",
+      //"all": default
+  "price": "101"
+      //0  : all // default
+      //101: 0- 100
+      //102: 100-1000
+      //103: 1000 - 10000
+      //104: 10000+
 }
 ```
 - ResponseBody
@@ -390,7 +389,7 @@
 ```
 {
   "policy_number":"123",
-  "status": "101"
+  "states": "101"
 }
 ```
 - ResponseBody
@@ -410,7 +409,7 @@
     "price":"xxxx",        // It has to be in dollars
     "picture":"x0123412edx3",
     "feedback":"xxxxxxxxxxxxxxxxxxxxx" ,
-    "claim_status": "101"
+    "claim_states": "101"
   }
 }
 ```
@@ -431,7 +430,7 @@
 ```
 {
   "policy_number":"123",
-  "claim_status":"101",
+  "claim_states":"101",
   "Message":"xxxxxxxxxxxxxxxxxxxxxxxx"
 }
 ```
