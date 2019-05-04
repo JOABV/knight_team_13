@@ -95,7 +95,7 @@
     "policy_number":"123",
     "policy_name":"xxxxxxxxxxxxx",
     "time":"yyyy/mm/dd/hh/mm",
-    "claim_states":"101"
+    "claim_states": ["1", "2"]
     },
     {...}
     ...
@@ -126,7 +126,7 @@
 ```
 //success
 {
-  "Checkcode":"201",
+  "Checkcode":"100",
   "Message":
   {
       "policy_number":"123",
@@ -137,7 +137,8 @@
       "reason":"xxxxxxxxxxxxxxxxx",
       "price":"xxxx"        // It has to be in dollars
       "picture":"x0123412edx3",
-      "claim_states": "101"
+      "feedback":["xxxxxxxxx", "xxxxxxxxxxxx"],
+      "claim_states": ["1", "2"]
   }
 }
 ```
@@ -164,7 +165,6 @@
   "reason":"xxxxxxxxxxxxxxxxx",
   "price":"xxxx"        // It has to be in dollars
   "picture":"x0123412edx3",
-  "claim_states": "101"
 }
 ```
 - ResponseBody
@@ -206,8 +206,7 @@
   "place":"xxxxxxx",
   "reason":"xxxxxxxxxxxxxxxxx",
   "price":"xxxx"        // It has to be in dollars
-  "picture":"x0123412edx3",
-  "claim_states": "101"
+  "picture":"x0123412edx3"
 }
 ```
 - ResponseBody
@@ -302,7 +301,7 @@
 
 ```
 {
-  "username":"13123456789",
+  "phone_number":"13123456789",
   "password":"123456"
 }
 ```
@@ -390,6 +389,7 @@
 {
   "policy_number":"123",
   "states": "101"
+    // 用于判定后台在哪一个表中查询
 }
 ```
 - ResponseBody
@@ -408,8 +408,13 @@
     "reason":"xxxxxxxxxxxxxxxxx",
     "price":"xxxx",        // It has to be in dollars
     "picture":"x0123412edx3",
-    "feedback":"xxxxxxxxxxxxxxxxxxxxx" ,
-    "claim_states": "101"
+    "feedback":["xxxxxxxxx", "xxxxxxxxxxxx"],
+    "claim_states": ["1", "2"]
+        // 第一数代表大状态
+          // 0 : ToProcess
+          // 1 : processing
+          // 2 : processed
+        // 第二个数开始为小状态的选项
   }
 }
 ```
@@ -430,8 +435,59 @@
 ```
 {
   "policy_number":"123",
-  "claim_states":"101",
-  "Message":"xxxxxxxxxxxxxxxxxxxxxxxx"
+  "claim_states":"1"
+      //数字代表选项
+          // 0 代表第一个选项
+          // 1 代表第二个选项
+          // ...
+          // 以此类推
+      //每次调用此接口会给状态多加一个值，因此第一调用代表第一个属性的选项，以此类推
+  "feedback":"xxxxxxxxxxxxxxxxxxxxxxxx",
+  "isTheLastSubmit":"0"
+      //用于判断此次提交后是否需要将申诉转移到Processed中
+      //0 不转移
+      //1 转移
+}
+```
+- ResponseBody
+
+```
+//success
+{
+  "Checkcode":"100",
+  "Message":"success"
+}
+```
+```
+//error
+{
+  "Checkcode":"200",
+  "Message":"Wrong type"
+}
+{
+  "Checkcode":"201",
+  "Message":"Empty input"
+}
+{
+  "Checkcode":"202",
+  "Message":"the claim doesn't exist"
+}
+```
+
+### 5. accept or reject the claim
+>.../lost_luggage/claim_accept_OR_reject
+
+- RequestBody
+
+```
+{
+  "policy_number":"123",
+  "isAccept": 1,
+      //accept: 1
+      //reject: 0
+  "feedback":"xxxxxxxxxxxxxxxxxxxxxxxx",
+  "staff_number":"12231421"
+      // 接受时，员工的手机号
 }
 ```
 - ResponseBody
