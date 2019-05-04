@@ -24,12 +24,12 @@ public class UserClaimController {
 	private PolicyRepository policyRepository;
 
 	@PostMapping(path="/receive")
-	public @ResponseBody JSONObject lost_luggage_receive (@RequestBody String policy_number) {
-		JSONObject jso = new JSONObject();
-		if (policyRepository.exists(policy_number)){
-			Policy p = policyRepository.findOne(policy_number);
+	public @ResponseBody JSONObject lost_luggage_receive (@RequestBody JSONObject jso) {
+		JSONObject result = new JSONObject();
+		if (policyRepository.exists(jso.getString("policy_number"))){
+			Policy detail = policyRepository.findOne("policy_number");
 			jso.put("Checkcode", 100);
-			jso.put("Message", p);
+			jso.put("Message", detail);
 		}else{
 			jso.put("Checkcode", 201);
 			jso.put("Message", "It doesn't exist");
@@ -37,7 +37,7 @@ public class UserClaimController {
 		return jso;
 	}
 
-	@PostMapping(path={"/submit", "/update"})
+	@PostMapping(path="/submit")
 	public @ResponseBody JSONObject lost_luggage_submit (@RequestBody Policy policy) {
 		JSONObject jso = new JSONObject();
 		if (!policyRepository.exists(policy.getPolicy_number())){

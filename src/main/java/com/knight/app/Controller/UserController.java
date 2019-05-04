@@ -5,6 +5,7 @@ import com.knight.app.entities.Policy;
 import com.knight.app.Repository.PolicyRepository;
 import com.knight.app.Repository.UserRepository;
 import com.knight.app.mapper.UserMapper;
+import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jackson.JsonObjectDeserializer;
@@ -28,16 +29,20 @@ public class UserController {
 
 	//register
 	@PostMapping(path="/register")
-	public @ResponseBody String User_register (@RequestBody User user) {
+	public @ResponseBody JSONObject User_register (@RequestBody JSONObject jso) {
+		JSONObject json = new JSONObject();
 
-		if (userRepository.exists(user.getPhone())){
-			return "Wrong: the user already exists";
-		}
-		User n = new User();
-		n.setPhone(user.getPhone());
-		n.setPassword(user.getPassword());
-		userRepository.save(n);
-		return "Success Saved";
+		json.put("Checkcode", "100");
+		json.put("Message", jso.getString("id_number"));
+
+//		if (userRepository.exists(user.getPhone())){
+//			return "Wrong: the user already exists";
+//		}
+//		User n = new User();
+//		n.setPhone(user.getPhone());
+//		n.setPassword(user.getPassword());
+//		userRepository.save(n);
+		return json;
 	}
 	//login
 	@PostMapping(path="/login")

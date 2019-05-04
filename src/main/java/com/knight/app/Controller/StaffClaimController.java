@@ -23,10 +23,11 @@ public class StaffClaimController {
 	@Autowired
 	private PolicyRepository policyRepository;
 
-	@GetMapping(path="/list")
+	@PostMapping(path="/list")
 	public @ResponseBody JSONObject getClaimList(@RequestBody JSONObject jso) {
 
-		//TODO
+
+
 		return null;
 	}
 

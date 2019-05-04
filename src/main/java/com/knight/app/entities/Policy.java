@@ -14,12 +14,12 @@ public class Policy {
     private String reason;
     private String price;
     private String picture;
-    private String claim_status;
+    private String claim_states;
 
     public Policy() {
     }
 
-    public Policy(String policy_number, String policy_name, String phone_number, String time, String place, String reason, String price, String picture, String claim_status) {
+    public Policy(String policy_number, String policy_name, String phone_number, String time, String place, String reason, String price, String picture, String claim_states) {
         this.policy_number = policy_number;
         this.policy_name = policy_name;
         this.phone_number = phone_number;
@@ -28,7 +28,7 @@ public class Policy {
         this.reason = reason;
         this.price = price;
         this.picture = picture;
-        this.claim_status = claim_status;
+        this.claim_states = claim_states;
     }
 
     public String getPolicy_number() {
@@ -95,11 +95,11 @@ public class Policy {
         this.picture = picture;
     }
 
-    public String getClaim_status() {
-        return claim_status;
+    public String getClaim_states() {
+        return claim_states;
     }
 
-    public void setClaim_status(String claim_status) {
-        this.claim_status = claim_status;
+    public void setClaim_states(String claim_states) {
+        this.claim_states = claim_states;
     }
 }
