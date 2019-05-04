@@ -93,7 +93,7 @@ $(document).ready(function () {
             dataType: "text",
             data: params,
             success: function (data) {
-                window.location.href = '../html-en/account.html';
+                // window.location.href = '../html-en/account.html';
             },
             error: function (jqXHR) {
                 alert("wrong: " + jqXHR.status)

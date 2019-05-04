@@ -1,4 +1,4 @@
-package com.knight.app.Model;
+package com.knight.app.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -6,35 +6,23 @@ import javax.persistence.Id;
 @Entity
 public class Staff {
     @Id
-//    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
-
-    private String phone;
-
+    private String phone_number;
     private String password;
 
     public Staff() {
     }
 
-    public Staff(String phone, String password) {
-        this.phone = phone;
+    public Staff(String phone_number, String password) {
+        this.phone_number = phone_number;
         this.password = password;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getPhone() {
-        return phone;
+        return phone_number;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhone(String phone_number) {
+        this.phone_number = phone_number;
     }
 
     public String getPassword() {
@@ -48,8 +36,7 @@ public class Staff {
     @Override
     public String toString() {
         return "Staff{" +
-                "id=" + id +
-                ", phone='" + phone + '\'' +
+                ", phone='" + phone_number + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
