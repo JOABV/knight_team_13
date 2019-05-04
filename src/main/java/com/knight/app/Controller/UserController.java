@@ -30,40 +30,47 @@ public class UserController {
 	//register
 	@PostMapping(path="/register")
 	public @ResponseBody JSONObject User_register (@RequestBody JSONObject jso) {
-		JSONObject json = new JSONObject();
+		JSONObject result = new JSONObject();
 
-		json.put("Checkcode", "100");
-		json.put("Message", jso.getString("id_number"));
+		if (userRepository.exists(jso.getString("phone_number"))){
+			result.put("Checkcode", "200");
+			result.put("Message", "exists");
+			return result;
+		}
+		String phone_number = jso.getString("phone_number");
+		String password = jso.getString("password");
+		String id_number = jso.getString("id_number");
+		String full_name = jso.getString("full_name");
 
-//		if (userRepository.exists(user.getPhone())){
-//			return "Wrong: the user already exists";
-//		}
-//		User n = new User();
-//		n.setPhone(user.getPhone());
-//		n.setPassword(user.getPassword());
-//		userRepository.save(n);
-		return json;
+		User n = new User(phone_number, password, id_number, full_name);
+		userRepository.save(n);
+
+		result.put("Checkcode", "100");
+		result.put("Message", "success");
+
+		return result;
 	}
 	//login
 	@PostMapping(path="/login")
-	public @ResponseBody JSONObject User_login (@RequestBody User user) {
+	public @ResponseBody JSONObject User_login (@RequestBody JSONObject user) {
 
 		JSONObject jso = new JSONObject();
-		User user1 = userRepository.findOne(user.getPhone());
-		if (user1 == null){
-            if (! userRepository.exists(user.getPhone())){
-                jso.put("Checkcode", 200);
-                jso.put("Message", "not exist");
-            }else{
+		User user1 = userRepository.findOne(user.getString("phone_number"));
+		if (user1 == null) {
+			jso.put("Checkcode", 200);
+			jso.put("Message", "not exist");
+		}else{
+			if(user1.getPassword().compareTo(user.getString("password")) != 0){
 				jso.put("Checkcode", 201);
 				jso.put("Message", "wrong password");
-            }
-		}else{
-			jso.put("Checkcode", 100);
-			jso.put("Message", "success");
+			}else{
+				jso.put("Checkcode", 100);
+				jso.put("Message", "success");
+			}
 		}
 		return jso;
 	}
+
 	//Information_show
 	@PostMapping(path="/personal_information/pi")
 	public @ResponseBody JSONObject personal_information_show (@RequestBody JSONObject jsonobject) {

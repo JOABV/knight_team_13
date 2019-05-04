@@ -6,21 +6,20 @@ import javax.persistence.Id;
 @Entity // This tells Hibernate to make a table out of this class
 public class User {
     @Id
-    private String phone_number;
-    private String password;
-    private String id_number;
-    private String full_name;
-    private String email;
+    private String phone_number = "";
+    private String password = "";
+    private String id_number = "";
+    private String full_name = "";
+    private String email = "";
 
     public User() {
     }
 
-    public User(String phone_number, String password) {
+    public User(String phone_number, String password, String id_number, String full_name) {
         this.phone_number = phone_number;
         this.password = password;
-        this.id_number = "";
-        this.full_name = "";
-        this.email = "";
+        this.id_number = id_number;
+        this.full_name = full_name;
     }
 
     public User(String phone_number, String password, String id_number, String full_name, String email) {

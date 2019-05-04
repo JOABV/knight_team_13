@@ -1,7 +1,10 @@
 package com.knight.app.entities;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 public class Policy {
@@ -9,17 +12,25 @@ public class Policy {
     private String policy_number;
     private String policy_name;
     private String phone_number;
-    private String time;
+    @CreatedDate
+    private Date time;
     private String place;
     private String reason;
     private String price;
     private String picture;
     private String claim_states;
+    private String Staff_number;
 
     public Policy() {
     }
 
-    public Policy(String policy_number, String policy_name, String phone_number, String time, String place, String reason, String price, String picture, String claim_states) {
+    public Policy(String policy_number, String policy_name, String phone_number) {
+        this.policy_number = policy_number;
+        this.policy_name = policy_name;
+        this.phone_number = phone_number;
+    }
+
+    public Policy(String policy_number, String policy_name, String phone_number, Date time, String place, String reason, String price, String picture, String claim_states) {
         this.policy_number = policy_number;
         this.policy_name = policy_name;
         this.phone_number = phone_number;
@@ -29,6 +40,19 @@ public class Policy {
         this.price = price;
         this.picture = picture;
         this.claim_states = claim_states;
+    }
+
+    public Policy(String policy_number, String policy_name, String phone_number, Date time, String place, String reason, String price, String picture, String claim_states, String staff_number) {
+        this.policy_number = policy_number;
+        this.policy_name = policy_name;
+        this.phone_number = phone_number;
+        this.time = time;
+        this.place = place;
+        this.reason = reason;
+        this.price = price;
+        this.picture = picture;
+        this.claim_states = claim_states;
+        Staff_number = staff_number;
     }
 
     public String getPolicy_number() {
@@ -55,11 +79,11 @@ public class Policy {
         this.phone_number = phone_number;
     }
 
-    public String getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
@@ -101,5 +125,13 @@ public class Policy {
 
     public void setClaim_states(String claim_states) {
         this.claim_states = claim_states;
+    }
+
+    public String getStaff_number() {
+        return Staff_number;
+    }
+
+    public void setStaff_number(String staff_number) {
+        Staff_number = staff_number;
     }
 }

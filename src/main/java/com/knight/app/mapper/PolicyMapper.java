@@ -23,6 +23,32 @@ public interface PolicyMapper {
 //    @Update("update department set department_name=#{departmentName} where id=#{id}")
 //    public int updateDept(Department department);
 
+    public int insertToProcess(Policy policy);
+
+    public int insertProcessing(Policy policy);
+
+    public int insertProcessd(Policy policy);
+
+    public int deleteToProcess(Policy policy);
+
+    public int deleteProcessing(Policy policy);
+
+    public int deleteProcessd(Policy policy);
+
+    public int updateProcessing(Policy policy);
+
+    public List<Policy> getToProcessListByOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
+
+    public List<Policy> getToProcessListByInvertedOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
+
+    public List<Policy> getProcessingListByOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
+
+    public List<Policy> getProcessingListByInvertedOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
+
+    public List<Policy> getProcessedListByOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
+
+    public List<Policy> getProcessedListByInvertedOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
+
     @Select("select policy_number, policy_name, time from Policy where phone_number=#{phone_number}")
     public List<Policy> getPolicyByPhoneNumber(@Param("phone_number") String phone_number);
 
