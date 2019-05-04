@@ -4,6 +4,7 @@ import com.knight.app.entities.User;
 import com.knight.app.entities.Policy;
 import com.knight.app.Repository.PolicyRepository;
 import com.knight.app.Repository.UserRepository;
+import com.knight.app.mapper.UserMapper;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jackson.JsonObjectDeserializer;
@@ -16,17 +17,17 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 	@Autowired
 	private UserRepository userRepository;
-
+//	@Autowired
+	private UserMapper userMapper;
 	@Autowired
 	private PolicyRepository policyRepository;
-
 	@GetMapping("/homepage")
 	public String index(){
 		return "homepage";
 	}
 
-	//注册
-	@PostMapping(path="/register") // Map ONLY GET Requests
+	//register
+	@PostMapping(path="/register")
 	public @ResponseBody String User_register (@RequestBody User user) {
 
 		if (userRepository.exists(user.getPhone())){
@@ -38,7 +39,7 @@ public class UserController {
 		userRepository.save(n);
 		return "Success Saved";
 	}
-	//登录
+	//login
 	@PostMapping(path="/login")
 	public @ResponseBody JSONObject User_login (@RequestBody User user) {
 
@@ -58,15 +59,14 @@ public class UserController {
 		}
 		return jso;
 	}
-
-	//Information
+	//Information_show
 	@PostMapping(path="/personal_information/pi")
-	public @ResponseBody JSONObject personal_information_show (@RequestBody String phone_number) {
+	public @ResponseBody JSONObject personal_information_show (@RequestBody JSONObject jsonobject) {
 
 		JSONObject jso = new JSONObject();
-		User user = userRepository.findOne(phone_number);
+		User user = userRepository.findOne(jsonobject.getString("phone_number"));
 		if (user == null){
-			if (! userRepository.exists(phone_number)){
+			if (! userRepository.exists(jsonobject.getString("phone_number"))){
 				jso.put("Checkcode", 200);
 				jso.put("Message", "not exist");
 			}
@@ -76,29 +76,30 @@ public class UserController {
 		}
 		return jso;
 	}
-
+	//information_change
 	@PostMapping(path="/personal_information/ci")
-	public @ResponseBody JSONObject personal_information_change (@RequestBody String phone_number) {
-
+	public @ResponseBody JSONObject personal_information_change (@RequestBody JSONObject json) {
 		//TODO
 		JSONObject jso = new JSONObject();
-//		User user = userRepository.findOne(phone_number);
-//		if (user == null){
-//			if (! userRepository.exists(phone_number)){
-//				jso.put("Checkcode", 200);
-//				jso.put("Message", "not exist");
-//			}
-//		}else{
-//			jso.put("Checkcode", 100);
-//			jso.put("Message", user);
-//		}
+		User user = userRepository.findOne(json.getString("phone_number"));
+		if (user == null){
+			if (! userRepository.exists(json.getString("phone_number"))){
+				jso.put("Checkcode", 200);
+				jso.put("Message", "the user doesn't exist");
+			}
+		}else{
+			user.setEmail(json.getString("email"));
+			userMapper.updateUser(user);
+			jso.put("Checkcode", 100);
+			jso.put("Message", user);
+		}
 		return jso;
 	}
 
 
-	@GetMapping(path="/all")
-	public @ResponseBody Iterable<User> getAllUsers() {
-		return userRepository.findAll();
-	}
+//	@GetMapping(path="/all")
+//	public @ResponseBody Iterable<User> getAllUsers() {
+//		return userRepository.findAll();
+//	}
 
 }

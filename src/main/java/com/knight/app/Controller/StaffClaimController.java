@@ -4,6 +4,7 @@ import com.knight.app.Repository.PolicyRepository;
 import com.knight.app.Repository.UserRepository;
 import com.knight.app.entities.Policy;
 import com.knight.app.entities.User;
+import com.knight.app.mapper.PolicyMapper;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,23 +18,19 @@ public class StaffClaimController {
 	private UserRepository userRepository;
 
 	@Autowired
+	private PolicyMapper policyMapper;
+
+	@Autowired
 	private PolicyRepository policyRepository;
 
-	@PostMapping(path="/receive")
-	public @ResponseBody JSONObject lost_luggage_receive (@RequestBody String policy_number) {
-		JSONObject jso = new JSONObject();
-		if (policyRepository.exists(policy_number)){
-			Policy p = policyRepository.findOne(policy_number);
-			jso.put("Checkcode", 100);
-			jso.put("Message", p);
-		}else{
-			jso.put("Checkcode", 201);
-			jso.put("Message", "It doesn't exist");
-		}
-		return jso;
+	@GetMapping(path="/list")
+	public @ResponseBody JSONObject getClaimList(@RequestBody JSONObject jso) {
+
+		//TODO
+		return null;
 	}
 
-	@PostMapping(path="/receive")
+	@PostMapping(path="/one_message")
 	public @ResponseBody JSONObject lost_luggage_message (@RequestBody JSONObject jso) {
 		JSONObject back = new JSONObject();
 		if(jso.has("policy_number") && jso.has("status")){
@@ -46,13 +43,6 @@ public class StaffClaimController {
 			back.put("Message", "Wrong type");
 		}
 		return back;
-	}
-
-	@GetMapping(path="/list")
-	public @ResponseBody JSONObject getClaimList(@RequestBody JSONObject jso) {
-
-		//TODO
-		return null;
 	}
 
 	@PostMapping(path="/feedback_submit")

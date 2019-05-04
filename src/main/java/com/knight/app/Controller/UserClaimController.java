@@ -5,6 +5,7 @@ import com.knight.app.Repository.PolicyRepository;
 import com.knight.app.Repository.UserRepository;
 import com.knight.app.entities.Policy;
 import com.knight.app.entities.User;
+import com.knight.app.mapper.PolicyMapper;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 public class UserClaimController {
 	@Autowired
 	private UserRepository userRepository;
+
+	private PolicyMapper policyMapper;
 
 	@Autowired
 	private PolicyRepository policyRepository;
@@ -62,9 +65,9 @@ public class UserClaimController {
 //		return jso;
 //	}
 
-	@GetMapping(path="/all")
-	public @ResponseBody Iterable<User> getAllUsers() {
-		return userRepository.findAll();
-	}
+//	@GetMapping(path="/all")
+//	public @ResponseBody Iterable<User> getAllUsers() {
+//		return userRepository.findAll();
+//	}
 
 }

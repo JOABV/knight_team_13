@@ -4,6 +4,7 @@ import com.knight.app.entities.Policy;
 import com.knight.app.entities.Staff;
 import com.knight.app.Repository.PolicyRepository;
 import com.knight.app.Repository.StaffRepository;
+import com.knight.app.mapper.StaffMapper;
 import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,21 +19,10 @@ public class StaffController {
 	private StaffRepository staffRepository;
 
 	@Autowired
-	private PolicyRepository policyRepository;
+	private StaffMapper staffMapper;
 
-//	@PostMapping(path="/register") // Map ONLY POST Requests
-//	public @ResponseBody String addNewStaff (@RequestBody Staff staff) {
-//
-//		if (staffRepository.exists(staff.getPhone())){
-//			return "Wrong: the user already exists";
-//		}
-//
-//		Staff n = new Staff();
-//		n.setPhone(staff.getPhone());
-//		n.setPassword(staff.getPassword());
-//		staffRepository.save(n);
-//		return "Success Saved";
-//	}
+	@Autowired
+	private PolicyRepository policyRepository;
 
 	@PostMapping(path="/login")
 	public @ResponseBody JSONObject login (@RequestBody Staff staff) {
@@ -53,19 +43,5 @@ public class StaffController {
 			jso.put("Message", "success");
 		}
 		return jso;
-	}
-
-	@PostMapping(path="/lost_luggage")
-	public @ResponseBody Policy lost_luggage (@RequestBody String policy_number) {
-		if (! policyRepository.exists(policy_number)){
-			return new Policy();
-		}
-		Policy policy = policyRepository.findOne(policy_number);
-		return policy;
-	}
-
-	@GetMapping(path="/all")
-	public @ResponseBody Iterable<Staff> getAllUsers() {
-		return staffRepository.findAll();
 	}
 }
