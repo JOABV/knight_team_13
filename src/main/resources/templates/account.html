@@ -9,7 +9,12 @@
     <link rel="icon" href="../static/resources/img/icon.ico">
     <title class="i18n" name='title'></title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../static/resources/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/resources/bootstrap-4.0.0-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../static/resources/bootstrapvalidator-0.5.2/dist/css/bootstrapValidator.min.css" />
+    <link rel="stylesheet" href="../static/resources/processbar/ystep.css" />
+    <link rel="stylesheet" href="../static/resources/tipped/tipped.css" />
+    <link rel="stylesheet" href="../static/resources/bootstrapvalidator-0.5.2/dist/css/bootstrapValidator.min.css" />
+    <link rel="stylesheet" href="../static/resources/tooltipster/css/tooltipster.bundle.min.css" />
     <link rel="stylesheet" href="../static/css/account.css">
 </head>
 
@@ -20,25 +25,18 @@
             <div class="d-flex">
                 <div class="mr-auto align-items-center d-flex flex-row">
                     <img src="../static/resources/img/icon.png" height="100" />
-                    <!-- <p class="lead font-weight-bold text-secondary">Hibernia-Sino <br> Travel Insurance</p> -->
                 </div>
 
                 <ul id="myTab" class="nav nav-style align-items-center justify-content-end mr-5">
+
                     <li class="nav-item">
                         <a class="nav-link i18n" name="homepage" id="account-home-tab" data-toggle="tab"
                             href="#account-home" role="tab" aria-controls="account-home" aria-selected="true"></a>
                     </li>
 
-                    <li class="dropdown nav-item">
-
+                    <li class="nav-item">
                         <a class="nav-link active i18n" name="policy" id="account-policy-tab" data-toggle="tab"
                             href="#policy-tab" role="tab" aria-controls="policy-tab" aria-selected="false"></a>
-
-                        <ul class="dropdown-menu" id="drop-item">
-                            <li>
-                                <a class="dropdown-item i18n" name="logout" href="homepage.html"></a>
-                            </li>
-                        </ul>
 
                     </li>
 
@@ -47,12 +45,74 @@
                             href="#account-contact" role="tab" aria-controls="account-contact"
                             aria-selected="false"></a>
                     </li>
-                    <li class="nav-item">
+
+                    <li id="account-dropdown" class="nav-item">
+                        <a class="ml-2 mr-3 tooltip-account" href="#" data-tooltip-content="#tooltip_content_account">
+                            <img src="../static/resources/img/account.png" height="30" />
+                        </a>
+                        <div style="display: none;">
+                            <ul id='tooltip_content_account' class="account-container align-items-center"
+                                style='list-style: none;margin:0; padding:0;'>
+                                <div class="d-flex flex-column p-2 text-light">
+                                    <li>
+                                        <div class="d-flex flex-column align-items-center">
+                                            <img src="../static/resources/img/portrait.png" width="50" />
+                                            <p id="account-info">Account</p>
+                                            <!-- 显示姓名 -->
+                                        </div>
+                                    </li>
+                                    <div class="d-flex flex-column mt-0 align-items-start">
+
+                                        <!-- 未绑定邮箱时： href="#accountModal"；绑定后：href="#accountModal_bonded"-->
+                                        <li class="account-link mb-2">
+                                            <a data-toggle="modal" href="#accountModal">
+                                                <img src="../static/resources/img/modify.png" height="20" />
+                                                <span class="m-1 i18n" name="account_change"></span>
+                                            </a>
+                                        </li>
+
+                                        <!-- 未绑定邮箱时： href="#emailModal"；绑定后：href="#emailModal_bonded"-->
+                                        <li class="account-link mb-2">
+                                            <a data-toggle="modal" href="#emailModal_bonded">
+                                                <img src="../static/resources/img/email.png" height="20" />
+                                                <span class="m-1 i18n" name="email_change"></span>
+                                            </a>
+                                        </li>
+                                        <li class="account-link mb-2">
+                                            <a data-toggle="modal" href="#passwordModal_bonded">
+                                                <img src="../static/resources/img/password.png" height="20" />
+                                                <span class="m-1 i18n" name="password_change"></span>
+                                            </a>
+                                        </li>
+                                        <li class="account-link mb-2">
+                                            <a href="homepage.html">
+                                                <img src="../static/resources/img/logout.png" height="20" />
+                                                <span class="m-1 i18n" name="logout"></span>
+                                            </a>
+                                        </li>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+
+
+                    <li id="language-dropdown" class="nav-item dropdown show">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="language_button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        </a>
+
+                        <ul id="language" class="dropdown-menu text-light" aria-labelledby="language_button">
+                            <li><a class="dropdown-item" href="#" value="zh-CN" disabled="false">中文简体</a></li>
+                            <li><a class="dropdown-item" href="#" value="en" disabled="false">English</a></li>
+                        </ul>
+                    </li>
+                    <!-- <li class="nav-item">
                         <select class="nav-link select-style" id="language">
                             <option class="select-item" value="zh-CN">中文简体</option>
                             <option class="select-item" value="en">English</option>
                         </select>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </header>
@@ -116,31 +176,26 @@
                                     <th scope="col" class="i18n" name="operation_title"></th>
                                 </tr>
                             </thead>
+
+                            <!-- 保单信息以列表方式显示：保单号，姓名，过期时间，状态（第一种：过期/未过期，第二种：申诉后的流程），操作（查看，申诉） -->
                             <tbody>
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">16372329</th>
                                     <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
+                                    <td>05/13/2019</td>
                                     <td>
-                                        <div class="dropdown dropright">
-                                            <a class="btn btn-sm btn-outline-light dropdown-toggle i18n" name="more"
-                                                role="button" data-toggle="dropdown">
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item i18n" name="details" data-toggle="modal"
-                                                    href="#detailModal"></a>
-                                                <a class="dropdown-item i18n" name="make_claim" data-toggle="modal"
-                                                    href="#formModal"></a>
-                                            </div>
+                                        <!-- 判断第一种状态/第二种状态；用 没有style="display: none;的显示判定结果 -->
+                                        <div>
+                                            <!-- 判断已过期/未过期；用 没有style="display: none;的显示判定结果 -->
+                                            <p class="text-danger i18n" id="expired" name="expired"
+                                                style="display: none;"></p>
+                                            <p class="text-warning i18n" name="not_expired"></p>
+                                        </div>
+                                        <div style="display: none;">
+                                            <a class="btn btn-sm btn-outline-light i18n" name="view" role="button"
+                                                data-toggle="modal" href="#processModal"></a>
                                         </div>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
                                     <td>
                                         <div class="dropdown dropright">
                                             <a class="btn btn-sm btn-outline-light dropdown-toggle i18n" name="more"
@@ -149,53 +204,14 @@
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item i18n" name="details" data-toggle="modal"
                                                     href="#detailModal"></a>
-                                                <a class="dropdown-item i18n" name="make_claim" data-toggle="modal"
-                                                    href="#formModal"></a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    <td>
-                                        <div class="dropdown dropright">
-                                            <a class="btn btn-sm btn-outline-light dropdown-toggle i18n" name="more"
-                                                role="button" data-toggle="dropdown">
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item i18n" name="details" data-toggle="modal"
-                                                    href="#detailModal"></a>
-                                                <a class="dropdown-item i18n" name="make_claim" data-toggle="modal"
-                                                    href="#formModal"></a>
+                                                <a id="remove_when_expired" class="dropdown-item i18n" name="make_claim"
+                                                    data-toggle="modal" href="#formModal"></a>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <!-- <div class="card text-dark text-left bg-light mb-3" style="width: 30%">
-                            <div class="card-header">Policy Number</div>
-                            <div class="card-body">
-                                <p class="card-text">
-                                    Time<br>
-                                    Place<br>
-                                    Reason<br>
-                                    Details<br>
-                                    Expected Compensation
-                                </p>
-                                <button type="button" class="btn btn-outline-dark">Make a claim</button>
-                            </div>
-                        </div>
-
-                        <div class="card text-dark text-left bg-light mb-3" style="max-width: 18rem;">
-                            <div class="card-body">
-                                <button type="button" class="btn btn-outline-dark" data-toggle="modal"
-                                    data-target="#formModal">Make a claim</button>
-                            </div>
-                        </div> -->
                     </div>
 
                     <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -209,79 +225,58 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="text-left" action="" method="post" name="claimForm" id="claimForm"
-                                        enctype="multipart/form-data">
-                                        <fieldset>
-                                            <legend class="i18n" name="applicant_title"></legend>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputPolicyNo" class="i18n"
-                                                        name="applicant_number"></label>
-                                                    <input type="text" class="form-control i18n-input"
-                                                        id="inputPolicyNo" selectname="signin_account_placeholder"
-                                                        selectattr="placeholder">
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputName" class="i18n" name="applicant_name"></label>
-                                                    <input type="text" class="form-control i18n-input" id="inputName"
-                                                        selectname="applicant_name_placeholder"
-                                                        selectattr="placeholder">
-                                                </div>
+                                    <form class="text-left" id="claimForm">
+                                        <legend class="i18n" name="applicant_title"></legend>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label class="i18n" name="applicant_number"></label>
+                                                <input type="text" class="form-control i18n-input" name="inputPolicyNo"
+                                                    selectname="signin_account_placeholder" selectattr="placeholder">
                                             </div>
+                                            <div class="form-group col-md-4 ml-5">
+                                                <label class="i18n" name="applicant_name"></label>
+                                                <input type="text" class="form-control i18n-input" name="inputName"
+                                                    selectname="applicant_name_placeholder" selectattr="placeholder">
+                                            </div>
+                                        </div>
 
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputID" class="i18n" name="applicant_id"></label>
-                                                    <input type="text" class="form-control i18n-input" id="inputID"
-                                                        selectname="applicant_id_placeholder" selectattr="placeholder">
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputTel" class="i18n" name="applicant_tel"></label>
-                                                    <input type="text" class="form-control i18n-input" id="inputTel"
-                                                        selectname="applicant_tel_placeholder" selectattr="placeholder">
-                                                </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label class="i18n" name="applicant_id"></label>
+                                                <input type="text" class="form-control i18n-input" name="inputID"
+                                                    selectname="applicant_id_placeholder" selectattr="placeholder">
                                             </div>
-                                            <!-- <form>
-                                                <div class="form-row">
-                                                    <div class="col-5">
-                                                        <label>City:</label>
-                                                        <input type="text" class="form-control" placeholder="City">
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <label>State:</label>
-                                                        <input type="text" class="form-control" placeholder="State">
-                                                    </div>
-                                                    <div class="col-2">
-                                                        <label>Zip:</label>
-                                                        <input type="text" class="form-control" placeholder="Zip">
-                                                    </div>
-                                                </div>
-                                            </form> -->
+                                            <div class="form-group col-md-4 ml-5">
+                                                <label class="i18n" name="applicant_tel"></label>
+                                                <input type="text" class="form-control i18n-input" name="inputTel"
+                                                    selectname="applicant_tel_placeholder" selectattr="placeholder">
+                                            </div>
+                                        </div>
                                         </fieldset>
                                         <hr>
-                                        <fieldset>
+                                        <fieldset class="form-group">
                                             <legend class="i18n" name="items_title"></legend>
                                             <div class="form d-flex flex-row justify-content-start mt-3">
                                                 <div class="col-3 custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
+                                                    <input type="checkbox" name="items" class="custom-control-input"
                                                         id="customCheck1">
                                                     <label class="custom-control-label i18n" name="items_baggage"
                                                         for="customCheck1"></label>
                                                 </div>
                                                 <div class="col-3 custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
+                                                    <input type="checkbox" name="items" class="custom-control-input"
                                                         id="customCheck2">
                                                     <label class="custom-control-label i18n" name="items_card"
                                                         for="customCheck2"></label>
                                                 </div>
                                                 <div class="col-3 custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
+                                                    <input type="checkbox" name="items" class="custom-control-input"
                                                         id="customCheck3">
                                                     <label class="custom-control-label i18n" name="items_wallet"
                                                         for="customCheck3"></label>
                                                 </div>
                                                 <div class="col-3 custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
+                                                    <input type="checkbox" name="items" class="custom-control-input"
                                                         id="customCheck4">
                                                     <label class="custom-control-label i18n" name="items_phone"
                                                         for="customCheck4"></label>
@@ -290,7 +285,8 @@
                                             </div>
                                             <div
                                                 class="custom-control custom-checkbox d-flex flex-row justify-content-start mt-4">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck5">
+                                                <input type="checkbox" class="custom-control-input" name="items"
+                                                    id="customCheck5">
                                                 <label class="custom-control-label i18n" name="items_else"
                                                     for="customCheck5"></label>
 
@@ -308,69 +304,310 @@
                                                 </div>
                                             </div>
                                         </fieldset>
-                                        <hr>
-                                        <fieldset>
-                                            <legend class="i18n" name="bank_title"></legend>
-                                            <p class="i18n" name="bank_info"></p>
-                                            <form>
-                                                <div class="form-row">
-                                                    <div class="col-3 mb-3">
-                                                        <label for="formBankName" class="i18n" name="bank_name"></label>
-                                                        <input type="text" class="form-control" id="formBankName"
-                                                            selectname="bank_name_placeholder" selectattr="placeholder"
-                                                            required>
-                                                    </div>
-                                                    <div class="col-7 mb-3">
-                                                        <label for="formBankAccount" class="i18n"
-                                                            name="bank_number"></label>
-                                                        <input type="text" class="form-control" id="formBankAccount"
-                                                            selectname="bank_number_placeholder"
-                                                            selectattr="placeholder" required>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </fieldset>
 
                                         <hr>
-                                        <fieldset>
+                                        <fieldset class="form-group">
                                             <legend class="i18n" name="claim_detail_title"></legend>
-                                            <form>
-                                                <div class="form-row">
-                                                    <div class="col-7 mb-3">
-                                                        <label for="formPlace" class="i18n" name="claim_place"></label>
-                                                        <input type="text" class="form-control i18n-input"
-                                                            id="formPlace" selectname="claim_place_placeholder"
-                                                            selectattr="placeholder" required>
-                                                    </div>
-                                                    <div class="col-3 mb-3">
-                                                        <label for="formPlace" class="i18n" name="claim_date"></label>
-                                                        <input type="date" class="form-control" id="formDate">
-                                                    </div>
-                                                    <div class="input-group col-10">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text i18n"
-                                                                name="claim_detail"></span>
-                                                        </div>
-                                                        <textarea class="form-control"
-                                                            aria-label="With textarea"></textarea>
-                                                    </div>
+                                            <div class="form-row">
+                                                <div class="col-7 mb-3">
+                                                    <label class="i18n" name="claim_place"></label>
+                                                    <input type="text" class="form-control i18n-input" name="formPlace"
+                                                        selectname="claim_place_placeholder" selectattr="placeholder"
+                                                        required>
                                                 </div>
+                                                <div class="col-3 mb-3 ml-5">
+                                                    <label class="i18n" name="claim_date"></label>
+                                                    <input type="date" class="form-control" name="formDate">
+                                                </div>
+                                                <div class="input-group col-10">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text i18n" name="claim_detail"></span>
+                                                    </div>
+                                                    <textarea class="form-control" name="formDetail"
+                                                        aria-label="With textarea"></textarea>
+                                                </div>
+                                            </div>
 
-                                            </form>
                                         </fieldset>
+                                        <hr>
+                                        <div class="d-flex justify-content-end form-group mt-3 mb-3 mr-5">
+                                            <button id="form_submit" type="button" class="btn btn-dark i18n"
+                                                name="submit"></button>
+                                            <button id="form_cancel" class="btn btn-dark i18n ml-4" data-dismiss="modal"
+                                                name="cancel"></button>
+                                        </div>
                                     </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button id="form_submit" type="button" class="btn btn-dark i18n"
-                                        name="submit"></button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+                    <!-- 没写完 -->
+                    <div class="modal fade" id="processModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg text-dark text-left modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <div class="stepCont stepCont2">
+                                            <!-- <div class="ystep"></div> -->
+                                            <div class='ystep-container ystep-lg ystep-blue'>
+                                                <div class="pageCont">
+                                                    <div id="page1" class="stepPage">
+                                                        <h6>page1</h6>
+                                                    </div>
+                                                    <div id="page2" class="stepPage">
+                                                        <h6>page2</h6>
+                                                    </div>
+                                                    <div id="page3" class="stepPage">
+                                                        <h6>page3</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- 未绑定邮箱 -->
+                    <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title i18n" name="email_change"></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="bond-email-form"
+                                        class="d-flex flex-column w-100 align-items-center justify-content-center">
+
+                                        <div class="form-group col-md-10 mb-3">
+                                            <label class="i18n" name="signup_email"></label>
+                                            <div class="d-flex flex-row align-items-center">
+                                                <div class="input-group">
+                                                    <input type="email" class="form-control i18n-input"
+                                                        name="email_info_bond" selectname="signup_email_placeholder"
+                                                        selectattr="placeholder" required>
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-dark i18n" name="signup_code_button"
+                                                            type="button"></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-10 mb-3">
+                                            <label class="i18n" name="signup_code"></label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control i18n-input"
+                                                    selectattr="placeholder" selectname="signup_code_placeholder"
+                                                    name="email_info_code" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group mt-3 mb-3 ml-auto mr-5">
+                                            <button id="email_submit" type="submit" class="btn btn-dark i18n"
+                                                name="submit"></button>
+                                            <button id="email_cancel" type="button" class="btn btn-dark i18n ml-3"
+                                                data-dismiss="modal" name="cancel"></button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- 已绑定 -->
+                <div class="modal fade" id="emailModal_bonded" tabindex="-1" role="dialog" data-backdrop="static"
+                    data-keyboard="false" aria-hidden="true">
+                    <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title i18n" name="email_change"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
 
+                            <div class="modal-body">
+
+                                <form id="bonded-email-form"
+                                    class="d-flex flex-column align-items-center justify-content-center">
+                                    <div class="form-group col-md-10 mb-3">
+                                        <label class="i18n" name="signup_email"></label>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <input type="email" class="form-control" id="account-info-email"
+                                                name="account_info_email" value="xxx@xx.xx" disabled>
+                                            <a id="change-email" class="tooltip-email" href="#"
+                                                data-tooltip-content="#tooltip_content_email">
+                                                <img src="../static/resources/img/lock.png" width="35" />
+                                            </a>
+                                            <div style='display:none;'>
+                                                <div id="tooltip_content_email" class="modal-dialog modal-sm"
+                                                    style="margin: 0;" role="document">
+                                                    <div class="modal-content" style=" border-radius: 5%;">
+                                                        <div class="modal-header">
+                                                            <h6 class="modal-title i18n" name="email_change_info">
+                                                            </h6>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p class="i18n" name="email_change_info_title"></p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" id="confirm-button"
+                                                                class="btn btn-outline-light btn-sm i18n"
+                                                                name="confirm"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="change_email_code" class="form-group col-md-10 mb-3"
+                                        style="display: none;">
+                                        <label class="i18n" name="signup_code"></label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control i18n-input" selectattr="placeholder"
+                                                selectname="signup_code_placeholder" id="account-info-code"
+                                                name="account_info_code">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-dark i18n" name="signup_code_button"
+                                                    type="button"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-3 mb-3 ml-auto mr-5">
+                                        <button id="email_bonded_submit" type="button" class="btn btn-dark i18n"
+                                            name="submit"></button>
+                                        <button id="email_bonded_cancel" type="button" class="ml-2 btn btn-dark i18n"
+                                            data-dismiss="modal" name="cancel"></button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="passwordModal_bonded" tabindex="-1" role="dialog" data-backdrop="static"
+                    data-keyboard="false" aria-hidden="true">
+                    <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h6 class="modal-title i18n" name="password_change"></h6>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <p class="i18n" name="password_change_info"></p>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button id="password-submit" type="button" data-dismiss="modal" data-toggle="modal"
+                                    data-target="#passwordModal_check" class="btn btn-sm btn-dark i18n"
+                                    name="confirm"></button>
+                                <button id="password_cancel" type="button" class="btn btn-sm btn-dark i18n"
+                                    data-dismiss="modal" name="cancel"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 修改密码：需要将输入值与密码作对比，按钮匹配进入下一步 -->
+                <div class="modal fade" id="passwordModal_check" tabindex="-1" role="dialog" data-backdrop="static"
+                    data-keyboard="false" aria-hidden="true">
+                    <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title i18n" name="password_change"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form id="change_password_form" class="d-flex flex-column align-items-center">
+                                    <div class="col-md-10 mb-3">
+                                        <label class="i18n" name="password_check"></label>
+                                        <input type="password" class="form-control i18n-input" id="passowrd-check-input"
+                                            name="passowrd_check_input" selectattr="placeholder"
+                                            selectname="password_check_placeholder">
+                                    </div>
+                                    <div class="form-group mt-3 mb-3 ml-auto mr-5">
+                                        <button id="password-check-submit" type="button" data-dismiss="modal"
+                                            data-toggle="modal" data-target="#passwordModal_change"
+                                            class="btn btn-dark i18n" name="next"></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 输入新密码 -->
+                <div class="modal fade" id="passwordModal_change" tabindex="-1" role="dialog" data-backdrop="static"
+                    data-keyboard="false" aria-hidden="true">
+                    <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title i18n" name="password_change"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form id="password-new-form">
+                                    <div class="form-group d-flex flex-column align-items-center">
+                                        <div class="col-md-10 mb-3">
+                                            <label class="i18n" name="password_new"></label>
+                                            <input type="password" class="form-control i18n-input"
+                                                selectattr="placeholder" selectname="password_new_placeholder"
+                                                id="password-change" name="password_change">
+                                        </div>
+
+                                        <div class="col-md-10 mb-3">
+                                            <label class="i18n" name="signup_confirm"></label>
+                                            <input type="password" class="form-control i18n-input"
+                                                selectattr="placeholder" selectname="signup_confirm_placeholder"
+                                                name="password_change_confirm" id="password-change-confirm">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-3 mb-3 d-flex justify-content-end mr-5">
+                                        <button id="password-change-submit" type="submit" class="btn btn-dark i18n"
+                                            name="confirm"></button>
+                                        <button id="password-change-cancel" type="button" data-dismiss="modal"
+                                            class="btn btn-dark i18n ml-4" name="cancel"></button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="modal-footer">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 保单细节：有一部分内容只有申诉了后才能显示 -->
                 <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg text-dark text-left modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -381,133 +618,243 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form class="text-left" action="" method="post" name="claimForm" id="claimForm"
-                                    enctype="multipart/form-data">
-                                    <fieldset>
-                                        <legend class="i18n" name="applicant_title"></legend>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label class="i18n" name="applicant_number"></label>
-                                                <p>sjfhs</p>
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label class="i18n" name="applicant_name"></label>
-                                                <p>sjfhs</p>
-                                            </div>
+                                <fieldset>
+                                    <legend class="i18n" name="applicant_title"></legend>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label class="i18n" name="applicant_number"></label>
+                                            <p id="applicant_number_value">sjfhs</p>
                                         </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="i18n" name="applicant_name"></label>
+                                            <p id="applicant_name_value">sjfhs</p>
+                                        </div>
+                                    </div>
 
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label class="i18n" name="applicant_id"></label>
-                                                <p>sjfhs</p>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label class="i18n" name="applicant_id"></label>
+                                            <p id="applicant_id_value">sjfhs</p>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="i18n" name="applicant_tel"></label>
+                                            <p id="applicant_tel_value">sjfhs</p>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div style="display: none;">
+                                    <hr>
+                                    <fieldset>
+                                        <!-- checked -->
+                                        <legend class="i18n" name="items_title"></legend>
+                                        <div class="form d-flex flex-row justify-content-start mt-3">
+                                            <div class="col-3 custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="detail_customCheck1" disabled>
+                                                <label class="custom-control-label i18n" name="items_baggage"
+                                                    for="detail_customCheck1"></label>
                                             </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="inputTel" class="i18n" name="applicant_tel"></label>
-                                                <p>sjfhs</p>
+                                            <div class="col-3 custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="detail_customCheck2" disabled>
+                                                <label class="custom-control-label i18n" name="items_card"
+                                                    for="detail_customCheck2"></label>
                                             </div>
+                                            <div class="col-3 custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="detail_customCheck3" disabled>
+                                                <label class="custom-control-label i18n" name="items_wallet"
+                                                    for="detail_customCheck3"></label>
+                                            </div>
+                                            <div class="col-3 custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="detail_customCheck4" disabled>
+                                                <label class="custom-control-label i18n" name="items_phone"
+                                                    for="detail_customCheck4"></label>
+                                            </div>
+
+                                        </div>
+                                        <div
+                                            class="custom-control custom-checkbox d-flex flex-row justify-content-start align-items-center mt-4">
+                                            <input type="checkbox" class="custom-control-input" id="detail_customCheck5"
+                                                disabled>
+                                            <label class="custom-control-label i18n" name="items_else"
+                                                for="detail_customCheck5"></label>
+
+                                            <input type="text" id="detail_elseInput"
+                                                class="form-control ml-3 col-6 i18n-input" selectattr="placeholder"
+                                                selectname="items_else_placeholder" disabled />
+                                        </div>
+                                        <div class="ml-auto col-3">
+                                            <button type="button" class="btn btn-dark i18n" name="view_button"
+                                                id="viewFileButton"></button>
+                                            <img id="fileImage" style="display: none;"
+                                                src="../static/resources/img/icon.png"
+                                                class="figure-img img-fluid rounded" alt="Fail to load file">
                                         </div>
                                     </fieldset>
-                                    <div style="display: none;">
-                                        <hr>
-                                        <fieldset>
-                                            <legend>Items to Claim</legend>
-                                            <div class="form d-flex flex-row justify-content-start mt-3">
-                                                <div class="col-3 custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                        id="customCheck1">
-                                                    <label class="custom-control-label"
-                                                        for="customCheck1">Baggage</label>
+                                    <hr>
+                                    <fieldset>
+                                        <legend class="i18n" name="claim_detail_title"></legend>
+                                        <form>
+                                            <div class="form-row">
+                                                <div class="col-7 mb-3">
+                                                    <label class="i18n" name="claim_place"></label>
+                                                    <p id="claim_place_value">skjfs</p>
                                                 </div>
-                                                <div class="col-3 custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                        id="customCheck2">
-                                                    <label class="custom-control-label" for="customCheck2">Identity
-                                                        Card</label>
+                                                <div class="col-3 mb-3">
+                                                    <label class="i18n" name="claim_date"></label>
+                                                    <p id="claim_date_value">skjfs</p>
                                                 </div>
-                                                <div class="col-3 custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                        id="customCheck3">
-                                                    <label class="custom-control-label"
-                                                        for="customCheck3">Wallet</label>
-                                                </div>
-                                                <div class="col-3 custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                        id="customCheck4">
-                                                    <label class="custom-control-label" for="customCheck4">Mobile
-                                                        Phone</label>
-                                                </div>
-
-                                            </div>
-                                            <div
-                                                class="custom-control custom-checkbox d-flex flex-row justify-content-start align-items-center mt-4">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck5">
-                                                <label class="custom-control-label" for="customCheck5">Else</label>
-
-                                                <input type="text" id="elseInput" class="form-control ml-3 col-6"
-                                                    style="display: none;" placeholder="Else" />
-                                            </div>
-                                            <div class="mt-3 col-7">
-                                                <div class="custom-file">
-                                                    <label class="custom-file-label" for="customFile">Choose
-                                                        file</label>
-                                                    <input type="file" class="custom-file-input" id="formFile"
-                                                        accept="image/png, image/jpeg">
-
+                                                <div class="input-group col-10">
+                                                    <label class="i18n" name="claim_detail"></label>
+                                                    <p id="claim_detail_value">skjfs</p>
                                                 </div>
                                             </div>
-                                        </fieldset>
-                                        <hr>
-                                        <fieldset>
-                                            <legend>Bank Account</legend>
-                                            <p> Compensation will be paid by bank transfer, please fill in details.</p>
-                                            <form>
-                                                <div class="form-row">
-                                                    <div class="col-3 mb-3">
-                                                        <label for="formBankName">Account Name</label>
-                                                        <input type="text" class="form-control" id="formBankName"
-                                                            placeholder="Name" required>
-                                                    </div>
-                                                    <div class="col-7 mb-3">
-                                                        <label for="formBankAccount">Account Number</label>
-                                                        <input type="text" class="form-control" id="formBankAccount"
-                                                            placeholder="Bank Account" required>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </fieldset>
-                                        <hr>
-                                        <fieldset>
-                                            <legend>More Details</legend>
-                                            <form>
-                                                <div class="form-row">
-                                                    <div class="col-7 mb-3">
-                                                        <label for="formPlace">Place</label>
-                                                        <input type="text" class="form-control" id="formPlace"
-                                                            placeholder="Place" required>
-                                                    </div>
-                                                    <div class="col-3 mb-3">
-                                                        <label for="formPlace">Date</label>
-                                                        <input type="date" class="form-control" id="formDate">
-                                                    </div>
-                                                    <div class="input-group col-10">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text">More
-                                                                Details:</span>
-                                                        </div>
-                                                        <textarea class="form-control"
-                                                            aria-label="With textarea"></textarea>
-                                                    </div>
-                                                </div>
-
-                                            </form>
-                                        </fieldset>
-                                    </div>
+                                    </fieldset>
+                                </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- 为绑定邮箱，获取用户信息 -->
+                <div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title i18n" name="account_change"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-5">
+                                        <label class="i18n" name="applicant_name"></label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="account-info-name" value="Jo"
+                                                disabled>
+                                        </div>
+
+                                        <!-- TODO -->
+                                    </div>
+                                    <div class="form-group col-md-7 ml-auto">
+                                        <label class="i18n" name="applicant_id"></label>
+                                        <input type="text" class="form-control" id="account-info-id" value="xxx@xx.xx"
+                                            disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-5">
+                                        <label class="i18n" name="applicant_tel"></label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="account-info-tel"
+                                                value="xx-xxxxx" disabled>
+                                        </div>
+                                        <!-- TODO -->
+                                    </div>
+
+                                    <div class="form-group col-md-7">
+                                        <label class="i18n" name="signup_email"></label>
+                                        <div class="input-group">
+                                            <button type="button" class="btn btn-warning btn inline-bond i18n"
+                                                style="width:100%;" name="bond_email" data-dismiss="modal"
+                                                data-toggle="modal" data-target="#emailModal"
+                                                data-tipped-options="inline: 'inline-tooltip-bond'"></button>
+                                            <div id='inline-tooltip-bond' style='display:none;'>
+                                                <div class="modal-content" style="border-radius: 5%;">
+                                                    <div class="modal-header">
+                                                        <h6 class="i18n" name="email_bond_info"></h6>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p class="i18n" name="email_bond_info_detail"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 绑定邮箱，获取用户信息 -->
+                <div class="modal fade" id="accountModal_bonded" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title i18n" name="account_change"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-5">
+                                        <label class="i18n" name="applicant_name"></label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="account-info-name" value="Jo"
+                                                disabled>
+                                        </div>
+
+                                        <!-- TODO -->
+                                    </div>
+                                    <div class="form-group col-md-7 ml-auto">
+                                        <label class="i18n" name="applicant_id"></label>
+                                        <input type="text" class="form-control" id="account-info-id" value="xxx@xx.xx"
+                                            disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-5">
+                                        <label class="i18n" name="applicant_tel"></label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="account-info-tel"
+                                                value="xx-xxxxx" disabled>
+                                        </div>
+                                        <!-- TODO -->
+                                    </div>
+
+                                    <div class="form-group col-md-7">
+                                        <label class="i18n" name="signup_email"></label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="account-info-email"
+                                                value="xx@xxx.xx" disabled>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Confirm to change email address?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>If confirmation is made, we are going to send your new email address a
+                                    message with
+                                    security code to make sure the address is yours. </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="confirm-button" class="btn btn-dark">Confirm</button>
+                                <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
 
                 <div class="tab-pane fade" id="account-contact" role="tabpanel" aria-labelledby="account-contact-tab">
 
@@ -528,6 +875,13 @@
     <script src="../static/resources/bootstrap-4.0.0-dist/others/jquery-3.3.1.js"></script>
     <script src="../static/resources/bootstrap-4.0.0-dist/others/popper.min.js"></script>
     <script src="../static/resources/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+    <script src="../static/resources/tipped/tipped.js"></script>
+    <script src="../static/resources/tooltipster/js/tooltipster.bundle.min.js"></script>
+   
+    <script src="../static/resources/bootstrapvalidator-0.5.2/dist/js/bootstrapValidator.min.js"></script>
+    <script src="../static/resources/bootstrapvalidator-0.5.2/dist/js/language/en_US.js"></script>
+
+    <script src="../static/resources/processbar/setStep.js"></script>
 
     <script src="../static/resources/i18n/jquery.i18n.properties.js"></script>
     <script src="../static/resources/i18n/language.js"></script>

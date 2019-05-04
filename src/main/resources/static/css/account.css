@@ -1,6 +1,6 @@
 html, body {
     height: 100%;
-    width:100%;
+    width: 100%;
     min-width: 600px;
 }
 
@@ -35,6 +35,15 @@ body {
     box-shadow: 0 0 5rem rgba(0, 0, 0, 0.5);
 }
 
+
+.tooltipster-sidetip.tooltipster-noir.tooltipster-noir-customized .tooltipster-box {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.tooltipster-sidetip.tooltipster-noir.tooltipster-noir-customized .tooltipster-content {
+    padding: 0px;
+}
+
 .nav-style .nav-link {
     margin-left: 0.5rem;
     padding: .25rem 0;
@@ -65,12 +74,11 @@ body {
 }
 
 .modal {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
 .modal-content {
-    
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
     color: rgba(255, 255, 255, 1.0);
     border-radius: 0%;
 }
@@ -80,11 +88,16 @@ body {
 }
 
 .dropdown-menu {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .dropdown-item {
     color: rgba(255, 255, 255, 1.0);
+}
+
+.account-link a {
+    color: rgba(255, 255, 255, 1.0);
+    font-size: 14px;
 }
 
 .list-group-item {

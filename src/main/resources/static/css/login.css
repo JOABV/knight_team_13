@@ -1,3 +1,9 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    min-width: 600px;
+}
+
 .bg-image {
     background-image: url("../resources/img/login.jpg");
     background-position: center 0;

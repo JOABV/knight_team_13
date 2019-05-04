@@ -4,135 +4,174 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta id="i18n_pagename" content="index-common">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="../static/resources/img/icon.ico">
+    <title class="i18n" name="claim_detail_title"></title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../static/resources/bootstrap-4.0.0-dist/css/bootstrap.min.css">
-
-    <title>Claim Details</title>
 </head>
 
-<body style="width: 100%">
+<body class="d-flex flex-column" style="width: 100%">
     <header>
         <nav class="navbar navbar-light text-light justify-content-start" style="background-color: rgba(0, 0, 0, 0.5);">
-            <img src="../static/resources/img/icon.png" width="30" height="30" class="d-inline-block align-top">
-            Hibernia-Sino Management System
+            <img src="../static/resources/img/icon.png" width="30" height="30" class="d-inline-block">
+            <span class="i18n" name="management_title"></span>
+
+            <div class="ml-auto" style="margin-right: 10%;">
+                <div class="dropdown show">
+                    <a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" id="language_button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </a>
+
+                    <ul id="language" class="dropdown-menu dropdown-menu-right text-light" aria-labelledby="language">
+                        <li><a class="dropdown-item" href="#" value="zh-CN" disabled="false">中文简体</a></li>
+                        <li><a class="dropdown-item" href="#" value="en" disabled="false">English</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <main role="main" style="width:80%">
-        <div class="p-3 m-3" style="border: solid rgba(0, 0, 0, 0.5);border-radius: 10px;">
-            <form class="text-left">
+    <main role="main" style="width:80%" class="ml-5 align-items-center">
+        <!-- 申诉详细信息 -->
+        <div class="p-3 m-3 ml-5" style="border: solid rgba(0, 0, 0, 0.5);border-radius: 10px;">
+            <form class="text-left m-1">
                 <fieldset>
-                    <legend>Applicant Information</legend>
+                    <legend class="i18n" name="applicant_title"></legend>
                     <hr>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <p>Policy Number: xxxxxxxxx</p>
+                            <label class="i18n" name="applicant_number"></label>
+                            <p id="applicant_number_value">xxxxxxxxx</p>
                         </div>
                         <div class="form-group col-md-4">
-                            <p>Name: xxx</p>
+                            <label class="i18n" name="applicant_name"></label>
+                            <p id="applicant_name_value">xxx</p>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <p>ID/Password: xxxxxxxxx</p>
+                            <label class="i18n" name="applicant_id"></label>
+                            <p id="applicant_id_value">xxxxxxxxx</p>
                         </div>
                         <div class="form-group col-md-4">
-                            <p>Telphone: xxxx-xxxxxxxx</p>
+                            <label class="i18n" name="applicant_tel"></label>
+                            <p id="applicant_tel_value">xxxx-xxxxxxxx</p>
                         </div>
                     </div>
-                    <div class="form-row">
+                    <!-- <div class="form-row">
                         <div class="col-5">
                             <p>Address: </p>
                             <address> xxxx xxxxx xxxxx</address>
                         </div>
-                    </div>
+                    </div> -->
                 </fieldset>
                 <hr>
                 <fieldset>
-                    <legend>Items to Claim</legend>
+                    <legend class="i18n" name="items_title"></legend>
                     <hr>
                     <div class="form d-flex flex-row justify-content-start mt-3">
-                        <ul>
-                            <li>xxx</li>
-                            <li>xxxx</li>
-                        </ul>
-                        <div class="ml-auto col-3">
-                            <button type="button" class="btn btn-dark" id="viewFileButton">View File</button>
-                            <img id="fileImage" style="display: none;" src="../static/resources/img/icon.png" class="figure-img img-fluid rounded"
-                                 alt="Fail to load file">
+                        <!-- TODO checked -->
+                        <div class="col-3 custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" disabled>
+                            <label class="custom-control-label i18n" name="items_baggage" for="customCheck1"></label>
+                        </div>
+                        <div class="col-3 custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck2" disabled>
+                            <label class="custom-control-label i18n" name="items_card" for="customCheck2"></label>
+                        </div>
+                        <div class="col-3 custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck3" disabled>
+                            <label class="custom-control-label i18n" name="items_wallet" for="customCheck3"></label>
+                        </div>
+                        <div class="col-3 custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck4" disabled>
+                            <label class="custom-control-label i18n" name="items_phone" for="customCheck4"></label>
+                        </div>
+                    </div>
+                    <div
+                        class="custom-control custom-checkbox d-flex flex-row justify-content-start align-items-center mt-4">
+                        <input type="checkbox" class="custom-control-input" id="customCheck5" disabled>
+                        <label class="custom-control-label i18n" name="items_else" for="customCheck5"></label>
+
+                        <input type="text" id="elseInput" class="form-control ml-3 col-6 i18n-input"
+                            selectattr="placeholder" selectname="items_else_placeholder" disabled />
+                    </div>
+
+                    <!-- <div class="mt-3 col-7">
+                                            <div class="custom-file">
+                                                <label class="custom-file-label" for="customFile">Choose
+                                                    file</label>
+                                                <input type="file" class="custom-file-input" id="formFile"
+                                                    accept="image/png, image/jpeg">
+
+                                            </div>
+                                        </div> -->
+                    <div class="ml-auto col-3">
+                        <button type="button" class="btn btn-dark i18n" name="view_button" id="viewFileButton"></button>
+                        <img id="fileImage" style="display: none;" src="../static/resources/img/icon.png"
+                            class="figure-img img-fluid rounded" alt="Fail to load file">
+                    </div>
+                </fieldset>
+
+                <hr>
+                <fieldset>
+                    <legend class="i18n" name="claim_detail_title"></legend>
+                    <hr>
+                    <div class="form-row">
+                        <div class="col-7 mb-3">
+                            <label for="formPlace" class="i18n" name="claim_place"></label>
+                            <address id="claim_place_value">skjfs</address>
+                        </div>
+                        <div class="col-3 mb-3">
+                            <label for="formPlace" class="i18n" name="claim_date"></label>
+                            <p id="claim_date_value">skjfs</p>
+                            <!-- TODO -->
+                        </div>
+                        <div class="col-10">
+                            <label class="i18n" name="claim_detail"></label>
+                            <p id="claim_detail_value">skjfs</p>
                         </div>
                     </div>
                 </fieldset>
                 <hr>
                 <fieldset>
-                    <legend>银行账户资料</legend>
+                    <legend class="i18n" name="claim_result_title"></legend>
                     <hr>
-                    <form>
-                        <div class="form-row">
-
-                            <div class="col-3 mb-3">
-                                <p>开户： xxxxx</p>
-                            </div>
-                            <div class="col-7 mb-3">
-                                <p>账号: xxxxxxx</p>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-3 mb-5">
-                                <p>银行： xxxxxxxxx</p>
-                            </div>
-                            <div class="col-3 mb-3">
-                                <p>市: xxxxx</p>
-                            </div>
-                            <div class="col-4 mb-3">
-                                <p>支行: xxxxxxx</p>
-                            </div>
-                        </div>
-                    </form>
-                </fieldset>
-
-                <hr>
-                <fieldset>
-                    <hr>
-                    <legend>申请赔偿事由</legend>
-                    <form>
-                        <div class="form-row">
-                            <div class="col-7 mb-3">
-                                <p>事故发生地点: xxxxxxx</p>
-                            </div>
-                            <div class="col-3 mb-3">
-                                <p>事故发生日期: xxxxxxx</p>
-                            </div>
-                            <div class="col-10">
-                                <p>More Details: xxxxxx</p>
-                            </div>
-                        </div>
-
-                    </form>
-                </fieldset>
-                <hr>
-                <fieldset>
-                    <legend>Process Result</legend>
-                    <hr>
-                    <form class="d-flex flex-row align-items-center mb-3">
+                    <form id="claimdetail-form" class="d-flex flex-row align-items-center mb-3">
                         <div class="col-5 my-1">
-                            <select class="custom-select mr-sm-2" id="resultDropdown">
-                                <option selected value="1">Approve</option>
-                                <option value="2">Deny</option>
-                                <option value="3">Leave Information</option>
+                            <!-- 同意/不同意；找回/未找回；找回：寄出/未寄出；未找回：赔款/未赔款 -->
+                            <!-- 这块的js判断还没写 -->
+                            <select class="custom-select mr-sm-2" id="approveDropdown" style="display: none;">
+                                <option selected value="1" class="i18n" name="claim_approve"></option>
+                                <option value="2" class="i18n" name="claim_deny"></option>
                             </select>
-                            <div id="more_info" style="display: none;">
+
+                            <select class="custom-select mr-sm-2" id="findDropdown" style="display: none;">
+                                <option selected value="1" class="i18n" name="claim_find"></option>
+                                <option value="2" class="i18n" name="claim_unfind"></option>
+                            </select>
+
+                            <select class="custom-select mr-sm-2" id="result_findDropdown" style="display: none;">
+                                <option selected value="1" class="i18n" name="claim_deliver"></option>
+                                <option value="2" class="i18n" name="claim_deliver_fail"></option>
+                            </select>
+
+                            <select class="custom-select mr-sm-2" id="result_unfindDropdown" style="display: none;">
+                                <option selected value="1" class="i18n" name="claim_compensation"></option>
+                                <option value="2" class="i18n" name="claim_compensation_fail"></option>
+                            </select>
+                            <div id="more_info" class="mt-2">
                                 <div class="input-group">
                                     <textarea class="form-control" aria-label="With textarea"></textarea>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="ml-3 col-3">
-                            <button class="btn btn-dark" type="submit">Submit</button>
+                        <div class="ml-auto col-3">
+                            <button class="btn btn-dark i18n" id="claimdetail_submit" name="submit" type="submit"></button>
                         </div>
                     </form>
                 </fieldset>
@@ -144,9 +183,12 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../static/resources/bootstrap-4.0.0-dist/others/jquery-3.3.1.slim.min.js"></script>
+    <script src="../static/resources/bootstrap-4.0.0-dist/others/jquery-3.3.1.js"></script>
     <script src="../static/resources/bootstrap-4.0.0-dist/others/popper.min.js"></script>
     <script src="../static/resources/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+
+    <script src="../static/resources/i18n/jquery.i18n.properties.js"></script>
+    <script src="../static/resources/i18n/language.js"></script>
 
     <script src="../static/js/claimdetail.js"></script>
 </body>

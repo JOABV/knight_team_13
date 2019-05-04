@@ -142,16 +142,25 @@ $(function () {
     execI18n();
 
     /*将语言选择默认选中缓存中的值*/
-    $("#language option[value=" + i18nLanguage + "]").attr("selected", true);
+    $("#language li a[value=" + i18nLanguage + "]").addClass("disabled");
+
+    $("#language_button").html($("#language li a[value!=" + i18nLanguage + "]").html());
 
     /* 选择语言 */
-    $("#language").on('change', function () {
-        var language = $(this).children('div option:selected').val()
-        console.log(language);
-        getCookie("userLanguage", language, {
-            expires: 30,
-            path: '/'
+    $("#language_button").on('click', function () {
+
+        $('#language li a').click(function () {
+            if (!$(this).hasClass("disabled")) {
+
+                var language = $(this).attr("value");
+                getCookie("userLanguage", language, {
+                    expires: 30,
+                    path: '/'
+                });
+                
+                location.reload();
+            }
         });
-        location.reload();
+
     });
 });

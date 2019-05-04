@@ -4,12 +4,13 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta id="i18n_pagename" content="index-common">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="../static/resources/img/icon.ico">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../static/resources/bootstrap-4.0.0-dist/css/bootstrap.min.css">
 
-    <title>Hibernia-Sino Management</title>
+    <title class="i18n" name="management_title"></title>
 </head>
 
 <body>
@@ -18,7 +19,20 @@
             <nav class="navbar navbar-light text-light justify-content-start"
                 style="background-color: rgba(0, 0, 0, 0.5);">
                 <img src="../static/resources/img/icon.png" width="30" height="30" class="d-inline-block align-top">
-                Hibernia-Sino Management System
+                <span class="i18n" name="management_title"></span>
+
+                <div class="ml-auto" style="margin-right: 10%;">
+                    <div class="dropdown show">
+                        <a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" id="language_button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        </a>
+
+                        <ul id="language" class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" value="zh-CN" disabled="false">中文简体</a></li>
+                            <li><a class="dropdown-item" href="#" value="en" disabled="false">English</a></li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
         </header>
 
@@ -26,51 +40,55 @@
             <div class="row">
                 <div class="col-2 m-3">
                     <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action active" id="toprocess-list" data-toggle="list"
-                            href="#toprocess" role="tab" aria-controls="home">To Process</a>
-                        <a class="list-group-item list-group-item-action" id="processing-list" data-toggle="list"
-                            href="#processing" role="tab" aria-controls="profile">Processing</a>
-                        <a class="list-group-item list-group-item-action" id="processed-list" data-toggle="list"
-                            href="#processed" role="tab" aria-controls="profile">Processed</a>
+                        <a class="list-group-item list-group-item-action i18n active" name="to_process" id="toprocess-list" data-toggle="list"
+                            href="#toprocess" role="tab" aria-controls="home"></a>
+                        <a class="list-group-item list-group-item-action i18n" name="processing" id="processing-list" data-toggle="list"
+                            href="#processing" role="tab" aria-controls="profile"></a>
+                        <a class="list-group-item list-group-item-action i18n" name="processed" id="processed-list" data-toggle="list"
+                            href="#processed" role="tab" aria-controls="profile"></a>
 
                     </div>
                 </div>
                 <div class="flex-column col-8 m-3">
 
-                    <ul class="nav flex-row bg-dark justify-content-start align-items-center p-2 mb-3"  style="border-radius: 3px;">
+                    <ul class="nav flex-row bg-dark justify-content-start align-items-center p-2 mb-3"
+                        style="border-radius: 3px;">
                         <li class="ml-2 mr-3">
-                            <button class="btn btn-sm btn-outline-light">Time</button>
+                            <button class="btn btn-sm btn-outline-light i18n" name="time_search"></button>
                         </li>
                         <li>
-                            <button class="btn btn-sm btn-outline-light">Place</button>
+                            <button class="btn btn-sm btn-outline-light i18n" name="place_search"></button>
                         </li>
                         <li class="ml-auto">
                             <form class="form-inline">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Policy Number"
+                                <input class="form-control mr-sm-2 i18n-input" type="search" selectattr="placeholder" selectname="applicant_number"
                                     aria-label="Search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                <button class="btn btn-outline-success my-2 my-sm-0 i18n" name="policy_search" type="submit"></button>
                             </form>
                         </li>
                     </ul>
                     <div class="tab-content" id="nav-tabContent">
+                        <!-- to process -->
                         <div class="tab-pane fade show active" id="toprocess" role="tabpanel"
                             aria-labelledby="toprocess-list">
+                            <!-- 保单列表中的一个保单 -->
                             <div class="list-group">
                                 <a href="claimdetail.html" target="_blank"
-                                   class="list-group-item list-group-item-action flex-column align-items-start">
+                                    class="list-group-item list-group-item-action flex-column align-items-start">
                                     <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">List group item heading</h5>
+                                        <h5 class="mb-1">16372329<span class=" ml-2 badge badge-danger">1</span></h5>
                                         <small>3 days ago</small>
                                     </div>
-                                    <small class="text-truncate">Donec id elit non mi porta.</small>
                                 </a>
                             </div>
 
                         </div>
+                        <!-- processing -->
                         <div class="tab-pane fade" id="processing" role="tabpanel" aria-labelledby="processing-list">
+                            <!-- 保单列表中的一个保单 -->
                             <div class="list-group">
                                 <a href="claimdetail.html" target="_blank"
-                                   class="list-group-item list-group-item-action flex-column align-items-start">
+                                    class="list-group-item list-group-item-action flex-column align-items-start">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-1">List group processing</h5>
                                         <small>3 days ago</small>
@@ -80,10 +98,12 @@
                             </div>
                         </div>
 
+                        <!-- processed -->
                         <div class="tab-pane fade" id="processed" role="tabpanel" aria-labelledby="processed-list">
+                            <!-- 保单列表中的一个保单 -->
                             <div class="list-group">
                                 <a href="claimdetail.html" target="_blank"
-                                   class="list-group-item list-group-item-action flex-column align-items-start">
+                                    class="list-group-item list-group-item-action flex-column align-items-start">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-1">List group item heading</h5>
                                         <small>3 days ago</small>
@@ -98,7 +118,10 @@
             </div>
         </main>
     </div>
-    <script src="../static/resources/bootstrap-4.0.0-dist/others/jquery-3.3.1.slim.min.js"></script>
+    <script src="../static/resources/bootstrap-4.0.0-dist/others/jquery-3.3.1.js"></script>
     <script src="../static/resources/bootstrap-4.0.0-dist/others/popper.min.js"></script>
     <script src="../static/resources/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+
+    <script src="../static/resources/i18n/jquery.i18n.properties.js"></script>
+    <script src="../static/resources/i18n/language.js"></script>
 </body>
