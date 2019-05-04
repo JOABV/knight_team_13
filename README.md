@@ -82,8 +82,7 @@
 
 ```
 {
-  "phone_number":"xxxxxxxxx",
-  "length": 10
+  "phone_number":"xxxxxxxxx"
 }
 ```
 - ResponseBody
@@ -92,11 +91,12 @@
 //success
 {
   "Checkcode":"100",
-  "policy_list":
+  "Message":
   [{
     "policy_number":"123",
     "policy_name":"xxxxxxxxxxxxx",
-    "time":"yyyy/mm/dd/hh/mm"
+    "time":"yyyy/mm/dd/hh/mm",
+    "claim_status":"101"
     },
     {...}
     ...
@@ -112,42 +112,7 @@
 }
 ```
 
-
-### 4. Get the details
->.../policy/one_message
-
-- RequestBody
-
-```
-{
-  "policy_number":"123",
-}
-```
-- ResponseBody
-
-```
-//success
-{
-  "Checkcode": "100",
-  "Message":
-  {
-    "policy_number":"123",
-    "policy_name":"xxxxxxxxxxxxx",
-    "phone_number":"13123456789"
-    "time":"yyyy/mm/dd/hh/mm",
-  }
-}
-```
-```
-//error
-{
-  "Checkcode":"200",
-  "Message":"it doesn't exist"
-}
-```
-
-
-### 5. Get the Claim
+### 4. Get the Claim
 >.../lost_luggage/receive
 
 - RequestBody
@@ -185,7 +150,7 @@
 }
 ```
 
-### 6. Submit the Claim
+### 5. Submit the Claim
 >.../lost_luggage/submit
 
 - RequestBody
@@ -228,7 +193,7 @@
 }
 ```
 
-### 7. Update the Claim
+### 6. Update the Claim
 >.../lost_luggage/update
 
 - RequestBody
@@ -271,7 +236,7 @@
 }
 ```
 
-### 8. personal information
+### 7. personal information show
 > .../personal_information/pi
 
 - RequestBody
@@ -300,7 +265,7 @@
 }
 ```
 
-### 9. personal information
+### 8. personal information change
 > .../personal_information/ci
 
 - RequestBody
@@ -308,7 +273,6 @@
 ```
 {
   "phone_number":"13123456789",
-  "id_number":"xxxxxx",
   "email":"xxxxxxxxx"
 }
 ```
@@ -377,19 +341,17 @@
       //101: to process
       //102: processing
       //103: processed
-  "condition":{
-        "time":"101",
-            //101: 正序 // default
-            //102: 倒序
-        "place":"xxxx",
-            //"all": default
-        "price": "101"
-            //0  : all // default
-            //101: 0- 100
-            //102: 100-1000
-            //103: 1000 - 10000
-            //104: 10000+
-  }
+      "time":"101",
+          //101: 正序 // default
+          //102: 倒序
+      "place":"xxxx",
+          //"all": default
+      "price": "101"
+          //0  : all // default
+          //101: 0- 100
+          //102: 100-1000
+          //103: 1000 - 10000
+          //104: 10000+
 }
 ```
 - ResponseBody
@@ -403,7 +365,7 @@
     "policy_number":"123",
     "time":"yyyy/mm/dd/hh/mm",
     "place":"xxxxxx",
-    "price":"xxxxxx",
+    "price":"xxxxxx"
     },
     {...}
     ...
@@ -414,14 +376,14 @@
 ```
 //error
 {
-  "Checkcode":"200"
+  "Checkcode":"200",
   "Message":"it doesn't exist"
 }
 ```
 
 
 ### 3. Get the Claim
->.../lost_luggage/one_message
+>.../lost_luggage/one_Message
 
 - RequestBody
 
@@ -445,7 +407,7 @@
     "time":"yyyy/mm/dd/hh/mm",
     "place":"xxxxx",
     "reason":"xxxxxxxxxxxxxxxxx",
-    "price":"xxxx"        // It has to be in dollars
+    "price":"xxxx",        // It has to be in dollars
     "picture":"x0123412edx3",
     "feedback":"xxxxxxxxxxxxxxxxxxxxx" ,
     "claim_status": "101"
@@ -470,7 +432,7 @@
 {
   "policy_number":"123",
   "claim_status":"101",
-  "message":"xxxxxxxxxxxxxxxxxxxxxxxx"
+  "Message":"xxxxxxxxxxxxxxxxxxxxxxxx"
 }
 ```
 - ResponseBody
