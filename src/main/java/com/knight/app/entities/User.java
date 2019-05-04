@@ -8,7 +8,6 @@ public class User {
     @Id
     private String phone_number;
     private String password;
-    private String photo;
     private String id_number;
     private String full_name;
     private String email;
@@ -19,16 +18,14 @@ public class User {
     public User(String phone_number, String password) {
         this.phone_number = phone_number;
         this.password = password;
-        this.photo = "";
         this.id_number = "";
         this.full_name = "";
         this.email = "";
     }
 
-    public User(String phone_number, String password, String photo, String id_number, String full_name, String email) {
+    public User(String phone_number, String password, String id_number, String full_name, String email) {
         this.phone_number = phone_number;
         this.password = password;
-        this.photo = photo;
         this.id_number = id_number;
         this.full_name = full_name;
         this.email = email;
@@ -48,14 +45,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
     }
 
     public String getId_number() {
@@ -85,8 +74,11 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                ", phone='" + phone_number + '\'' +
+                "phone_number='" + phone_number + '\'' +
                 ", password='" + password + '\'' +
+                ", id_number='" + id_number + '\'' +
+                ", full_name='" + full_name + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

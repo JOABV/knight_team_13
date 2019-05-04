@@ -6,14 +6,30 @@ import javax.persistence.Id;
 @Entity
 public class Policy {
     @Id
-    String policy_number;
-    String time;
-    String place;
-    String reason;
-    String remark;
-    String price;
-    String picture;
-    int claim_status;
+    private String policy_number;
+    private String policy_name;
+    private String phone_number;
+    private String time;
+    private String place;
+    private String reason;
+    private String price;
+    private String picture;
+    private String claim_status;
+
+    public Policy() {
+    }
+
+    public Policy(String policy_number, String policy_name, String phone_number, String time, String place, String reason, String price, String picture, String claim_status) {
+        this.policy_number = policy_number;
+        this.policy_name = policy_name;
+        this.phone_number = phone_number;
+        this.time = time;
+        this.place = place;
+        this.reason = reason;
+        this.price = price;
+        this.picture = picture;
+        this.claim_status = claim_status;
+    }
 
     public String getPolicy_number() {
         return policy_number;
@@ -21,6 +37,22 @@ public class Policy {
 
     public void setPolicy_number(String policy_number) {
         this.policy_number = policy_number;
+    }
+
+    public String getPolicy_name() {
+        return policy_name;
+    }
+
+    public void setPolicy_name(String policy_name) {
+        this.policy_name = policy_name;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
 
     public String getTime() {
@@ -47,14 +79,6 @@ public class Policy {
         this.reason = reason;
     }
 
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
     public String getPrice() {
         return price;
     }
@@ -71,25 +95,11 @@ public class Policy {
         this.picture = picture;
     }
 
-    public int getClaim_status() {
+    public String getClaim_status() {
         return claim_status;
     }
 
-    public void setClaim_status(int claim_status) {
+    public void setClaim_status(String claim_status) {
         this.claim_status = claim_status;
-    }
-
-    @Override
-    public String toString() {
-        return "Policy{" +
-                "policy_number='" + policy_number + '\'' +
-                ", time='" + time + '\'' +
-                ", place='" + place + '\'' +
-                ", reason='" + reason + '\'' +
-                ", remark='" + remark + '\'' +
-                ", price='" + price + '\'' +
-                ", picture='" + picture + '\'' +
-                ", claim_status=" + claim_status +
-                '}';
     }
 }
