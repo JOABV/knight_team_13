@@ -151,7 +151,7 @@
 ```
 
 ### 5. Submit the Claim
->.../lost_luggage/submit
+>.../lost_luggage/submit_OR_update
 
 - RequestBody
 
@@ -165,6 +165,7 @@
   "reason":"xxxxxxxxxxxxxxxxx",
   "price":"xxxx"        // It has to be in dollars
   "picture":"x0123412edx3",
+  "claim_states":"xxxx@@xxxx@@xxxx"
 }
 ```
 - ResponseBody
@@ -192,49 +193,8 @@
 }
 ```
 
-### 6. Update the Claim
->.../lost_luggage/update
 
-- RequestBody
-
-```
-{
-  "policy_number":"123",
-  "policy_name":"xxxxxxxxxxxxx",
-  "phone_number":"13123456789"
-  "time":"yyyy/mm/dd/hh/mm",
-  "place":"xxxxxxx",
-  "reason":"xxxxxxxxxxxxxxxxx",
-  "price":"xxxx"        // It has to be in dollars
-  "picture":"x0123412edx3"
-}
-```
-- ResponseBody
-
-```
-//success
-{
-  "Checkcode":"100",
-  "Message":"success"
-}
-```
-```
-//error
-{
-  "Checkcode":"200",
-  "Message":"Wrong type"
-}
-{
-  "Checkcode":"201",
-  "Message":"Empty input"
-}
-{
-  "Checkcode":"202",
-  "Message":"the claim exists"
-}
-```
-
-### 7. personal information show
+### 6. personal information show
 > .../personal_information/pi
 
 - RequestBody
@@ -263,7 +223,7 @@
 }
 ```
 
-### 8. personal information change
+### 7. personal information change
 > .../personal_information/ci
 
 - RequestBody
@@ -272,6 +232,34 @@
 {
   "phone_number":"13123456789",
   "email":"xxxxxxxxx"
+}
+```
+- ResponseBody
+
+```
+//success
+{
+  "Checkcode":"100",
+  "Message":"success"
+}
+```
+```
+//error
+{
+  "Checkcode":"200",
+  "Message":"the user doesn't exists"
+}
+```
+
+### 8. password change
+> .../personal_information/change_password
+
+- RequestBody
+
+```
+{
+  "phone_number":"13123456789",
+  "password":"11111111"
 }
 ```
 - ResponseBody
