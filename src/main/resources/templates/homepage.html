@@ -38,11 +38,15 @@
                         <a class="nav-link i18n" name="contact" id="contact-tab" data-toggle="tab" href="#contact"
                             role="tab" aria-controls="contact" aria-selected="false"></a>
                     </li>
-                    <li class="nav-item">
-                        <select class="nav-link select-style" id="language">
-                            <option class="select-item" value="zh-CN">中文简体</option>
-                            <option class="select-item" value="en">English</option>
-                        </select>
+                    <li class="nav-item dropdown show">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="language_button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        </a>
+
+                        <ul id="language" class="dropdown-menu text-light" aria-labelledby="language">
+                            <li><a class="dropdown-item" href="#" value="zh-CN" disabled="false">中文简体</a></li>
+                            <li><a class="dropdown-item" href="#" value="en" disabled="false">English</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -103,9 +107,6 @@
                             <label for="username_lo" class="i18n" name="signin_account"></label>
                             <input type="text" id="username_lo" class="form-control is-valid i18n-input"
                                 selectname="signin_account_placeholder" selectattr="placeholder" required autofocus>
-                            <div style="display: none;" class="invalid-feedback">
-                                Phone number already exists, <a>forget password</a>
-                            </div>
 
                         </div>
 
@@ -113,9 +114,12 @@
                             <label for="password_lo" class="i18n" name="signin_password"></label>
                             <input type="password" id="password_lo" class="form-control i18n-input"
                                 selectname="signin_password_placeholder" selectattr="placeholder" required>
+                            <div class="d-flex justify-content-end">
+                                <a class="text-light" href="#"><i class="i18n" name="forget_password"></i></a>
+                            </div>
                         </div>
 
-                        <div class="checkbox mb-3">
+                        <div class="checkbox mb-1">
                             <input type="checkbox" value="remember-me">
                             <label class="i18n" name="signin_remember"></label>
                         </div>
@@ -129,7 +133,7 @@
                     aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content text-dark">
+                        <div class="modal-content">
                             <div class="modal-header">
                                 <div class="text-left">
                                     <h2 class="i18n" name="signup_title"></h2>
@@ -142,8 +146,8 @@
                             <div class="modal-body">
                                 <form class="text-left">
                                     <div class="form-column m-0">
-                                        <div class="form-column">
-                                            <div class="form-group">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-8">
                                                 <span class="require">*</span>
                                                 <label for="username_re" class="i18n" name="signup_tel"></label>
                                                 <div class="input-group">
@@ -157,7 +161,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group col-md-4">
                                                 <span class="require">*</span>
                                                 <label for="securityCode" class="i18n" name="signup_code"></label>
 
@@ -169,24 +173,43 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <span class="require">*</span>
-                                            <label for="password_re" class="i18n" name="signin_password"></label>
-                                            <div class="userPassword-input">
-                                                <input type="password" id="password_re" class="form-control i18n-input"
-                                                    selectname="signin_password_placeholder" selectattr="placeholder"
+                                        <div class="form-row">
+                                            <div class="form-group col-md-8">
+                                                <span class="require">*</span>
+                                                <label class="i18n" name="applicant_id"></label>
+                                                    <input type="text" id="userId"
+                                                        class="form-control i18n-input"
+                                                        selectname="applicant_id_placeholder"
+                                                        selectattr="placeholder" required />
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <span class="require">*</span>
+                                                <label class="i18n" name="applicant_name"></label>
+                                                <input type="text" id="userName" class="form-control i18n-input"
+                                                    selectname="signup_name_placeholder" selectattr="placeholder"
                                                     required />
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <span class="require">*</span>
-                                            <label for="userRePassword" class="i18n" name="signup_confirm"></label>
-                                            <div class="userRePassword-input">
-                                                <input type="password" id="userRePassword"
-                                                    class="form-control i18n-input"
-                                                    selectname="signup_confirm_placeholder" selectattr="placeholder"
-                                                    required />
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <span class="require">*</span>
+                                                <label class="i18n" name="signin_password"></label>
+                                                    <input type="password" id="userPassword"
+                                                        class="form-control i18n-input"
+                                                        selectname="signin_password_placeholder"
+                                                        selectattr="placeholder" required />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <span class="require">*</span>
+                                                <label class="i18n" name="signup_confirm"></label>
+                                                <div class="userRePassword-input">
+                                                    <input type="password" id="userRePassword"
+                                                        class="form-control i18n-input"
+                                                        selectname="signup_confirm_placeholder" selectattr="placeholder"
+                                                        required />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -194,7 +217,7 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button id="user_sign_up" class="btn btn-lg btn-dark btn-block mt-2 mb-2 i18n"
+                                <button id="user_sign_up" class="btn btn-lg btn-secondary btn-block mt-2 mb-2 i18n"
                                     name="signup_button" type="submit"></button>
                             </div>
 

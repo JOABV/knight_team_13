@@ -22,5 +22,37 @@ $(document).ready(function () {
         connect("staff/login", params)
     });
 
+    $('.login-form').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            employee_name: {
+                validators: {
+                    notEmpty: {
+                    }
+                }
+            },
+            employee_password: {
+                validators: {
+                    notEmpty: {
+                    }
+                }
+            }
+        }
+    });
+
+    $("#employee_login").on("click", function () {
+        var bootstrapValidator = $(".login-form").data('bootstrapValidator');
+        bootstrapValidator.validate();
+        if (bootstrapValidator.isValid()) {
+            //登录
+        }
+        else return;
+    });
+
+
 
 });

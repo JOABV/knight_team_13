@@ -1,6 +1,6 @@
 html, body {
     height: 100%;
-    width:100%;
+    width: 100%;
     min-width: 600px;
 }
 
@@ -75,17 +75,27 @@ body {
     border-bottom-color: rgba(255, 255, 255, 1.0);
 }
 
-.select-style {
-    border: transparent;
+.modal {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 1.0);
+    border-radius: 0%;
+}
+
+.dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-item {
+    color: rgba(255, 255, 255, 1.0);
 }
 
 /* .select-style:hover, .select-style:active, .select-style::selection {
     box-shadow: 0 0 0 transparent;
 } */
-
-.select-item {
-    color: rgba(0, 0, 0, 1.0);
-}
 
 .cover .btn-lg {
     padding: .75rem 1.25rem;
