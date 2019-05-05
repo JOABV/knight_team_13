@@ -1,14 +1,9 @@
 package com.knight.app.Controller;
 
 import com.knight.app.entities.User;
-import com.knight.app.entities.Policy;
-import com.knight.app.Repository.PolicyRepository;
 import com.knight.app.Repository.UserRepository;
-import com.knight.app.mapper.UserMapper;
-import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jackson.JsonObjectDeserializer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,10 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 	@Autowired
 	private UserRepository userRepository;
-//	@Autowired
-	private UserMapper userMapper;
-	@Autowired
-	private PolicyRepository policyRepository;
+
 	@GetMapping("/homepage")
 	public String index(){
 		return "homepage";
@@ -88,10 +80,10 @@ public class UserController {
 		}
 		return jso;
 	}
+
 	//information_change
 	@PostMapping(path="/personal_information/ci")
 	public @ResponseBody JSONObject personal_information_change (@RequestBody JSONObject json) {
-		//TODO
 		JSONObject jso = new JSONObject();
 		User user = userRepository.findOne(json.getString("phone_number"));
 		if (user == null){
@@ -101,17 +93,29 @@ public class UserController {
 			}
 		}else{
 			user.setEmail(json.getString("email"));
-			userMapper.updateUser(user);
+			userRepository.save(user);
 			jso.put("Checkcode", 100);
 			jso.put("Message", user);
 		}
 		return jso;
 	}
 
-
-//	@GetMapping(path="/all")
-//	public @ResponseBody Iterable<User> getAllUsers() {
-//		return userRepository.findAll();
-//	}
-
+	//information_change
+	@PostMapping(path="/personal_information/change_password")
+	public @ResponseBody JSONObject password_change (@RequestBody JSONObject json) {
+		JSONObject jso = new JSONObject();
+		User user = userRepository.findOne(json.getString("phone_number"));
+		if (user == null){
+			if (! userRepository.exists(json.getString("phone_number"))){
+				jso.put("Checkcode", 200);
+				jso.put("Message", "the user doesn't exist");
+			}
+		}else{
+			user.setPassword(json.getString("password"));
+			userRepository.save(user);
+			jso.put("Checkcode", 100);
+			jso.put("Message", user);
+		}
+		return jso;
+	}
 }

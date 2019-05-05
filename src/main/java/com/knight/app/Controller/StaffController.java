@@ -1,11 +1,7 @@
 package com.knight.app.Controller;
 
-import com.knight.app.entities.Policy;
 import com.knight.app.entities.Staff;
-import com.knight.app.Repository.PolicyRepository;
 import com.knight.app.Repository.StaffRepository;
-import com.knight.app.mapper.StaffMapper;
-import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,12 +13,6 @@ import org.springframework.web.bind.annotation.*;
 public class StaffController {
 	@Autowired
 	private StaffRepository staffRepository;
-
-	@Autowired
-	private StaffMapper staffMapper;
-
-	@Autowired
-	private PolicyRepository policyRepository;
 
 	@PostMapping(path="/login")
 	public @ResponseBody JSONObject login (@RequestBody Staff staff) {

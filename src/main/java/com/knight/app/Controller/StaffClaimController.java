@@ -1,9 +1,6 @@
 package com.knight.app.Controller;
 
-import com.knight.app.Repository.PolicyRepository;
 import com.knight.app.Repository.UserRepository;
-import com.knight.app.entities.Policy;
-import com.knight.app.entities.User;
 import com.knight.app.mapper.PolicyMapper;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +19,6 @@ public class StaffClaimController {
 	@Autowired
 	private PolicyMapper policyMapper;
 
-	@Autowired
-	private PolicyRepository policyRepository;
-
 	@PostMapping(path="/list")
 	public @ResponseBody JSONObject getClaimList(@RequestBody JSONObject jso) {
 		int length = jso.getInt("length");
@@ -32,7 +26,7 @@ public class StaffClaimController {
 		String time = jso.getString("time");
 		String place = jso.getString("place");
 		String price = jso.getString("price");
-		List<Policy> policyList;
+		List<JSONObject> policyList;
 
 		if(states.compareTo("101") == 0){
 			if(time.compareTo("101") == 0){
@@ -60,16 +54,26 @@ public class StaffClaimController {
 		return result;
 	}
 
-	@PostMapping(path="/one_message")
+	@PostMapping(path="/one_Message")
 	public @ResponseBody JSONObject lost_luggage_message (@RequestBody JSONObject jso) {
 		JSONObject back = new JSONObject();
-		if(jso.has("policy_number") && jso.has("status")){
-			//TODO
+		if(jso.has("policy_number") && jso.has("states")){
+            String policy_number = jso.getString("policy_number");
+            String states = jso.getString("states");
+            JSONObject policy;
 
-			back.put("Checkcode", 100);
-			back.put("Message", "success");
+            if(states.compareTo("101") == 0){
+                policy = policyMapper.getOneMessageFromToProcess(policy_number);
+            }else if(states.compareTo("102") == 0){
+                policy = policyMapper.getOneMessageFromProcessing(policy_number);
+            }else{
+                policy = policyMapper.getOneMessageFromProcessed(policy_number);
+            }
+
+			back.put("Checkcode", "100");
+			back.put("Message", policy);
 		}else{
-			back.put("Checkcode", 200);
+			back.put("Checkcode", "200");
 			back.put("Message", "Wrong type");
 		}
 		return back;
@@ -78,16 +82,60 @@ public class StaffClaimController {
 	@PostMapping(path="/feedback_submit")
 	public @ResponseBody JSONObject lost_luggage_submit (@RequestBody JSONObject jso) {
 		JSONObject back = new JSONObject();
-		if(jso.has("policy_number") && jso.has("status") && jso.has("message")){
-			//TODO
+		if(jso.has("policy_number") && jso.has("states") && jso.has("feedback") && jso.has("isTheLastSubmit")){
+            String policy_number = jso.getString("policy_number");
+            String states = jso.getString("states");
+            JSONObject policy = policyMapper.getOneMessageFromProcessing(policy_number);
+            String []claim_states = policy.getString("claim_states").split("@@");
 
-			back.put("Checkcode", 100);
+            for (int i = 1; i < claim_states.length; i++) {
+                if (claim_states[i].compareTo("0") == 0)
+                    claim_states[i] = states;
+                else
+                    break;
+            }
+            policy.put("claim_states", String.join("@@", claim_states));
+            policyMapper.updateProcessing(policy);
+
+			back.put("Checkcode", "100");
 			back.put("Message", "success");
 		}else{
-			back.put("Checkcode", 200);
+			back.put("Checkcode", "200");
 			back.put("Message", "Wrong type");
 		}
 		return back;
 	}
+
+    @PostMapping(path="/claim_accept_OR_reject")
+    public @ResponseBody JSONObject lost_luggage_accept_or_reject (@RequestBody JSONObject jso) {
+        JSONObject back = new JSONObject();
+        if(jso.has("policy_number") && jso.has("isAccept") && jso.has("feedback") && jso.has("staff_number")){
+            String policy_number = jso.getString("policy_number");
+            String isAccept = jso.getString("isAccept");
+            JSONObject policy = policyMapper.getOneMessageFromProcessing(policy_number);
+            String []claim_states = policy.getString("claim_states").split("@@");
+            if (isAccept.compareTo("0") == 0){
+                claim_states[0] = "2";
+            }else{
+                claim_states[0] = "3";
+            }
+            policy.put("claim_states", String.join("@@", claim_states));
+
+            policyMapper.deleteToProcess(policy_number);
+
+			if (isAccept.compareTo("0") == 0){
+				policyMapper.insertProcessing(policy);
+			}else{
+				policyMapper.insertProcessed(policy);
+			}
+
+            back.put("Checkcode", "100");
+            back.put("Message", "success");
+        }else{
+            back.put("Checkcode", "200");
+            back.put("Message", "Wrong type");
+        }
+        return back;
+    }
 
 }
