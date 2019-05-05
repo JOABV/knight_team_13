@@ -14,29 +14,29 @@ public interface PolicyMapper {
 
     // ToProcess
 
-    @Insert("INSERT INTO claim_unprocessed ( policy_number, time, place, reason, price, picture, feedback ) VALUES ( #{policy_number},#{time}, #{place}, #{reason}, #{price}, #{picture})")
+    @Insert("INSERT INTO claim_unprocessed ( policy_number, time, place, reason, price, picture) VALUES ( #{policy_number},#{time}, #{place}, #{reason}, #{price}, #{picture})")
     public int insertToProcess(JSONObject policy);
 
     @Delete("DELETE FROM claim_unprocessed WHERE policy_number = #{policy_number}")
     public int deleteToProcess(String policy_number);
 
-    @Update("UPDATE claim_unprocessed SET time = #{time}, place = #{place}, reason = #{reason}, price= #{price}, picture= #{picture}, feedback= #{feedback}, staff_number= #{staff_number} WHERE policy_number= #{policy_number}")
+    @Update("UPDATE claim_unprocessed SET time = #{time}, place = #{place}, reason = #{reason}, price= #{price}, picture= #{picture} WHERE policy_number= #{policy_number}")
     public int UpdateToProcess(JSONObject policy);
 
     @Select("SELECT * FROM claim_unprocessed WHERE policy_number = #{policy_number}")
     public JSONObject getOneMessageFromToProcess(@Param("policy_number") String policy_number);
 
-    @Select("SELECT  policy_number, time, place, price FROM claim_unprocessed WHERE place= #{place},price = #{price} LIMIT #{length}")
+    @Select("SELECT  policy_number, time, place, price FROM claim_unprocessed WHERE place= #{place} AND price = #{price} LIMIT #{length} ORDER BY time")
     public List<JSONObject> getToProcessListByOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
 
-    @Select("SELECT  policy_number, time, place, price FROM claim_unprocessed WHERE place= #{place},price = #{price} LIMIT #{length} DESC")
+    @Select("SELECT  policy_number, time, place, price FROM claim_unprocessed WHERE place= #{place} AND price = #{price} LIMIT #{length} ORDER BY time DESC")
     public List<JSONObject> getToProcessListByInvertedOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
 
 
 
     // Processing
 
-    @Insert("INSERT INTO claim_processing ( policy_number, time, place, reason, price, picture, feedback, staff_number ) VALUES ( #{policy_number},#{time}, #{place}, #{reason}, #{price}, #{picture}, #{staff_number} )")
+    @Insert("INSERT INTO claim_processing ( policy_number, time, place, reason, price, picture, feedback, staff_number ) VALUES ( #{policy_number},#{time}, #{place}, #{reason}, #{price}, #{picture}, #{feedback} , #{staff_number} )")
     public int insertProcessing(JSONObject policy);//Only in this step the staff's phone number is added to the claim;
 
     @Delete("DELETE FROM claim_processing WHERE policy_number= #{policy_number}")
@@ -48,32 +48,32 @@ public interface PolicyMapper {
     @Select("SELECT * FROM claim_processing WHERE policy_number = #{policy_number}")
     public JSONObject getOneMessageFromProcessing(@Param("policy_number") String policy_number);
 
-    @Select("SELECT  policy_number, time, place, price FROM claim_processing WHERE place= #{place},price = #{price} LIMIT #{length}")
+    @Select("SELECT  policy_number, time, place, price FROM claim_processing WHERE place= #{place} AND price = #{price} LIMIT #{length} ORDER BY time")
     public List<JSONObject> getProcessingListByOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
 
-    @Select("SELECT  policy_number, time, place, price FROM claim_processing WHERE place= #{place},price = #{price} LIMIT #{length} DESC")
+    @Select("SELECT  policy_number, time, place, price FROM claim_processing WHERE place= #{place} AND price = #{price} LIMIT #{length} ORDER BY time DESC")
     public List<JSONObject> getProcessingListByInvertedOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
 
 
 
     // Processed
 
-    @Insert("INSERT INTO claim_processed ( policy_number, time, place, reason, price, picture, feedback, staff_number ) VALUES ( #{policy_number},#{time}, #{place}, #{reason}, #{price}, #{picture} )")
+    @Insert("INSERT INTO claim_processed ( policy_number, time, place, reason, price, picture, feedback, staff_number ) VALUES ( #{policy_number},#{time}, #{place}, #{reason}, #{price}, #{picture}, #{feedback}, #{staff_number} )")
     public int insertProcessed(JSONObject policy);
 
     @Delete("DELETE FROM claim_processed WHERE policy_number= #{policy_number}")
     public int deleteProcessed(String policy_number);
 
     @Update("UPDATE claim_processed SET time = #{time}, place = #{place}, reason = #{reason}, price= #{price}, picture= #{picture}, feedback= #{feedback}, staff_number= #{staff_number} WHERE policy_number= #{policy_number}")
-    public int updateStates(String policy_number, String claim_states);
+    public int updateStates(String policy_number, String states);
 
     @Select("SELECT * FROM claim_processed WHERE policy_number = #{policy_number}")
     public JSONObject getOneMessageFromProcessed(@Param("policy_number") String policy_number);
 
-    @Select("SELECT  policy_number, time, place, price FROM claim_processed WHERE place= #{place},price = #{price} LIMIT #{length}")
+    @Select("SELECT  policy_number, time, place, price FROM claim_processed WHERE place= #{place} AND price = #{price} LIMIT #{length} ORDER BY time")
     public List<JSONObject> getProcessedListByOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
 
-    @Select("SELECT  policy_number, time, place, price FROM claim_processed WHERE place= #{place},price = #{price} LIMIT #{length} DESC")
+    @Select("SELECT  policy_number, time, place, price FROM claim_processed WHERE place= #{place} AND price = #{price} LIMIT #{length} ORDER BY time DESC")
     public List<JSONObject> getProcessedListByInvertedOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
 
 
@@ -91,20 +91,20 @@ public interface PolicyMapper {
     @Select("SELECT * FROM policy WHERE policy_number= #{policy_number}")
     public JSONObject getPolicy(@Param("policy_number") String policy_number);
 
-    @Select("select policy_number, policy_name from Policy where phone_number=#{phone_number}")
+    @Select("select policy_number, policy_name from policy where phone_number=#{phone_number}")
     public List<JSONObject> getPolicyByPhoneNumber(@Param("phone_number") String phone_number);
 
 
 
     // States
 
-    @Insert("INSERT INTO states (policy_number, states) VALUES (#{policy_number}, #{claim_states})")
+    @Insert("INSERT INTO states (policy_number, states) VALUES (#{policy_number}, #{states})")
     public int insertStates(JSONObject policy);
 
     @Delete("DELETE FROM states  WHERE policy_number= #{policy_number} ")
     public int DeleteStates(@Param("policy_number") String policy_number);
 
-    @Update("UPDATE states SET states= #{claim_states} WHERE policy_number= #{policy_number}")
+    @Update("UPDATE states SET states= #{states} WHERE policy_number= #{policy_number}")
     public int UpdateStates(JSONObject policy);
 
     @Select("SELECT * FROM states WHERE policy_number= #{policy_number}")

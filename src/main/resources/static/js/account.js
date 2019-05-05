@@ -16,6 +16,13 @@ $(document).ready(function () {
         });
     }
 
+    // var
+    // connect("user/personal_information/pi")
+
+
+
+
+    //查看保单里的查看文件
     $("#viewFileButton").click(function () {
         var text = $(this).text();
         if (text == "Hide") {
@@ -33,10 +40,13 @@ $(document).ready(function () {
         }
     });
 
+    //当保单过期的时候，用户无法进行申诉
+    //需要判断保单是否过期
     if ($('#expired').css('display') === 'block') {
         $('#remove_when_expired').remove();
     };
 
+    //不重要
     Tipped.create('.inline-bond', {
         position: 'bottom',
         fadeIn: 300,
@@ -71,6 +81,8 @@ $(document).ready(function () {
         $('#change-email img').attr('src', '../static/resources/img/unlock.png');
         $('#account-info-email').attr('disabled', false);
         $('#change_email_code').css('display', 'block');
+        $('#change_email_button').css('display', 'block');
+
     });
 
     $('#emailModal_bonded').on('hidden.bs.modal', function () {
@@ -112,6 +124,13 @@ $(document).ready(function () {
                     }
                 }
             },
+            formFile: {
+                validators: {
+                    file: {
+                    },
+                }
+            },
+
             items: {
                 validators: {
                     notEmpty: {
@@ -143,7 +162,19 @@ $(document).ready(function () {
         var bootstrapValidator = $("#claimForm").data('bootstrapValidator');
         bootstrapValidator.validate();
         if (bootstrapValidator.isValid()) {
-            //提交申诉表
+            //提交申诉
+
+            //成功
+            $('#formModal').fadeOut();
+            $('.modal-backdrop').remove();
+            $('#remove_when_expired').remove();
+            $('#detail_claimdetail').css('display', 'block');
+            $('#not_claim').remove();
+            $('#made_claim').css('display', 'block');
+            $('#successModal').modal('show');
+
+            // //不成功
+            // $('#failModal').modal('show');
         }
         else return;
     });
@@ -152,8 +183,7 @@ $(document).ready(function () {
         $('#claimForm').data('bootstrapValidator').resetForm(true);
     });
 
-    // 这块有点问题
-    $('#cchange_password_form').bootstrapValidator({
+    $('#change_password_form').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
@@ -174,6 +204,15 @@ $(document).ready(function () {
         bootstrapValidator.validate();
         if (bootstrapValidator.isValid()) {
             //判定是否和密码一致
+
+            //如果一致：
+            $('#change_password_form').data('bootstrapValidator').resetForm(true);
+            $('#passwordModal_check').modal("hide");
+            $('.modal-backdrop').remove();
+            $('#passwordModal_change').modal("show");
+
+            // //如果不一致
+            // $('#failModal').modal('show');
         }
         else return;
     });
@@ -188,15 +227,20 @@ $(document).ready(function () {
             password_change: {
                 validators: {
                     notEmpty: {
+                    },
+                    identical: {
+                        field: 'passpassword_change_confirmword',
                     }
                 }
             },
             password_change_confirm: {
                 validators: {
                     notEmpty: {
+                    },
+                    identical: {
+                        field: 'password_change',
                     }
                 }
-                // different or not
             }
         }
     });
@@ -206,6 +250,16 @@ $(document).ready(function () {
         bootstrapValidator.validate();
         if (bootstrapValidator.isValid()) {
             //提交新密码
+
+            //成功
+            $('#password-new-form').data('bootstrapValidator').resetForm(true);
+            $('#passwordModal_change').modal("hide");
+            $('.modal-backdrop').remove();
+            $('#successModal').modal('show');
+
+            // //不成功
+            // $('#failModal').modal('show');
+
         }
         else return;
     });
@@ -214,7 +268,6 @@ $(document).ready(function () {
         $('#password-new-form').data('bootstrapValidator').resetForm(true);
     });
 
-    
     $('#bonded-email-form').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -243,7 +296,17 @@ $(document).ready(function () {
         var bootstrapValidator = $("#bonded-email-form").data('bootstrapValidator');
         bootstrapValidator.validate();
         if (bootstrapValidator.isValid()) {
-            //改变邮箱提交
+            //修改邮箱
+            //验证邮箱和验证码
+
+            //成功
+            $('#successModal').modal('show');
+            $('#bonded-email-form').data('bootstrapValidator').resetForm(true);
+            $('#emailModal_bonded').modal("hide");
+            $('.modal-backdrop').remove();
+
+            // //不成功
+            // $('#failModal').modal('show');
         }
         else return;
     });
@@ -251,7 +314,6 @@ $(document).ready(function () {
     $('#email_bonded_cancel').click(function () {
         $('#bonded-email-form').data('bootstrapValidator').resetForm(true);
     });
-
 
     $('#bond-email-form').bootstrapValidator({
         feedbackIcons: {
@@ -277,12 +339,19 @@ $(document).ready(function () {
         }
     });
 
-
     $("#email_submit").on("click", function () {
         var bootstrapValidator = $("#bond-email-form").data('bootstrapValidator');
         bootstrapValidator.validate();
         if (bootstrapValidator.isValid()) {
             //绑定邮箱提交
+            //成功
+            $('#successModal').modal('show');
+            $('#bond-email-form').data('bootstrapValidator').resetForm(true);
+            $('#emailModal').modal("hide");
+            $('.modal-backdrop').remove();
+
+            // //不成功
+            // $('#failModal').modal('show');
         }
         else return;
     });
@@ -291,14 +360,21 @@ $(document).ready(function () {
         $('#bond-email-form').data('bootstrapValidator').resetForm(true);
     });
 
-    $('.close').click(function () {
+    $('#emailModal .close').click(function () {
         $('#bond-email-form').data('bootstrapValidator').resetForm(true);
+    });
+    $('#emailModal_bonded .close').click(function () {
         $('#bonded-email-form').data('bootstrapValidator').resetForm(true);
+    });
+    $('#formModal .close').click(function () {
         $('#claimForm').data('bootstrapValidator').resetForm(true);
-        $('#cchange_password_form').data('bootstrapValidator').resetForm(true);
+    });
+    $('#passwordModal_check .close').click(function () {
+        $('#change_password_form').data('bootstrapValidator').resetForm(true);
+    });
+    $('#passwordModal_change .close').click(function () {
         $('#password-new-form').data('bootstrapValidator').resetForm(true);
     });
-
 
     $("#customCheck5").click(function () {
         if ($("#customCheck5").is(':checked')) {
@@ -308,4 +384,66 @@ $(document).ready(function () {
             $("#elseInput").hide();
         }
     });
+
+    $('#processModal').on('shown.bs.modal', function () {
+        var step2 = new SetStep({
+            content: '.stepCont2',
+            clickAble: false,
+            stepCounts:3,
+            steps:['1','2','3'],
+            showBtn:false,
+            curStep:1,
+        })
+
+        //当需要改变process步骤的时候：
+        $(".ystep-container").html('');
+        var step2 = new SetStep({
+            content: '.stepCont2',
+            clickAble: false,
+            stepCounts:3,
+            steps:['1','2','3'],
+            showBtn:false,
+            curStep:2,//要直接在curStep里改
+        })
+
+        //根据步骤改变标题和内容
+        var curstep = step2.opt.curStep;
+        if(curstep == '1'){
+            $('#to_process_title').css('display','block');
+
+        }else if(curstep == '2'){
+            $('#processing_title').css('display','block');
+            
+            //阶段一：正在找回：默认
+            
+            //阶段二：找回：寄行李
+            $('#processing_1').css('display','none');
+            $('#processing_2_1').css('display','block');
+            
+            //阶段二：未找回：索赔
+            $('#processing_1').css('display','none');
+            $('#processing_2_2').css('display','block');
+
+        }else if(curstep == '3'){
+            $('#processed_title').css('display','block');
+
+            //第一种情况：直接被拒
+            $('#processed_1').css('display','block');
+
+            //第二种情况：行李寄出
+            $('#processed_2_1').css('display','block');
+            
+            //第三种情况：汇款打出
+            $('#processed_2_2').css('display','block');
+            
+        }
+    });
+
+    
+    
+
+    $('#processModal').on('hidden.bs.modal', function () {
+        $(".ystep-container").html('')
+    });
+
 });

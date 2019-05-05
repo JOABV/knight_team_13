@@ -2,12 +2,10 @@ $(document).ready(function () {
     function connect(address, params) {
         $.ajax({
             type: "POST",
-            // url: "http://101.132.96.76:8080/"+address,
-            url: "http://localhost:8080/" + address,
+            url: "http://101.132.96.76:8080/"+address,
             dataType: "text",
             data: params,
             success: function (data) {
-                window.location.href = '../html-en/employee.html';
             },
             error: function (jqXHR) {
                 alert("wrong: " + jqXHR.status)
@@ -49,6 +47,16 @@ $(document).ready(function () {
         bootstrapValidator.validate();
         if (bootstrapValidator.isValid()) {
             //登录
+            //登录成功，跳转到employee页面，跳转没写
+
+            var Params = {};
+            Params.phone_number = $("#employee_lo").val();
+            Params.password = $("#password_lo").val();
+
+            connect("staff/login", Params);
+
+            //登陆失败
+            $('#failModal').modal('show');
         }
         else return;
     });

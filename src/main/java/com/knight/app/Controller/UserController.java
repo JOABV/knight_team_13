@@ -49,14 +49,14 @@ public class UserController {
 		JSONObject jso = new JSONObject();
 		User user1 = userRepository.findOne(user.getString("phone_number"));
 		if (user1 == null) {
-			jso.put("Checkcode", 200);
+			jso.put("Checkcode", "200");
 			jso.put("Message", "not exist");
 		}else{
 			if(user1.getPassword().compareTo(user.getString("password")) != 0){
-				jso.put("Checkcode", 201);
+				jso.put("Checkcode", "201");
 				jso.put("Message", "wrong password");
 			}else{
-				jso.put("Checkcode", 100);
+				jso.put("Checkcode", "100");
 				jso.put("Message", "success");
 			}
 		}
@@ -71,11 +71,11 @@ public class UserController {
 		User user = userRepository.findOne(jsonobject.getString("phone_number"));
 		if (user == null){
 			if (! userRepository.exists(jsonobject.getString("phone_number"))){
-				jso.put("Checkcode", 200);
+				jso.put("Checkcode", "200");
 				jso.put("Message", "not exist");
 			}
 		}else{
-			jso.put("Checkcode", 100);
+			jso.put("Checkcode", "100");
 			jso.put("Message", user);
 		}
 		return jso;
@@ -88,13 +88,13 @@ public class UserController {
 		User user = userRepository.findOne(json.getString("phone_number"));
 		if (user == null){
 			if (! userRepository.exists(json.getString("phone_number"))){
-				jso.put("Checkcode", 200);
+				jso.put("Checkcode", "200");
 				jso.put("Message", "the user doesn't exist");
 			}
 		}else{
 			user.setEmail(json.getString("email"));
 			userRepository.save(user);
-			jso.put("Checkcode", 100);
+			jso.put("Checkcode", "100");
 			jso.put("Message", user);
 		}
 		return jso;
@@ -107,13 +107,13 @@ public class UserController {
 		User user = userRepository.findOne(json.getString("phone_number"));
 		if (user == null){
 			if (! userRepository.exists(json.getString("phone_number"))){
-				jso.put("Checkcode", 200);
+				jso.put("Checkcode", "200");
 				jso.put("Message", "the user doesn't exist");
 			}
 		}else{
 			user.setPassword(json.getString("password"));
 			userRepository.save(user);
-			jso.put("Checkcode", 100);
+			jso.put("Checkcode", "100");
 			jso.put("Message", user);
 		}
 		return jso;

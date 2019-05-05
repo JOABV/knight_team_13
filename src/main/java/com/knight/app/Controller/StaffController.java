@@ -15,22 +15,21 @@ public class StaffController {
 	private StaffRepository staffRepository;
 
 	@PostMapping(path="/login")
-	public @ResponseBody JSONObject login (@RequestBody Staff staff) {
+	public @ResponseBody JSONObject login (@RequestBody JSONObject staff) {
 
 		JSONObject jso = new JSONObject();
-        Staff staff1 = staffRepository.findOne(staff.getPhone());
-
-		if (staff1 == null){
-            if (! staffRepository.exists(staff.getPhone())){
-                jso.put("Checkcode", 200);
-				jso.put("Message", "not exit");
-            }else{
-				jso.put("Checkcode", 201);
-				jso.put("Message", "wrong password");
-            }
+		Staff staff1 = staffRepository.findOne(staff.getString("phone_number"));
+		if (staff1 == null) {
+			jso.put("Checkcode", "200");
+			jso.put("Message", "not exist");
 		}else{
-			jso.put("Checkcode", 100);
-			jso.put("Message", "success");
+			if(staff1.getPassword().compareTo(staff.getString("password")) != 0){
+				jso.put("Checkcode", "201");
+				jso.put("Message", "wrong password");
+			}else{
+				jso.put("Checkcode", "100");
+				jso.put("Message", "success");
+			}
 		}
 		return jso;
 	}

@@ -20,13 +20,18 @@ public class UserPolicyController {
 	public @ResponseBody JSONObject getClaimList(@RequestBody JSONObject jso) {
 		String phone_number = jso.getString("phone_number");
 		List<JSONObject> policyList = policyMapper.getPolicyByPhoneNumber(phone_number);
+
+		for(int i = 0 ; i < policyList.size(); i++){
+			String policyNumber = policyList.get(i).getString("policy_number");
+			policyList.get(i).putAll(policyMapper.getStates(policyNumber));
+		}
 		JSONObject result = new JSONObject();
 
 		if(policyList.size() == 0){
 			result.put("Checkcode","200");
 			result.put("Message","it doesn't exist");
 		}else{
-			result.put("Checkcode","123");
+			result.put("Checkcode","100");
 			result.put("Message", policyList);
 		}
 		return result;

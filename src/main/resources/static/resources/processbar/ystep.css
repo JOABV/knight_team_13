@@ -1,59 +1,70 @@
 /*common css*/
-.stepPage{
-  display:none;
-  height:100%;
+
+.stepPage {
+  display: none;
+  height: 100%;
 }
-.stepCont{
-  width:100%;
+
+.stepCont {
+  width: 100%;
 }
+
 .ystep-container {
-  font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Wenquanyi Micro Hei","Microsoft Yahei",Arial,sans-serif;
+  font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Wenquanyi Micro Hei", "Microsoft Yahei", Arial, sans-serif;
   display: inline-block;
   position: relative;
-  color: #000;
-
+  color: rgba(255, 255, 255, 1.0);
   margin: 20px;
 }
+
 .ystep-container ul {
   list-style: none;
 }
-.ystep-container ul,.ystep-container li,.ystep-container p {
+
+.ystep-container ul, .ystep-container li, .ystep-container p {
   margin: 0;
   padding: 0;
 }
 
 /*size css*/
+
 .ystep-lg {
   /*width: 700px;*/
-  width:100%;
+  width: 100%;
   height: 60px;
-  font-size: 18px;
+  font-size: 16px;
   /*left: 15%;*/
   line-height: .3;
 }
 
 /*large size css*/
+
 .ystep-lg .ystep-container-steps {
   position: absolute;
   top: 2px;
   cursor: pointer;
-  z-index: 10;
+  z-index: 0;
 }
+
 .ystep-lg li {
   float: left;
   width: 100px;
   height: 85px;
   margin-right: 100px;
 }
+
 .ystep-lg .ystep-step-done {
   background-position: -278px -132px;
 }
+
 .ystep-lg .ystep-step-undone {
   background-position: -137px -131px;
 }
+
 .ystep-lg .ystep-step-active {
   background-position: -414px -131px;
 }
+
 .ystep-lg .ystep-progress {
   width: 400px;
   height: 10px;
@@ -64,6 +75,7 @@
   margin-right: 10px;
   overflow: hidden;
 }
+
 .ystep-lg .ystep-progress-bar {
   width: 400px;
   height: 20px;
@@ -71,38 +83,47 @@
   display: inline-block;
   float: left;
 }
+
 .ystep-lg .ystep-progress-highlight {
   height: 20px;
-	display: block;
+  display: block;
 }
 
 /*blue css*/
+
 .ystep-blue .ystep-step-done {
   background-image: url("./images/pointes_blue.png");
   background-repeat: no-repeat;
 }
+
 .ystep-blue .ystep-step-undone {
   background-image: url("./images/pointes_blue.png");
   background-repeat: no-repeat;
-  color: #9c9a9b;
+  color: rgba(255, 255, 255, 1.0);
 }
+
 .ystep-blue .ystep-step-active {
   background-image: url("./images/pointes_blue.png");
   background-repeat: no-repeat;
   color: #3276b1;
 }
+
 .ystep-blue .ystep-progress-highlight {
   background: #60baff;
 }
+
 /*按钮样式*/
+
 .ystep {
   padding: 20px;
   /*min-width: 1114px;*/
 }
-.step-button{
+
+.step-button {
   position: relative;
   /*top: -85px;*/
 }
-.step-button button{
+
+.step-button button {
   margin: 15px;
 }

@@ -23,7 +23,7 @@ public class Policy {
     private String picture;
 
     private String feedback = "xxxx@@xxxx@@xxxx";
-    private String claim_states = "0@@0@@0";
+    private String states = "0@@0@@0";
     private String staff_number;
 
 
@@ -37,7 +37,7 @@ public class Policy {
         this.phone_number = phone_number;
     }
 
-    public Policy(String policy_number, String policy_name, String phone_number, Date time, String place, String reason, String price, String picture, String claim_states) {
+    public Policy(String policy_number, String policy_name, String phone_number, Date time, String place, String reason, String price, String picture, String states) {
         this.policy_number = policy_number;
         this.policy_name = policy_name;
         this.phone_number = phone_number;
@@ -46,7 +46,7 @@ public class Policy {
         this.reason = reason;
         this.price = price;
         this.picture = picture;
-        this.claim_states = claim_states;
+        this.states = states;
     }
 
     public Policy(String policy_number, String policy_name, String phone_number, Date time, String place, String reason, String price, String picture, String feedback, String claim_states, String staff_number) {
@@ -59,7 +59,7 @@ public class Policy {
         this.price = price;
         this.picture = picture;
         this.feedback = feedback;
-        this.claim_states = claim_states;
+        this.states = states;
         this.staff_number = staff_number;
     }
 
@@ -135,12 +135,12 @@ public class Policy {
         this.feedback = feedback;
     }
 
-    public String getClaim_states() {
-        return claim_states;
+    public String getStates() {
+        return states;
     }
 
-    public void setClaim_states(String claim_states) {
-        this.claim_states = claim_states;
+    public void setStates(String states) {
+        this.states = states;
     }
 
     public String getStaff_number() {

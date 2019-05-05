@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Controller
@@ -27,7 +28,7 @@ public class UserClaimController {
 		if (jso.has("policy_number")){
 			String policy_number = jso.getString("policy_number");
 			JSONObject states = policyMapper.getStates(policy_number);
-			String s = states.getString("claim_states").split("@@")[0];
+			String s = states.getString("states").split("@@")[0];
 			JSONObject message = policyMapper.getPolicy(policy_number);
 
 			if(s.compareTo("1") == 0){
@@ -48,16 +49,17 @@ public class UserClaimController {
 
 	@PostMapping(path="/submit_OR_update")
 	public @ResponseBody JSONObject lost_luggage_submit (@RequestBody JSONObject policy) {
-		JSONObject jso = policyMapper.getOneMessageFromToProcess(policy.getString("policy_number"));
-		Date date = new Date();
-		policy.put("time", date);
-		if ( jso != null){
+		JSONObject p = policyMapper.getOneMessageFromToProcess(policy.getString("policy_number"));
+		JSONObject jso = new JSONObject();
+		if ( p!= null){
 			policyMapper.UpdateToProcess(policy);
+			policyMapper.UpdateStates(policy);
 			jso.put("Checkcode", "100");
 			jso.put("Message", "update");
 		}else{
 			policyMapper.insertToProcess(policy);
-			jso.put("Checkcode", "101");
+			policyMapper.UpdateStates(policy);
+			jso.put("Checkcode", "100");
 			jso.put("Message", "submit");
 		}
 		return jso;

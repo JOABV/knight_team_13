@@ -59,16 +59,18 @@ public class StaffClaimController {
 		JSONObject back = new JSONObject();
 		if(jso.has("policy_number") && jso.has("states")){
             String policy_number = jso.getString("policy_number");
-            String states = jso.getString("states");
+            String Bigstates = jso.getString("states");
             JSONObject policy;
 
-            if(states.compareTo("101") == 0){
+            if(Bigstates.compareTo("101") == 0){
                 policy = policyMapper.getOneMessageFromToProcess(policy_number);
-            }else if(states.compareTo("102") == 0){
+            }else if(Bigstates.compareTo("102") == 0){
                 policy = policyMapper.getOneMessageFromProcessing(policy_number);
             }else{
                 policy = policyMapper.getOneMessageFromProcessed(policy_number);
             }
+            policy.putAll(policyMapper.getStates(policy_number));
+			policy.put("feedback","xxxx@@xxxx@@xxxx");
 
 			back.put("Checkcode", "100");
 			back.put("Message", policy);
@@ -86,7 +88,7 @@ public class StaffClaimController {
             String policy_number = jso.getString("policy_number");
             String states = jso.getString("states");
             JSONObject policy = policyMapper.getOneMessageFromProcessing(policy_number);
-            String []claim_states = policy.getString("claim_states").split("@@");
+            String []claim_states = policy.getString("states").split("@@");
 
             for (int i = 1; i < claim_states.length; i++) {
                 if (claim_states[i].compareTo("0") == 0)
@@ -113,7 +115,7 @@ public class StaffClaimController {
             String policy_number = jso.getString("policy_number");
             String isAccept = jso.getString("isAccept");
             JSONObject policy = policyMapper.getOneMessageFromProcessing(policy_number);
-            String []claim_states = policy.getString("claim_states").split("@@");
+            String []claim_states = policy.getString("states").split("@@");
             if (isAccept.compareTo("0") == 0){
                 claim_states[0] = "2";
             }else{
