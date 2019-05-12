@@ -1,24 +1,31 @@
 $(document).ready(function () {
+    var url = "http://localhost:8080/";
+    // var url = "http://101.132.96.76:8080/"
+
     function connect(address, params) {
         $.ajax({
             type: "POST",
-            url: "http://101.132.96.76:8080/"+address,
-            dataType: "text",
-            data: params,
+            url: url + address,
+            contentType: "application/json",
+            dataType:"json",
+            async: false,
+            data: JSON.stringify(params),
             success: function (data) {
+                employee_homepage(data);
             },
             error: function (jqXHR) {
-                alert("wrong: " + jqXHR.status)
+                // return jqXHR.status.toString();
             }
         });
     }
 
-    $("#employee_login").click(function () {
-        var params = {}
-        params.username = $('#employee_lo').val()
-        params.password = $('#password_em').val()
-        connect("staff/login", params)
-    });
+    function employee_homepage(data){
+        if(data["Checkcode"] === "100") {
+            window.location.href = url + "staff/employee";
+        }else{
+            alert(data["Checkcode"])
+        }
+    }
 
     $('.login-form').bootstrapValidator({
         feedbackIcons: {
@@ -47,18 +54,14 @@ $(document).ready(function () {
         bootstrapValidator.validate();
         if (bootstrapValidator.isValid()) {
             //登录
-            //登录成功，跳转到employee页面，跳转没写
-
-            var Params = {};
-            Params.phone_number = $("#employee_lo").val();
-            Params.password = $("#password_lo").val();
-
-            connect("staff/login", Params);
-
+            var params = {};
+            params["phone_number"] = $('#employee_lo').val();
+            params["password"] = $('#password_em').val();
+            connect("staff/login", params);
+        }else{
             //登陆失败
             $('#failModal').modal('show');
         }
-        else return;
     });
 
 

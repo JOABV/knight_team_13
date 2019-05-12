@@ -128,7 +128,7 @@
                                 <h1 class="cover-heading i18n" name="slide1_title"></h1>
                                 <p class="lead p-3 pb-5 i18n" name="slide1_content"></p>
                                 <p class="lead mt-5">
-                                    <a href="#" class="btn btn-outline-light btn-secondary i18n"
+                                    <a href="#infoModal" data-toggle="modal" class="btn btn-outline-light btn-secondary i18n"
                                         name="slide1_button"></a>
                                 </p>
                             </div>
@@ -136,7 +136,7 @@
                                 <h1 class="cover-heading i18n" name="slide2_title"></h1>
                                 <p class="lead p-3 pb-5 i18n" name="slide2_content"></p>
                                 <p class="lead mt-5">
-                                    <a href="#" class="btn btn-outline-light btn-secondary i18n"
+                                    <a href="#guideModal" data-toggle="modal" class="btn btn-outline-light btn-secondary i18n"
                                         name="slide2_button"></a>
                                 </p>
                             </div>
@@ -348,11 +348,13 @@
 
                     <!-- 申诉流程 弹出窗 -->
                     <div class="modal fade" id="processModal" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog modal-lg text-dark text-left modal-dialog-centered" role="document">
+                        <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 id="to_process_title" class="i18n" name="to_process" style="display: none;"></h4>
-                                    <h4 id="processing_title" class="i18n" name="processing" style="display: none;"></h4>
+                                    <h4 id="to_process_title" class="i18n" name="to_process" style="display: none;">
+                                    </h4>
+                                    <h4 id="processing_title" class="i18n" name="processing" style="display: none;">
+                                    </h4>
                                     <h4 id="processed_title" class="i18n" name="processed" style="display: none;"></h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -373,22 +375,27 @@
                                                 <div id="processing_1" class="d-flex flex-column align-items-center">
                                                     <p class="i18n" name="processing_info1"></p>
                                                 </div>
-                                                <div id="processing_2_1" class="d-flex flex-column align-items-center" style="display: none;">
+                                                <div id="processing_2_1" class="d-flex flex-column align-items-center"
+                                                    style="display: none;">
                                                     <p class="i18n" name="processing_info2"></p>
                                                 </div>
-                                                <div id="processing_2_2" class="d-flex flex-column align-items-center" style="display: none;">
+                                                <div id="processing_2_2" class="d-flex flex-column align-items-center"
+                                                    style="display: none;">
                                                     <p class="i18n" name="processing_info3"></p>
                                                 </div>
                                             </div>
                                             <div id="page3" class="stepPage">
-                                                <div id="processed_1" class="d-flex flex-column align-items-center" style="display: none;">
+                                                <div id="processed_1" class="d-flex flex-column align-items-center"
+                                                    style="display: none;">
                                                     <p class="i18n" name="processed_info1"></p>
                                                     <p class="i18n" name="processed_info2"></p>
                                                 </div>
-                                                <div id="processed_2_1" class="d-flex flex-column align-items-center" style="display: none;">
+                                                <div id="processed_2_1" class="d-flex flex-column align-items-center"
+                                                    style="display: none;">
                                                     <p class="i18n" name="processed_info3"></p>
                                                 </div>
-                                                <div id="processed_2_2" class="d-flex flex-column align-items-center" style="display: none;">
+                                                <div id="processed_2_2" class="d-flex flex-column align-items-center"
+                                                    style="display: none;">
                                                     <p class="i18n" name="processed_info4"></p>
                                                 </div>
                                             </div>
@@ -756,13 +763,13 @@
                                     <div class="form-group col-md-5">
                                         <label class="i18n" name="applicant_name"></label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" id="account_info_name_NO_email" value="Jo"
+                                            <input type="text" class="form-control" id="account-info-name" value="Jo"
                                                 disabled>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-7 ml-auto">
                                         <label class="i18n" name="applicant_id"></label>
-                                        <input type="text" class="form-control" id="account_info_id_NO_email" value="xxx@xx.xx"
+                                        <input type="text" class="form-control" id="account-info-id" value="xxx@xx.xx"
                                             disabled>
                                     </div>
                                 </div>
@@ -771,7 +778,7 @@
                                     <div class="form-group col-md-5">
                                         <label class="i18n" name="applicant_tel"></label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" id="account_info_tel_NO_email"
+                                            <input type="text" class="form-control" id="account-info-tel"
                                                 value="xx-xxxxx" disabled>
                                         </div>
                                     </div>
@@ -893,6 +900,107 @@
                             <div class="modal-body">
                                 <div class="text-left">
                                     <h6 class="i18n" name="fail_info"></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="infoModal" class="modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="text-left">
+                                    <h4 class="i18n" name="info_title"></h4>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="stepCont stepCont3">
+                                    <div class='ystep-container ystep-lg ystep-blue' style="width: 100%;">
+                                    </div>
+                                    <div class="pageCont mt-0">
+                                        <div id="page1" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <img src="../static/resources/img/info1.png" width="20%" />
+                                                <h5 class="mt-3 i18n" name="info1_info1"></h5>
+
+                                                <p class="i18n" name="info1_info2"> </p>
+                                                <p class="i18n" name="info1_info3"> </p>
+                                            </div>
+                                        </div>
+                                        <div id="page2" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <img src="../static/resources/img/info2.png" width="20%" />
+                                                <h5 class="mt-3 i18n" name="info2_info1"></h5>
+
+                                                <p class="i18n" name="info2_info2"></p>
+                                                <p class="i18n" name="info2_info3"> </p>
+                                            </div>
+                                        </div>
+                                        <div id="page3" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+
+                                                <img src="../static/resources/img/info3.png" width="20%" />
+                                                <h5 class="mt-3 i18n" name="info3_info1"></h5>
+                                                <p class="i18n" name="info3_info2"></p>
+                                                <p class="i18n" name="info3_info3"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="guideModal" class="modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="text-left">
+                                    <h4 class="i18n" name="guide_title"></h4>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="stepCont stepCont1">
+                                    <div class='ystep-container ystep-lg ystep-blue' style="width: 100%;">
+                                    </div>
+                                    <div class="pageCont mt-0">
+                                        <div id="page1" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <h5 class="i18n" name="guide2_info1"></h5>
+                                                <img src="../static/resources/img/guide2.jpg" width="80%" />
+                                                <p class="i18n" name="guide2_info2"></p>
+                                                <p class="i18n" name="guide2_info3"> </p>
+                                            </div>
+                                        </div>
+                                        <div id="page2" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <h5 class="i18n" name="guide3_info1"></h5>
+                                                <img src="../static/resources/img/guide3.jpg" width="80%" />
+                                                <p class="i18n" name="guide3_info2"></p>
+                                                <p class="i18n" name="guide3_info3"></p>
+                                            </div>
+                                        </div>
+                                        <div id="page3" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <h5 class="i18n" name="guide4_info1"></h5>
+                                                <img src="../static/resources/img/guide4.jpg" width="80%" />
+                                                <p class="i18n" name="guide4_info2"></p>
+                                                <p class="i18n" name="guide4_info3"></p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

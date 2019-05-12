@@ -30,7 +30,7 @@ public class UserClaimController {
 			JSONObject states = policyMapper.getStates(policy_number);
 			String s = states.getString("states").split("@@")[0];
 			JSONObject message = policyMapper.getPolicy(policy_number);
-
+			message.putAll(states);
 			if(s.compareTo("1") == 0){
 				message.putAll(policyMapper.getOneMessageFromToProcess(policy_number));
 			}else if(s.compareTo("2") == 0){
@@ -38,6 +38,7 @@ public class UserClaimController {
 			}else if(s.compareTo("3") == 0){
 				message.putAll(policyMapper.getOneMessageFromProcessed(policy_number));
 			}
+
 			result.put("Checkcode", "100");
 			result.put("Message", message);
 		}else{

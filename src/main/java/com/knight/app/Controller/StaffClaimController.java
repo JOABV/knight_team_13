@@ -19,6 +19,42 @@ public class StaffClaimController {
 	@Autowired
 	private PolicyMapper policyMapper;
 
+
+//	@GetMapping(path="/list_html")
+//	public String getList(@RequestBody JSONObject jso) {
+//		int length = jso.getInt("length");
+//		String states = jso.getString("states");
+//		String time = jso.getString("time");
+//		String place = jso.getString("place");
+//		String price = jso.getString("price");
+//		List<JSONObject> policyList;
+//
+//		if(states.compareTo("101") == 0){
+//			if(time.compareTo("101") == 0){
+//				policyList = policyMapper.getToProcessListByOrderForLength(length,place,price);
+//			}else{
+//				policyList = policyMapper.getToProcessListByInvertedOrderForLength(length,place,price);
+//			}
+//		}else if(states.compareTo("102") == 0){
+//			if(time.compareTo("101") == 0){
+//				policyList = policyMapper.getProcessingListByOrderForLength(length,place,price);
+//			}else{
+//				policyList = policyMapper.getProcessingListByInvertedOrderForLength(length,place,price);
+//			}
+//		}else{
+//			if(time.compareTo("101") == 0){
+//				policyList = policyMapper.getProcessedListByOrderForLength(length,place,price);
+//			}else{
+//				policyList = policyMapper.getProcessedListByInvertedOrderForLength(length,place,price);
+//			}
+//		}
+//		JSONObject result = new JSONObject();
+//		result.put("Checkcode", "100");
+//		result.put("Message", policyList);
+//
+//		return result;
+//	}
+
 	@PostMapping(path="/list")
 	public @ResponseBody JSONObject getClaimList(@RequestBody JSONObject jso) {
 		int length = jso.getInt("length");
@@ -49,7 +85,7 @@ public class StaffClaimController {
 		}
 		JSONObject result = new JSONObject();
 		result.put("Checkcode", "100");
-		result.put("claim_list", policyList);
+		result.put("Message", policyList);
 
 		return result;
 	}
@@ -64,13 +100,15 @@ public class StaffClaimController {
 
             if(Bigstates.compareTo("101") == 0){
                 policy = policyMapper.getOneMessageFromToProcess(policy_number);
+				policy.put("feedback","xxxx@@xxxx@@xxxx");
             }else if(Bigstates.compareTo("102") == 0){
                 policy = policyMapper.getOneMessageFromProcessing(policy_number);
             }else{
                 policy = policyMapper.getOneMessageFromProcessed(policy_number);
             }
+
             policy.putAll(policyMapper.getStates(policy_number));
-			policy.put("feedback","xxxx@@xxxx@@xxxx");
+			policy.putAll(policyMapper.getPolicy(policy_number));
 
 			back.put("Checkcode", "100");
 			back.put("Message", policy);
@@ -86,19 +124,37 @@ public class StaffClaimController {
 		JSONObject back = new JSONObject();
 		if(jso.has("policy_number") && jso.has("states") && jso.has("feedback") && jso.has("isTheLastSubmit")){
             String policy_number = jso.getString("policy_number");
-            String states = jso.getString("states");
             JSONObject policy = policyMapper.getOneMessageFromProcessing(policy_number);
-            String []claim_states = policy.getString("states").split("@@");
+			JSONObject states = policyMapper.getStates(policy_number);
+            String []claim_states = states.getString("states").split("@@");
+			String []feedbacks = policy.getString("feedback").split("@@");
 
             for (int i = 1; i < claim_states.length; i++) {
-                if (claim_states[i].compareTo("0") == 0)
-                    claim_states[i] = states;
-                else
-                    break;
-            }
-            policy.put("claim_states", String.join("@@", claim_states));
-            policyMapper.updateProcessing(policy);
+				if (claim_states[i].compareTo("0") == 0) {
+					claim_states[i] = jso.getString("states");
+					break;
+				}
+			}
+			for (int i = 1; i < feedbacks.length; i++) {
+				if (feedbacks[i].compareTo("xxxx") == 0) {
+					feedbacks[i] = jso.getString("feedback");
+					break;
+				}
+			}
 
+            if(jso.getString("isTheLastSubmit").compareTo("0") == 0){
+				policy.put("states", String.join("@@", claim_states));
+				policy.put("feedback", String.join("@@", feedbacks));
+				policyMapper.UpdateStates(policy);
+				policyMapper.updateProcessing(policy);
+			}else{
+				claim_states[0] = "3";
+            	policy.put("states", String.join("@@", claim_states));
+				policy.put("feedback", String.join("@@", feedbacks));
+				policyMapper.UpdateStates(policy);
+				policyMapper.deleteProcessing(policy_number);
+				policyMapper.insertProcessed(policy);
+			}
 			back.put("Checkcode", "100");
 			back.put("Message", "success");
 		}else{
@@ -114,18 +170,22 @@ public class StaffClaimController {
         if(jso.has("policy_number") && jso.has("isAccept") && jso.has("feedback") && jso.has("staff_number")){
             String policy_number = jso.getString("policy_number");
             String isAccept = jso.getString("isAccept");
-            JSONObject policy = policyMapper.getOneMessageFromProcessing(policy_number);
-            String []claim_states = policy.getString("states").split("@@");
-            if (isAccept.compareTo("0") == 0){
+            JSONObject policy = policyMapper.getOneMessageFromToProcess(policy_number);
+            JSONObject states = policyMapper.getStates(policy_number);
+            String []claim_states = states.getString("states").split("@@");
+            if (isAccept.compareTo("1") == 0){
                 claim_states[0] = "2";
             }else{
                 claim_states[0] = "3";
             }
-            policy.put("claim_states", String.join("@@", claim_states));
+            states.put("states", String.join("@@", claim_states));
+			policyMapper.UpdateStates(states);
 
             policyMapper.deleteToProcess(policy_number);
+            policy.put("feedback", jso.getString("feedback")+"@@xxxx@@xxxx");
+            policy.put("staff_number", jso.getString("staff_number"));
 
-			if (isAccept.compareTo("0") == 0){
+			if (isAccept.compareTo("1") == 0){
 				policyMapper.insertProcessing(policy);
 			}else{
 				policyMapper.insertProcessed(policy);

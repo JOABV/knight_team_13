@@ -50,14 +50,39 @@
                     </div>
                 </div>
                 <div class="flex-column col-8 m-3">
-
                     <ul class="nav flex-row bg-dark justify-content-start align-items-center p-2 mb-3"
                         style="border-radius: 3px;">
-                        <li class="ml-2 mr-3">
-                            <button class="btn btn-sm btn-outline-light i18n" name="time_search"></button>
+                        <li class="ml-3 mr-3">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-light i18n dropdown-toggle" name="time_search" type="button" id="time_select" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="time_select" id="time_active">
+                                    <div class="dropdown-item active" id="time1">顺序</div>
+                                    <div class="dropdown-item" id="time2">倒序</div>
+                                </div>
+                            </div>
                         </li>
-                        <li>
-                            <button class="btn btn-sm btn-outline-light i18n" name="place_search"></button>
+                        <li class="ml-3 mr-3">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-light i18n dropdown-toggle" name="place_search" type="button" id="place_select" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="place_select" id="place_active">
+                                    <div class="dropdown-item active" id="place1">Beijing</div>
+                                    <div class="dropdown-item" id="place2">Shanghai</div>
+                                    <div class="dropdown-item" id="place3">Hangzhou</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ml-3 mr-3">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-light i18n dropdown-toggle" name="price_search" type="button" id="price_select" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="price_select" id="price_active">
+                                    <div class="dropdown-item active" id="price1">0-100</div>
+                                    <div class="dropdown-item" id="price2">100-10000</div>
+                                    <div class="dropdown-item" id="price3">10000+</div>
+                                </div>
+                            </div>
                         </li>
                         <li class="ml-auto">
                             <form class="form-inline">
@@ -71,47 +96,18 @@
                         <!-- to process -->
                         <div class="tab-pane fade show active" id="toprocess" role="tabpanel"
                             aria-labelledby="toprocess-list">
-                            <!-- 保单列表中的一个保单 -->
-                            <div class="list-group">
-                                <a href="claimdetail.html" target="_blank"
-                                    class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">NO. 16372329</h5>
-                                        <small>Time</small>
-                                    </div>
-                                </a>
+                            <div class="list-group" id="toprocess_list">
                             </div>
-
                         </div>
                         <!-- processing -->
                         <div class="tab-pane fade" id="processing" role="tabpanel" aria-labelledby="processing-list">
-                            <!-- 保单列表中的一个保单 -->
-                            <div class="list-group">
-                                <a href="claimdetail.html" target="_blank"
-                                    class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">List group processing</h5>
-                                        <small>3 days ago</small>
-                                    </div>
-                                    <small class="text-truncate">Donec id elit non mi porta.</small>
-                                </a>
+                            <div class="list-group" id="processing_list">
                             </div>
                         </div>
-
                         <!-- processed -->
                         <div class="tab-pane fade" id="processed" role="tabpanel" aria-labelledby="processed-list">
-                            <!-- 保单列表中的一个保单 -->
-                            <div class="list-group">
-                                <a href="claimdetail.html" target="_blank"
-                                    class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">List group item heading</h5>
-                                        <small>3 days ago</small>
-                                    </div>
-                                    <small class="text-truncate">Donec id elit non mi porta.</small>
-                                </a>
+                            <div class="list-group" id="processed_list">
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -124,4 +120,5 @@
 
     <script src="../static/resources/i18n/jquery.i18n.properties.js"></script>
     <script src="../static/resources/i18n/language.js"></script>
+    <script src="../static/js/employee.js"></script>
 </body>

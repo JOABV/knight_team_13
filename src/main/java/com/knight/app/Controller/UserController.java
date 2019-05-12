@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @CrossOrigin
 @RequestMapping(path="/user")
@@ -19,11 +21,15 @@ public class UserController {
 		return "homepage";
 	}
 
+	@GetMapping("/account")
+	public String account(){
+		return "account";
+	}
+
 	//register
 	@PostMapping(path="/register")
-	public @ResponseBody JSONObject User_register (@RequestBody JSONObject jso) {
+	public @ResponseBody JSONObject User_register (@RequestBody JSONObject jso, HttpSession session) {
 		JSONObject result = new JSONObject();
-
 		if (userRepository.exists(jso.getString("phone_number"))){
 			result.put("Checkcode", "200");
 			result.put("Message", "exists");
@@ -40,12 +46,12 @@ public class UserController {
 		result.put("Checkcode", "100");
 		result.put("Message", "success");
 
+		session.setAttribute("loginUser", phone_number);
 		return result;
 	}
 	//login
 	@PostMapping(path="/login")
-	public @ResponseBody JSONObject User_login (@RequestBody JSONObject user) {
-
+	public @ResponseBody JSONObject User_login (@RequestBody JSONObject user,HttpSession session) {
 		JSONObject jso = new JSONObject();
 		User user1 = userRepository.findOne(user.getString("phone_number"));
 		if (user1 == null) {
@@ -58,6 +64,7 @@ public class UserController {
 			}else{
 				jso.put("Checkcode", "100");
 				jso.put("Message", "success");
+				session.setAttribute("loginUser", user.getString("phone_number"));
 			}
 		}
 		return jso;

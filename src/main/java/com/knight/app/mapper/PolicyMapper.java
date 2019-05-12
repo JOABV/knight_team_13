@@ -26,10 +26,10 @@ public interface PolicyMapper {
     @Select("SELECT * FROM claim_unprocessed WHERE policy_number = #{policy_number}")
     public JSONObject getOneMessageFromToProcess(@Param("policy_number") String policy_number);
 
-    @Select("SELECT  policy_number, time, place, price FROM claim_unprocessed WHERE place= #{place} AND price = #{price} LIMIT #{length} ORDER BY time")
+    @Select("SELECT  policy_number, time, place, price FROM claim_unprocessed WHERE place= #{place} AND price = #{price} ORDER BY time LIMIT #{length}")
     public List<JSONObject> getToProcessListByOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
 
-    @Select("SELECT  policy_number, time, place, price FROM claim_unprocessed WHERE place= #{place} AND price = #{price} LIMIT #{length} ORDER BY time DESC")
+    @Select("SELECT  policy_number, time, place, price FROM claim_unprocessed WHERE place= #{place} AND price = #{price} ORDER BY time DESC LIMIT #{length} ")
     public List<JSONObject> getToProcessListByInvertedOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
 
 
@@ -48,10 +48,10 @@ public interface PolicyMapper {
     @Select("SELECT * FROM claim_processing WHERE policy_number = #{policy_number}")
     public JSONObject getOneMessageFromProcessing(@Param("policy_number") String policy_number);
 
-    @Select("SELECT  policy_number, time, place, price FROM claim_processing WHERE place= #{place} AND price = #{price} LIMIT #{length} ORDER BY time")
+    @Select("SELECT  policy_number, time, place, price FROM claim_processing WHERE place= #{place} AND price = #{price} ORDER BY time LIMIT #{length}")
     public List<JSONObject> getProcessingListByOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
 
-    @Select("SELECT  policy_number, time, place, price FROM claim_processing WHERE place= #{place} AND price = #{price} LIMIT #{length} ORDER BY time DESC")
+    @Select("SELECT  policy_number, time, place, price FROM claim_processing WHERE place= #{place} AND price = #{price} ORDER BY time DESC LIMIT #{length} ")
     public List<JSONObject> getProcessingListByInvertedOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
 
 
@@ -70,10 +70,10 @@ public interface PolicyMapper {
     @Select("SELECT * FROM claim_processed WHERE policy_number = #{policy_number}")
     public JSONObject getOneMessageFromProcessed(@Param("policy_number") String policy_number);
 
-    @Select("SELECT  policy_number, time, place, price FROM claim_processed WHERE place= #{place} AND price = #{price} LIMIT #{length} ORDER BY time")
+    @Select("SELECT  policy_number, time, place, price FROM claim_processed WHERE place= #{place} AND price = #{price}ORDER BY time LIMIT #{length} ")
     public List<JSONObject> getProcessedListByOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
 
-    @Select("SELECT  policy_number, time, place, price FROM claim_processed WHERE place= #{place} AND price = #{price} LIMIT #{length} ORDER BY time DESC")
+    @Select("SELECT  policy_number, time, place, price FROM claim_processed WHERE place= #{place} AND price = #{price} ORDER BY time DESC LIMIT #{length}")
     public List<JSONObject> getProcessedListByInvertedOrderForLength(@Param("length") int length, @Param("place") String place, @Param("price") String price);
 
 

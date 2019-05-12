@@ -1,27 +1,5 @@
 $(document).ready(function () {
 
-    function connect(address, params) {
-        $.ajax({
-            type: "POST",
-            // url: "http://101.132.96.76:8080/"+address,
-            url: "http://localhost:8080/" + address,
-            dataType: "text",
-            data: params,
-            success: function (data) {
-                alert("Saved")
-            },
-            error: function (jqXHR) {
-                alert("it aleady exists")
-            }
-        });
-    }
-
-    // var
-    // connect("user/personal_information/pi")
-
-
-
-
     //查看保单里的查看文件
     $("#viewFileButton").click(function () {
         var text = $(this).text();
@@ -392,7 +370,7 @@ $(document).ready(function () {
             stepCounts:3,
             steps:['1','2','3'],
             showBtn:false,
-            curStep:1,
+            curStep:2,
         })
 
         //当需要改变process步骤的时候：
@@ -403,7 +381,7 @@ $(document).ready(function () {
             stepCounts:3,
             steps:['1','2','3'],
             showBtn:false,
-            curStep:2,//要直接在curStep里改
+            curStep:1,//要直接在curStep里改
         })
 
         //根据步骤改变标题和内容
@@ -438,11 +416,37 @@ $(document).ready(function () {
             
         }
     });
-
-    
     
 
     $('#processModal').on('hidden.bs.modal', function () {
+        $(".ystep-container").html('')
+    });
+
+    $('#guideModal').on('shown.bs.modal', function () {
+        var step2 = new SetStep({
+            content: '.stepCont1',
+            clickAble: true,
+            stepCounts: 3,
+            steps: ['1', '2', '3'],
+            showBtn: false,
+            curStep: 1,
+        })
+    });
+    $('#guideModal').on('hidden.bs.modal', function () {
+        $(".ystep-container").html('')
+    });
+
+    $('#infoModal').on('shown.bs.modal', function () {
+        var step2 = new SetStep({
+            content: '.stepCont3',
+            clickAble: true,
+            stepCounts: 3,
+            steps: ['1', '2', '3'],
+            showBtn: false,
+            curStep: 1,
+        })
+    });
+    $('#infoModal').on('hidden.bs.modal', function () {
         $(".ystep-container").html('')
     });
 
