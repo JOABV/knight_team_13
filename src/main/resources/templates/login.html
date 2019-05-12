@@ -47,8 +47,8 @@
 
                     <div class="form-group mt-3 mb-2">
                         <label class="i18n" name="signin_account" style="margin-bottom: 0rem"></label>
-                        <input type="text" id="employee_lo" name="employee_name" class="form-control i18n-input" selectname="signin_account"
-                            selectattr="placeholder" required autofocus>
+                        <input type="text" id="employee_lo" name="employee_name" class="form-control i18n-input"
+                            selectname="signin_account" selectattr="placeholder" required autofocus>
 
                     </div>
 
@@ -63,13 +63,34 @@
                             <input type="checkbox" value="remember-me" class="i18n" name="signin_remember">
                         </label>
                     </div>
-                    <button id="employee_login" class="btn btn-lg btn-primary btn-block i18n" name="signin_button"
+                    <button  onclick="location.href='101.132.96.76:8080/staff/employee'" id="employee_login" class="btn btn-lg btn-primary btn-block i18n" name="signin_button"
                         type="submit"></button>
 
                 </form>
             </div>
 
         </main>
+
+        <div id="failModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            data-backdrop="static" data-keyboard="false" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="text-left">
+                            <h3 class="i18n" name="fail_title"></h3>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-left">
+                            <h6 class="i18n" name="fail_info"></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 

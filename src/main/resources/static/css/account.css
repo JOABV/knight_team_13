@@ -53,24 +53,139 @@ body {
     border-bottom: 0.25rem solid transparent;
 }
 
-.nav-style .nav-link:hover, .nav-style .nav-link:focus {
-    border-bottom-color: rgba(255, 255, 255, 0.7);
-    color: rgba(255, 255, 255, 1.0);
-}
-
-.nav-style .nav-link:active {
-    border-bottom-color: rgba(255, 255, 255, 1.0);
-}
-
 .nav-link {
+    position: relative;
     border-bottom: 0.25rem solid;
     margin-left: 0.25rem;
     margin-right: 0.25rem;
 }
 
-.nav-style .active {
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: .25rem;
+    background-color: rgba(255, 255, 255, 1.0);
+    border-bottom: 0.25rem solid transparent;
+    transform-origin: bottom right;
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+}
+
+.nav-link:hover::before {
+    transform-origin: bottom left;
+    transform: scaleX(1);
+}
+
+.nav-style .nav-link:hover, .nav-style .nav-link:focus {
     color: rgba(255, 255, 255, 1.0);
-    border-bottom-color: rgba(255, 255, 255, 1.0);
+}
+
+.nav-style .active {
+    position: relative;
+    color: rgba(255, 255, 255, 1.0);
+}
+
+.nav-style .active::before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 1.0);
+    transform-origin: bottom left;
+    transform: scaleX(1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-style .active:hover::before {
+    transform: scaleX(0);
+    transform-origin: bottom right;
+}
+
+.btn {
+    z-index: 1;
+    position: relative;
+    background-color: transparent;
+    overflow: hidden;
+    transition: color 0.4s ease-in-out;
+}
+
+.btn::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: white;
+    transform-origin: center;
+    transform: translate(50%, 50%) scale(0);
+    transition: transform 0.45s ease-in-out;
+}
+
+.btn:hover {
+    cursor: pointer;
+    color: #161616;
+}
+
+.btn:hover::before {
+    transform: translate(50%, 50%) scale(15);
+}
+
+div {
+    position: relative;
+}
+
+label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.form-control {
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: rgba(255, 255, 255, 1.0);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.form-control:disabled {
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: rgba(255, 255, 255, 1.0);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.form-control:focus {
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: rgba(255, 255, 255, 1.0);
+    box-shadow: none;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: white;
+    transform-origin: bottom right;
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+}
+
+.form-control:focus~.span {
+    transform-origin: bottom left;
+    transform: scaleX(1);
 }
 
 .modal {

@@ -10,7 +10,8 @@
     <title class="i18n" name='title'></title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../static/resources/bootstrap-4.0.0-dist/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="../static/resources/processbar/ystep.css" />
+    <link rel="stylesheet" href="../static/resources/bootstrapvalidator-0.5.2/dist/css/bootstrapValidator.min.css" />
     <link rel="styleSheet" href="../static/css/homepage.css" />
 </head>
 
@@ -18,26 +19,30 @@
 
     <div class="container d-flex h-100 p-3 flex-column">
 
-        <header class="w-100">
-            <div class="d-flex">
-                <div class="mr-auto align-items-center d-flex flex-row">
+        <header class="w-100" style="height: 20%;">
+            <div class="d-flex h-100 align-items-center justify-content-end">
+                <!-- <div class="mr-auto align-items-center d-flex flex-row">
                     <img src="../static/resources/img/icon.png" height="100" />
-                    <!-- <p class="lead font-weight-bold text-secondary">Hibernia-Sino <br> Travel Insurance</p> -->
-                </div>
+                </div> -->
 
-                <ul class="nav nav-style align-items-center justify-content-end">
+                <ul class="nav nav-style">
+                    <!-- 主页分页按钮 -->
                     <li class="nav-item">
                         <a class="nav-link active i18n" name="homepage" id="home-tab" data-toggle="tab" href="#home"
                             role="tab" aria-controls="home" aria-selected="true"></a>
                     </li>
+                    <!-- 登录分页按钮 -->
                     <li class="nav-item">
                         <a class="nav-link i18n" name="account" id="account-tab" data-toggle="tab" href="#account"
                             role="tab" aria-controls="account" aria-selected="false"></a>
                     </li>
+                    <!-- contact分页按钮 -->
                     <li class="nav-item">
                         <a class="nav-link i18n" name="contact" id="contact-tab" data-toggle="tab" href="#contact"
                             role="tab" aria-controls="contact" aria-selected="false"></a>
                     </li>
+
+                    <!-- 语言切换 -->
                     <li class="nav-item dropdown show">
                         <a class="nav-link dropdown-toggle" href="#" role="button" id="language_button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -52,16 +57,17 @@
             </div>
         </header>
 
-        <main role="main" class="inner mt-5">
-            <div class="tab-content">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <main role="main" class="w-100 inner" style="height:75%;">
+            <div class="tab-content d-flex h-100 align-items-center justify-content-center">
+                <!-- 主页 -->
+                <div class="tab-pane fade show active w-100" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <h1 class="cover-heading i18n" name="slide1_title"></h1>
                                 <p class="lead p-3 pb-5 i18n" name="slide1_content"></p>
                                 <p class="lead mt-5">
-                                    <a href="#" class="btn btn-outline-light btn-secondary i18n"
+                                    <a href="#infoModal" data-toggle="modal" class="btn btn-outline-light i18n"
                                         name="slide1_button"></a>
                                 </p>
                             </div>
@@ -69,8 +75,8 @@
                                 <h1 class="cover-heading i18n" name="slide2_title"></h1>
                                 <p class="lead p-3 pb-5 i18n" name="slide2_content"></p>
                                 <p class="lead mt-5">
-                                    <a href="#" class="btn btn-outline-light btn-secondary i18n"
-                                        name="slide2_button"></a>
+                                    <a href="#guideModal" data-toggle="modal"
+                                        class="btn btn-outline-light btn-secondary i18n" name="slide2_button"></a>
                                 </p>
                             </div>
                         </div>
@@ -92,43 +98,165 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
-                    <form class="login-form text-left">
+                <!-- 用户登录（注册）分页 -->
+                <div class="tab-pane fade w-100" id="account" role="tabpanel" aria-labelledby="account-tab">
+                    <form id="signin-form" class="login-form text-left">
                         <div>
                             <h2 class="i18n" name="signin_title"></h2>
                             <div class="d-inline-flex">
                                 <p class="i18n" name="signin_info1"></p>
-                                <a data-toggle="modal" href="#signup"><i class="m-1 i18n" name="signin_signup"></i></a>
+                                <a data-toggle="modal" href="#signup"><i class="m-1 text-warning i18n"
+                                        name="signin_signup"></i></a>
                                 <p class="i18n" name="signin_info2"></p>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="username_lo" class="i18n" name="signin_account"></label>
-                            <input type="text" id="username_lo" class="form-control is-valid i18n-input"
-                                selectname="signin_account_placeholder" selectattr="placeholder" required autofocus>
-
+                            <label for="phoneNumber_lo" class="i18n" name="signin_account"></label>
+                            <div>
+                                <input type="text" id="phoneNumber_lo" name="phone_signin"
+                                    class="form-control i18n-input" selectname="signin_account_placeholder"
+                                    selectattr="placeholder" required autofocus>
+                                <span class="span"></span>
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <label for="password_lo" class="i18n" name="signin_password"></label>
-                            <input type="password" id="password_lo" class="form-control i18n-input"
-                                selectname="signin_password_placeholder" selectattr="placeholder" required>
+                            <div>
+                                <input type="password" id="password_lo" name="password_signin"
+                                    class="form-control i18n-input" selectname="signin_password_placeholder"
+                                    selectattr="placeholder" required>
+                                <span class="span"></span>
+                            </div>
+
                             <div class="d-flex justify-content-end">
-                                <a class="text-light" href="#"><i class="i18n" name="forget_password"></i></a>
+                                <a class="text-light" data-toggle="modal" href="#emailModal"><i class="i18n"
+                                        name="forget_password"></i></a>
                             </div>
                         </div>
 
-                        <div class="checkbox mb-1">
+                        <div class="checkbox">
                             <input type="checkbox" value="remember-me">
                             <label class="i18n" name="signin_remember"></label>
                         </div>
-                        <button id="user_sign_in" class="btn btn-lg btn-secondary btn-block i18n"
-                            name="signin_button"></button>
+                        <div class="form-group mb-0">
+                            <button id="user_sign_in" type="submit" class="btn btn btn-outline-light btn-block i18n"
+                                name="signin_button"></button>
+                        </div>
 
                     </form>
                 </div>
 
+                <!-- 忘记密码1：邮箱弹出窗，需要用户名和邮箱匹配上时才能发邮件验证 -->
+                <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title i18n" name="forget_password"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="bond-email-form"
+                                    class="d-flex flex-column w-100 align-items-center justify-content-center">
+
+                                    <div class="form-group col-md-10 mb-3">
+                                        <label class="i18n" name="signin_account"></label>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control i18n-input"
+                                                    name="account_info_bond" selectname="signin_account_placeholder"
+                                                    selectattr="placeholder" required>
+                                                <span class="span"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-10 mb-3">
+                                        <label class="i18n" name="signup_email"></label>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <div class="input-group">
+                                                <input type="email" class="form-control i18n-input"
+                                                    name="email_info_bond" selectname="signup_email_placeholder"
+                                                    selectattr="placeholder" required>
+                                                <span class="span"></span>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-dark i18n" name="signup_code_button"
+                                                        type="button"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-10 mb-3">
+                                        <label class="i18n" name="signup_code"></label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control i18n-input" selectattr="placeholder"
+                                                selectname="signup_code_placeholder" name="email_info_code" required>
+                                            <span class="span"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mt-3 mb-3 ml-auto mr-5">
+                                        <button id="email_submit" type="submit" class="btn btn-dark i18n"
+                                            name="submit"></button>
+                                        <button id="email_cancel" type="button" class="btn btn-dark i18n ml-3"
+                                            data-dismiss="modal" name="cancel"></button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 忘记密码2：修改密码弹出窗 -->
+                <div class="modal fade" id="passwordModal_change" tabindex="-1" role="dialog" data-backdrop="static"
+                    data-keyboard="false" aria-hidden="true">
+                    <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title i18n" name="password_change"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form id="password-new-form">
+                                    <div class="form-group d-flex flex-column align-items-center">
+                                        <div class="col-md-10 mb-3">
+                                            <label class="i18n" name="password_new"></label>
+                                            <input type="password" class="form-control i18n-input"
+                                                selectattr="placeholder" selectname="password_new_placeholder"
+                                                id="password-change" name="password_change">
+                                            <span class="span"></span>
+                                        </div>
+
+                                        <div class="col-md-10 mb-3">
+                                            <label class="i18n" name="signup_confirm"></label>
+                                            <input type="password" class="form-control i18n-input"
+                                                selectattr="placeholder" selectname="signup_confirm_placeholder"
+                                                name="password_change_confirm" id="password-change-confirm">
+                                            <span class="span"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-3 mb-3 d-flex justify-content-end mr-5">
+                                        <button id="password-change-submit" type="submit" class="btn btn-dark i18n"
+                                            name="confirm"></button>
+                                        <button id="password-change-cancel" type="button" data-dismiss="modal"
+                                            class="btn btn-dark i18n ml-4" name="cancel"></button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 注册弹出窗 -->
                 <div id="signup" class="modal fade" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
                     aria-hidden="true">
@@ -144,16 +272,20 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form class="text-left">
+                                <form id="signup-form" class="text-left" action="form.php" method="POST">
                                     <div class="form-column m-0">
                                         <div class="form-row">
                                             <div class="form-group col-md-8">
                                                 <span class="require">*</span>
                                                 <label for="username_re" class="i18n" name="signup_tel"></label>
                                                 <div class="input-group">
-                                                    <input type="text" id="username_re" class="form-control i18n-input"
-                                                        selectname="signin_account_placeholder" selectattr="placeholder"
-                                                        aria-label="tel" required />
+                                                    <div>
+                                                        <input type="text" id="phoneNumber_re" name="phone_signup"
+                                                            class="form-control i18n-input"
+                                                            selectname="signin_account_placeholder"
+                                                            selectattr="placeholder" aria-label="tel" />
+                                                        <span class="span"></span>
+                                                    </div>
                                                     <div class="input-group-append">
                                                         <button class="btn btn-dark i18n" name="signup_code_button"
                                                             type="button"></button>
@@ -166,9 +298,10 @@
                                                 <label for="securityCode" class="i18n" name="signup_code"></label>
 
                                                 <div class="userCode-input">
-                                                    <input type="text" id="securityCode" class="form-control i18n-input"
-                                                        selectname="signup_code_placeholder" selectattr="placeholder"
-                                                        required />
+                                                    <input type="text" id="securityCode" name="code_signup"
+                                                        class="form-control i18n-input"
+                                                        selectname="signup_code_placeholder" selectattr="placeholder" />
+                                                    <span class="span"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -177,17 +310,23 @@
                                             <div class="form-group col-md-8">
                                                 <span class="require">*</span>
                                                 <label class="i18n" name="applicant_id"></label>
-                                                    <input type="text" id="userId"
+                                                <div>
+                                                    <input type="text" id="userId_re" name="id_signup"
                                                         class="form-control i18n-input"
                                                         selectname="applicant_id_placeholder"
-                                                        selectattr="placeholder" required />
+                                                        selectattr="placeholder" />
+                                                    <span class="span"></span>
+                                                </div>
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <span class="require">*</span>
                                                 <label class="i18n" name="applicant_name"></label>
-                                                <input type="text" id="userName" class="form-control i18n-input"
-                                                    selectname="signup_name_placeholder" selectattr="placeholder"
-                                                    required />
+                                                <div>
+                                                    <input type="text" id="userName_re" name="name_signup"
+                                                        class="form-control i18n-input"
+                                                        selectname="signup_name_placeholder" selectattr="placeholder" />
+                                                    <span class="span"></span>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -195,37 +334,197 @@
                                             <div class="form-group col-md-6">
                                                 <span class="require">*</span>
                                                 <label class="i18n" name="signin_password"></label>
-                                                    <input type="password" id="userPassword"
+                                                <div>
+                                                    <input type="password" id="userPassword_re" name="password_signup"
                                                         class="form-control i18n-input"
                                                         selectname="signin_password_placeholder"
-                                                        selectattr="placeholder" required />
+                                                        selectattr="placeholder" />
+                                                    <span class="span"></span>
+                                                </div>
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <span class="require">*</span>
                                                 <label class="i18n" name="signup_confirm"></label>
                                                 <div class="userRePassword-input">
-                                                    <input type="password" id="userRePassword"
+                                                    <input type="password" id="userRePassword" name="repassword_signup"
                                                         class="form-control i18n-input"
-                                                        selectname="signup_confirm_placeholder" selectattr="placeholder"
-                                                        required />
+                                                        selectname="signup_confirm_placeholder"
+                                                        selectattr="placeholder" />
+                                                    <span class="span"></span>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="d-flex flex-row">
+                                            <div class="form-group col-md-12 mt-3 mb-3 w-100 mr-5 align-items-center">
+                                                <button id="user_sign_up"
+                                                    class="btn btn-secondary btn-block mt-2 mb-2 i18n"
+                                                    name="signup_button" type="submit"></button>
+                                            </div>
+                                        </div>
                                     </div>
-
                                 </form>
                             </div>
-                            <div class="modal-footer">
-                                <button id="user_sign_up" class="btn btn-lg btn-secondary btn-block mt-2 mb-2 i18n"
-                                    name="signup_button" type="submit"></button>
-                            </div>
-
                         </div>
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <!-- 成功弹出窗 -->
+                <div id="successModal" class="modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="text-left">
+                                    <h3 class="i18n" name="success_title"></h3>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="text-left">
+                                    <p class="i18n" name="success_info"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 失败弹出窗 -->
+                <div id="failModal" class="modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="text-left">
+                                    <h3 class="i18n" name="fail_title"></h3>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="text-left">
+                                    <h6 class="i18n" name="fail_info"></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="infoModal" class="modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="text-left">
+                                    <h4 class="i18n" name="info_title"></h4>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="stepCont stepCont2">
+                                    <div class='ystep-container ystep-lg ystep-blue' style="width: 100%;">
+                                    </div>
+                                    <div class="pageCont mt-0">
+                                        <div id="page1" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <img src="../static/resources/img/info1.png" width="20%" />
+                                                <h5 class="mt-3 i18n" name="info1_info1"></h5>
+
+                                                <p class="i18n" name="info1_info2"> </p>
+                                                <p class="i18n" name="info1_info3"> </p>
+                                            </div>
+                                        </div>
+                                        <div id="page2" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <img src="../static/resources/img/info2.png" width="20%" />
+                                                <h5 class="mt-3 i18n" name="info2_info1"></h5>
+
+                                                <p class="i18n" name="info2_info2"></p>
+                                                <p class="i18n" name="info2_info3"> </p>
+                                            </div>
+                                        </div>
+                                        <div id="page3" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+
+                                                <img src="../static/resources/img/info3.png" width="20%" />
+                                                <h5 class="mt-3 i18n" name="info3_info1"></h5>
+                                                <p class="i18n" name="info3_info2"></p>
+                                                <p class="i18n" name="info3_info3"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="guideModal" class="modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="text-left">
+                                    <h4 class="i18n" name="guide_title"></h4>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="stepCont stepCont1">
+                                    <div class='ystep-container ystep-lg ystep-blue' style="width: 100%;">
+                                    </div>
+                                    <div class="pageCont mt-0">
+                                        <div id="page1" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <h5 class="i18n" name="guide1_info1"></h5>
+                                                <img src="../static/resources/img/guide1.jpg" width="80%" />
+                                                <p class="i18n" name="guide1_info2"></p>
+                                                <p class="i18n" name="guide1_info3"> </p>
+                                            </div>
+                                        </div>
+                                        <div id="page2" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <h5 class="i18n" name="guide2_info1"></h5>
+                                                <img src="../static/resources/img/guide2.jpg" width="80%" />
+                                                <p class="i18n" name="guide2_info2"></p>
+                                                <p class="i18n" name="guide2_info3"> </p>
+                                            </div>
+                                        </div>
+                                        <div id="page3" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <h5 class="i18n" name="guide3_info1"></h5>
+                                                <img src="../static/resources/img/guide3.jpg" width="80%" />
+                                                <p class="i18n" name="guide3_info2"></p>
+                                                <p class="i18n" name="guide3_info3"></p>
+                                            </div>
+                                        </div>
+                                        <div id="page4" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <h5 class="i18n" name="guide4_info1"></h5>
+                                                <img src="../static/resources/img/guide4.jpg" width="80%" />
+                                                <p class="i18n" name="guide4_info2"></p>
+                                                <p class="i18n" name="guide4_info3"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade w-100" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 
                 </div>
 
@@ -235,7 +534,7 @@
 
         </main>
 
-        <footer class="mt-auto text-light pb-0">
+        <footer class="text-light pb-0" style="height: 5%;">
             <div class="inner">
                 <p class="footer-style">Represented By Team Tirteen.</p>
             </div>
@@ -248,6 +547,11 @@
     <script src="../static/resources/bootstrap-4.0.0-dist/others/jquery-3.3.1.js"></script>
     <script src="../static/resources/bootstrap-4.0.0-dist/others/popper.min.js"></script>
     <script src="../static/resources/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+
+    <script src="../static/resources/bootstrapvalidator-0.5.2/dist/js/bootstrapValidator.min.js"></script>
+    <script src="../static/resources/bootstrapvalidator-0.5.2/dist/js/language/en_US.js"></script>
+
+    <script src="../static/resources/processbar/setStep.js"></script>
 
     <script src="../static/resources/i18n/jquery.i18n.properties.js"></script>
     <script src="../static/resources/i18n/language.js"></script>

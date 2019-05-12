@@ -16,7 +16,7 @@ function SetStep(arg){
         stepContainerMar:20,
         nextBtn:'.nextBtn',
         prevBtn:'.prevBtn',
-        steps:['1','2','3'],
+        steps:['发起','募捐','进行','结束','庆祝'],
         //pageClass:'',//分页的类或则id
         stepCounts:5,//总共的步骤数
         curStep:1,//当前显示第几页
@@ -154,12 +154,12 @@ SetStep.prototype.setProgress=function(n,curIndex,stepsLen){
         }
 }
 //改变 分页显示
-// SetStep.prototype.checkPage=function(pageCont,curStep,steps){
-//     for(var i = 1; i <= steps; i++){
-//         if(i === curStep){
-//           pageCont.find('#page'+i).css("display","block");
-//         }else{
-//           pageCont.find('#page'+i).css("display","none");
-//         }
-//     }
-// }
+SetStep.prototype.checkPage=function(pageCont,curStep,steps){
+    for(var i = 1; i <= steps; i++){
+        if(i === curStep){
+          pageCont.find('#page'+i).css("display","block");
+        }else{
+          pageCont.find('#page'+i).css("display","none");
+        }
+    }
+}
