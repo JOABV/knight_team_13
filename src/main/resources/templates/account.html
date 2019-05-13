@@ -21,144 +21,114 @@
 
     <div class="container d-flex h-100 p-3 flex-column">
         <header class="w-100" style="height: 20%;">
-            <div class="d-flex h-100 justify-content-end align-items-center">
-                <!-- <div class="mr-auto align-items-center d-flex flex-row">
+            <nav class="navbar navbar-expand-md navbar-dark d-flex h-100 justify-content-end align-items-center">
+                <div class="container-fluid">
+                    <!-- <div class="mr-auto align-items-center d-flex flex-row">
                     <img src="../static/resources/img/icon.png" height="100" />
                 </div> -->
+                    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navBar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navBar">
+                        <ul id="myTab" class="nav nav-style ml-auto">
 
-                <ul id="myTab" class="nav nav-style mr-5">
+                            <!-- 主页分页 -->
+                            <li class="nav-item">
+                                <a class="nav-link i18n" name="homepage" id="account-home-tab" data-toggle="tab"
+                                    href="#account-home" role="tab" aria-controls="account-home"
+                                    aria-selected="true"></a>
+                            </li>
 
-                    <!-- 主页分页 -->
-                    <li class="nav-item">
-                        <a class="nav-link i18n" name="homepage" id="account-home-tab" data-toggle="tab"
-                            href="#account-home" role="tab" aria-controls="account-home" aria-selected="true"></a>
-                    </li>
+                            <!-- 账户（保单）分页 -->
+                            <li class="nav-item">
+                                <a class="nav-link active i18n" name="policy" id="account-policy-tab" data-toggle="tab"
+                                    href="#policy-tab" role="tab" aria-controls="policy-tab" aria-selected="false"></a>
 
-                    <!-- 账户（保单）分页 -->
-                    <li class="nav-item">
-                        <a class="nav-link active i18n" name="policy" id="account-policy-tab" data-toggle="tab"
-                            href="#policy-tab" role="tab" aria-controls="policy-tab" aria-selected="false"></a>
+                            </li>
 
-                    </li>
+                            <!-- 不重要分页 -->
+                            <li class="nav-item">
+                                <a class="nav-link i18n" name="contact" id="account-contact-tab" data-toggle="tab"
+                                    href="#account-contact" role="tab" aria-controls="account-contact"
+                                    aria-selected="false"></a>
+                            </li>
 
-                    <!-- 不重要分页 -->
-                    <li class="nav-item">
-                        <a class="nav-link i18n" name="contact" id="account-contact-tab" data-toggle="tab"
-                            href="#account-contact" role="tab" aria-controls="account-contact"
-                            aria-selected="false"></a>
-                    </li>
+                            <!-- 账户信息（修改密码，修改邮箱，查看个人信息） -->
+                            <li id="account-dropdown" class="nav-item">
+                                <a class="ml-2 mr-3 tooltip-account" href="#"
+                                    data-tooltip-content="#tooltip_content_account">
+                                    <img src="../static/resources/img/account.png" height="30" />
+                                </a>
+                                <div style="display: none;">
+                                    <ul id='tooltip_content_account' class="account-container align-items-center"
+                                        style='list-style: none;margin:0; padding:0;'>
+                                        <div class="d-flex flex-column p-2 text-light">
+                                            <!-- 显示头像和姓名 -->
+                                            <li>
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <img src="../static/resources/img/portrait.png" width="50" />
+                                                    <p id="account-info">Account</p>
+                                                    <!-- 显示姓名 -->
+                                                </div>
+                                            </li>
+                                            <div class="d-flex flex-column mt-0 align-items-start">
 
-                    <!-- 账户信息（修改密码，修改邮箱，查看个人信息） -->
-                    <li id="account-dropdown" class="nav-item">
-                        <a class="ml-2 mr-3 tooltip-account" href="#" data-tooltip-content="#tooltip_content_account">
-                            <img src="../static/resources/img/account.png" height="30" />
-                        </a>
-                        <div style="display: none;">
-                            <ul id='tooltip_content_account' class="account-container align-items-center"
-                                style='list-style: none;margin:0; padding:0;'>
-                                <div class="d-flex flex-column p-2 text-light">
-                                    <!-- 显示头像和姓名 -->
-                                    <li>
-                                        <div class="d-flex flex-column align-items-center">
-                                            <img src="../static/resources/img/portrait.png" width="50" />
-                                            <p id="account-info">Account</p>
-                                            <!-- 显示姓名 -->
+                                                <!-- 账户信息：手机号，姓名，ID，邮箱 -->
+                                                <!-- 未绑定邮箱时： href="#accountModal"；绑定后：href="#accountModal_bonded"-->
+                                                <li class="account-link mb-2">
+                                                    <a data-toggle="modal" href="#accountModal">
+                                                        <img src="../static/resources/img/modify.png" height="20" />
+                                                        <span class="m-1 i18n" name="account_change"></span>
+                                                    </a>
+                                                </li>
+
+                                                <!-- 绑定/修改邮箱 -->
+                                                <!-- 未绑定邮箱时： href="#emailModal"；绑定后：href="#emailModal_bonded"-->
+                                                <li class="account-link mb-2">
+                                                    <a data-toggle="modal" href="#emailModal">
+                                                        <img src="../static/resources/img/email.png" height="20" />
+                                                        <span class="m-1 i18n" name="email_change"></span>
+                                                    </a>
+                                                </li>
+                                                <!-- 修改密码 -->
+                                                <li class="account-link mb-2">
+                                                    <a data-toggle="modal" href="#passwordModal_bonded">
+                                                        <img src="../static/resources/img/password.png" height="20" />
+                                                        <span class="m-1 i18n" name="password_change"></span>
+                                                    </a>
+                                                </li>
+                                                <!-- logout -->
+                                                <li class="account-link mb-2">
+                                                    <a href="homepage.html">
+                                                        <img src="../static/resources/img/logout.png" height="20" />
+                                                        <span class="m-1 i18n" name="logout"></span>
+                                                    </a>
+                                                </li>
+                                            </div>
                                         </div>
-                                    </li>
-                                    <div class="d-flex flex-column mt-0 align-items-start">
-
-                                        <!-- 账户信息：手机号，姓名，ID，邮箱 -->
-                                        <!-- 未绑定邮箱时： href="#accountModal"；绑定后：href="#accountModal_bonded"-->
-                                        <li class="account-link mb-2">
-                                            <a data-toggle="modal" href="#accountModal">
-                                                <img src="../static/resources/img/modify.png" height="20" />
-                                                <span class="m-1 i18n" name="account_change"></span>
-                                            </a>
-                                        </li>
-
-                                        <!-- 绑定/修改邮箱 -->
-                                        <!-- 未绑定邮箱时： href="#emailModal"；绑定后：href="#emailModal_bonded"-->
-                                        <li class="account-link mb-2">
-                                            <a data-toggle="modal" href="#emailModal">
-                                                <img src="../static/resources/img/email.png" height="20" />
-                                                <span class="m-1 i18n" name="email_change"></span>
-                                            </a>
-                                        </li>
-                                        <!-- 修改密码 -->
-                                        <li class="account-link mb-2">
-                                            <a data-toggle="modal" href="#passwordModal_bonded">
-                                                <img src="../static/resources/img/password.png" height="20" />
-                                                <span class="m-1 i18n" name="password_change"></span>
-                                            </a>
-                                        </li>
-                                        <!-- logout -->
-                                        <li class="account-link mb-2">
-                                            <a href="homepage.html">
-                                                <img src="../static/resources/img/logout.png" height="20" />
-                                                <span class="m-1 i18n" name="logout"></span>
-                                            </a>
-                                        </li>
-                                    </div>
+                                    </ul>
                                 </div>
-                            </ul>
-                        </div>
-                    </li>
+                            </li>
 
-                    <li id="language-dropdown" class="nav-item dropdown show">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" id="language_button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        </a>
+                            <li id="language-dropdown" class="nav-item dropdown show">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" id="language_button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                </a>
 
-                        <ul id="language" class="dropdown-menu text-light" aria-labelledby="language_button">
-                            <li><a class="dropdown-item" href="#" value="zh-CN" disabled="false">中文简体</a></li>
-                            <li><a class="dropdown-item" href="#" value="en" disabled="false">English</a></li>
+                                <ul id="language" class="dropdown-menu text-light" aria-labelledby="language_button">
+                                    <li><a class="dropdown-item" href="#" value="zh-CN" disabled="false">中文简体</a></li>
+                                    <li><a class="dropdown-item" href="#" value="en" disabled="false">English</a></li>
+                                </ul>
+                            </li>
                         </ul>
-                    </li>
-                </ul>
-            </div>
+                    </div>
+                </div>
+            </nav>
         </header>
 
         <main role="main" class="w-100 inner" style="height: 75%;">
-            <div class="tab-content d-flex h-100 align-items-start justify-content-center">
-                <div class="tab-pane fade w-100" id="account-home" role="tabpanel" aria-labelledby="account-home-tab">
-                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <h1 class="cover-heading i18n" name="slide1_title"></h1>
-                                <p class="lead p-3 pb-5 i18n" name="slide1_content"></p>
-                                <p class="lead mt-5">
-                                    <a href="#infoModal" data-toggle="modal"
-                                        class="btn btn-outline-light btn-secondary i18n" name="slide1_button"></a>
-                                </p>
-                            </div>
-                            <div class="carousel-item">
-                                <h1 class="cover-heading i18n" name="slide2_title"></h1>
-                                <p class="lead p-3 pb-5 i18n" name="slide2_content"></p>
-                                <p class="lead mt-5">
-                                    <a href="#guideModal" data-toggle="modal"
-                                        class="btn btn-outline-light btn-secondary i18n" name="slide2_button"></a>
-                                </p>
-                            </div>
-                        </div>
-
-                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-                            data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
-                            data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                        <ol class="carousel-indicators" style="position:relative;top:0.5rem;">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        </ol>
-                    </div>
-                </div>
-
-                <div class="tab-pane fade show active w-100" id="policy-tab" role="tabpanel"
+            <div class="tab-content d-flex h-100 justify-content-center">
+                <div class="tab-pane fade show active align-items-start w-100" id="policy-tab" role="tabpanel"
                     aria-labelledby="account-policy-tab">
                     <div class="d-flex flex-column">
 
@@ -481,6 +451,45 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade align-self-center w-100" id="account-home" role="tabpanel"
+                    aria-labelledby="account-home-tab">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <h1 class="cover-heading i18n" name="slide1_title"></h1>
+                                <p class="lead p-3 pb-5 i18n" name="slide1_content"></p>
+                                <p class="lead mt-5">
+                                    <a href="#infoModal" data-toggle="modal"
+                                        class="btn btn-outline-light btn-secondary i18n" name="slide1_button"></a>
+                                </p>
+                            </div>
+                            <div class="carousel-item">
+                                <h1 class="cover-heading i18n" name="slide2_title"></h1>
+                                <p class="lead p-3 pb-5 i18n" name="slide2_content"></p>
+                                <p class="lead mt-5">
+                                    <a href="#guideModal" data-toggle="modal"
+                                        class="btn btn-outline-light btn-secondary i18n" name="slide2_button"></a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        <ol class="carousel-indicators" style="position:relative;top:0.5rem;">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        </ol>
                     </div>
                 </div>
 
@@ -1041,7 +1050,8 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade w-100" id="account-contact" role="tabpanel" aria-labelledby="account-contact-tab">
+                <div class="tab-pane fade w-100" id="account-contact" role="tabpanel"
+                    aria-labelledby="account-contact-tab">
 
                 </div>
 

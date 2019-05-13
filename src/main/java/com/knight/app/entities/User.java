@@ -1,15 +1,25 @@
 package com.knight.app.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class User {
     @Id
+    @Column(name="phone_number")
     private String phone_number = "";
+
+    @Column(name="password")
     private String password = "";
+
+    @Column(name="id_number")
     private String id_number = "";
+
+    @Column(name="full_name")
     private String full_name = "";
+
+    @Column(name="email")
     private String email = "";
 
     public User() {
@@ -59,7 +69,7 @@ public class User {
     }
 
     public void setFullname(String full_name) {
-        full_name = full_name;
+        this.full_name = full_name;
     }
 
     public String getEmail() {

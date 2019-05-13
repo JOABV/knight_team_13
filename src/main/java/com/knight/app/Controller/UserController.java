@@ -1,16 +1,13 @@
 package com.knight.app.Controller;
 
 import com.knight.app.entities.User;
-import com.knight.app.entities.Policy;
-import com.knight.app.Repository.PolicyRepository;
 import com.knight.app.Repository.UserRepository;
-import com.knight.app.mapper.UserMapper;
-import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jackson.JsonObjectDeserializer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @CrossOrigin
@@ -18,20 +15,21 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 	@Autowired
 	private UserRepository userRepository;
-//	@Autowired
-	private UserMapper userMapper;
-	@Autowired
-	private PolicyRepository policyRepository;
+
 	@GetMapping("/homepage")
 	public String index(){
 		return "homepage";
 	}
 
+	@GetMapping("/account")
+	public String account(){
+		return "account";
+	}
+
 	//register
 	@PostMapping(path="/register")
-	public @ResponseBody JSONObject User_register (@RequestBody JSONObject jso) {
+	public @ResponseBody JSONObject User_register (@RequestBody JSONObject jso, HttpSession session) {
 		JSONObject result = new JSONObject();
-
 		if (userRepository.exists(jso.getString("phone_number"))){
 			result.put("Checkcode", "200");
 			result.put("Message", "exists");
@@ -48,24 +46,25 @@ public class UserController {
 		result.put("Checkcode", "100");
 		result.put("Message", "success");
 
+		session.setAttribute("loginUser", phone_number);
 		return result;
 	}
 	//login
 	@PostMapping(path="/login")
-	public @ResponseBody JSONObject User_login (@RequestBody JSONObject user) {
-
+	public @ResponseBody JSONObject User_login (@RequestBody JSONObject user,HttpSession session) {
 		JSONObject jso = new JSONObject();
 		User user1 = userRepository.findOne(user.getString("phone_number"));
 		if (user1 == null) {
-			jso.put("Checkcode", 200);
+			jso.put("Checkcode", "200");
 			jso.put("Message", "not exist");
 		}else{
 			if(user1.getPassword().compareTo(user.getString("password")) != 0){
-				jso.put("Checkcode", 201);
+				jso.put("Checkcode", "201");
 				jso.put("Message", "wrong password");
 			}else{
-				jso.put("Checkcode", 100);
+				jso.put("Checkcode", "100");
 				jso.put("Message", "success");
+				session.setAttribute("loginUser", user.getString("phone_number"));
 			}
 		}
 		return jso;
@@ -79,39 +78,51 @@ public class UserController {
 		User user = userRepository.findOne(jsonobject.getString("phone_number"));
 		if (user == null){
 			if (! userRepository.exists(jsonobject.getString("phone_number"))){
-				jso.put("Checkcode", 200);
+				jso.put("Checkcode", "200");
 				jso.put("Message", "not exist");
 			}
 		}else{
-			jso.put("Checkcode", 100);
+			jso.put("Checkcode", "100");
 			jso.put("Message", user);
 		}
 		return jso;
 	}
+
 	//information_change
 	@PostMapping(path="/personal_information/ci")
 	public @ResponseBody JSONObject personal_information_change (@RequestBody JSONObject json) {
-		//TODO
 		JSONObject jso = new JSONObject();
 		User user = userRepository.findOne(json.getString("phone_number"));
 		if (user == null){
 			if (! userRepository.exists(json.getString("phone_number"))){
-				jso.put("Checkcode", 200);
+				jso.put("Checkcode", "200");
 				jso.put("Message", "the user doesn't exist");
 			}
 		}else{
 			user.setEmail(json.getString("email"));
-			userMapper.updateUser(user);
-			jso.put("Checkcode", 100);
+			userRepository.save(user);
+			jso.put("Checkcode", "100");
 			jso.put("Message", user);
 		}
 		return jso;
 	}
 
-
-//	@GetMapping(path="/all")
-//	public @ResponseBody Iterable<User> getAllUsers() {
-//		return userRepository.findAll();
-//	}
-
+	//information_change
+	@PostMapping(path="/personal_information/change_password")
+	public @ResponseBody JSONObject password_change (@RequestBody JSONObject json) {
+		JSONObject jso = new JSONObject();
+		User user = userRepository.findOne(json.getString("phone_number"));
+		if (user == null){
+			if (! userRepository.exists(json.getString("phone_number"))){
+				jso.put("Checkcode", "200");
+				jso.put("Message", "the user doesn't exist");
+			}
+		}else{
+			user.setPassword(json.getString("password"));
+			userRepository.save(user);
+			jso.put("Checkcode", "100");
+			jso.put("Message", user);
+		}
+		return jso;
+	}
 }

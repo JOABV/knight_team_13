@@ -32,12 +32,12 @@ body {
     -ms-background-size: cover;
 }
 
-.login-form {
+/* .login-form {
     position: relative;
     top: -3rem;
     left: 25%;
     width: 50%;
-}
+} */
 
 .container {
     max-width: 50em;

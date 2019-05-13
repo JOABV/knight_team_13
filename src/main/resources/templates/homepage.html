@@ -20,47 +20,54 @@
     <div class="container d-flex h-100 p-3 flex-column">
 
         <header class="w-100" style="height: 20%;">
-            <div class="d-flex h-100 align-items-center justify-content-end">
-                <!-- <div class="mr-auto align-items-center d-flex flex-row">
+            <nav class="navbar navbar-expand-md navbar-dark d-flex h-100 justify-content-end align-items-center">
+                <div class="container-fluid">
+                    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navBar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navBar">
+                        <!-- <div class="mr-auto align-items-center d-flex flex-row">
                     <img src="../static/resources/img/icon.png" height="100" />
                 </div> -->
 
-                <ul class="nav nav-style">
-                    <!-- 主页分页按钮 -->
-                    <li class="nav-item">
-                        <a class="nav-link active i18n" name="homepage" id="home-tab" data-toggle="tab" href="#home"
-                            role="tab" aria-controls="home" aria-selected="true"></a>
-                    </li>
-                    <!-- 登录分页按钮 -->
-                    <li class="nav-item">
-                        <a class="nav-link i18n" name="account" id="account-tab" data-toggle="tab" href="#account"
-                            role="tab" aria-controls="account" aria-selected="false"></a>
-                    </li>
-                    <!-- contact分页按钮 -->
-                    <li class="nav-item">
-                        <a class="nav-link i18n" name="contact" id="contact-tab" data-toggle="tab" href="#contact"
-                            role="tab" aria-controls="contact" aria-selected="false"></a>
-                    </li>
+                        <ul class="nav nav-style ml-auto">
+                            <!-- 主页分页按钮 -->
+                            <li class="nav-item">
+                                <a class="nav-link active i18n" name="homepage" id="home-tab" data-toggle="tab"
+                                    href="#home" role="tab" aria-controls="home" aria-selected="true"></a>
+                            </li>
+                            <!-- 登录分页按钮 -->
+                            <li class="nav-item">
+                                <a class="nav-link i18n" name="account" id="account-tab" data-toggle="tab"
+                                    href="#account" role="tab" aria-controls="account" aria-selected="false"></a>
+                            </li>
+                            <!-- contact分页按钮 -->
+                            <li class="nav-item">
+                                <a class="nav-link i18n" name="contact" id="contact-tab" data-toggle="tab"
+                                    href="#contact" role="tab" aria-controls="contact" aria-selected="false"></a>
+                            </li>
 
-                    <!-- 语言切换 -->
-                    <li class="nav-item dropdown show">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" id="language_button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        </a>
+                            <!-- 语言切换 -->
+                            <li class="nav-item dropdown show">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" id="language_button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                </a>
 
-                        <ul id="language" class="dropdown-menu text-light" aria-labelledby="language">
-                            <li><a class="dropdown-item" href="#" value="zh-CN" disabled="false">中文简体</a></li>
-                            <li><a class="dropdown-item" href="#" value="en" disabled="false">English</a></li>
+                                <ul id="language" class="dropdown-menu text-light" aria-labelledby="language">
+                                    <li><a class="dropdown-item" href="#" value="zh-CN" disabled="false">中文简体</a></li>
+                                    <li><a class="dropdown-item" href="#" value="en" disabled="false">English</a></li>
+                                </ul>
+                            </li>
                         </ul>
-                    </li>
-                </ul>
-            </div>
+                    </div>
+                </div>
+            </nav>
         </header>
 
-        <main role="main" class="w-100 inner" style="height:75%;">
-            <div class="tab-content d-flex h-100 align-items-center justify-content-center">
+        <main role="main" class="w-100" style="height:75%;">
+            <div class="tab-content d-flex h-100 w-100 align-items-center justify-content-center">
                 <!-- 主页 -->
-                <div class="tab-pane fade show active w-100" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -99,11 +106,13 @@
                 </div>
 
                 <!-- 用户登录（注册）分页 -->
-                <div class="tab-pane fade w-100" id="account" role="tabpanel" aria-labelledby="account-tab">
+                <div class="tab-pane fade w-50" id="account" role="tabpanel"
+                    aria-labelledby="account-tab">
+
                     <form id="signin-form" class="login-form text-left">
                         <div>
                             <h2 class="i18n" name="signin_title"></h2>
-                            <div class="d-inline-flex">
+                            <div class="d-inline-flex flex-row">
                                 <p class="i18n" name="signin_info1"></p>
                                 <a data-toggle="modal" href="#signup"><i class="m-1 text-warning i18n"
                                         name="signin_signup"></i></a>
@@ -272,7 +281,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="signup-form" class="text-left" action="form.php" method="POST">
+                                <form id="signup-form" class="text-left">
                                     <div class="form-column m-0">
                                         <div class="form-row">
                                             <div class="form-group col-md-8">
@@ -409,6 +418,115 @@
                             <div class="modal-body">
                                 <div class="text-left">
                                     <h6 class="i18n" name="fail_info"></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="infoModal" class="modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="text-left">
+                                    <h4 class="i18n" name="info_title"></h4>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="stepCont stepCont2">
+                                    <div class='ystep-container ystep-lg ystep-blue' style="width: 100%;">
+                                    </div>
+                                    <div class="pageCont mt-0">
+                                        <div id="page1" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <img src="../static/resources/img/info1.png" width="20%" />
+                                                <h5 class="mt-3 i18n" name="info1_info1"></h5>
+
+                                                <p class="i18n" name="info1_info2"> </p>
+                                                <p class="i18n" name="info1_info3"> </p>
+                                            </div>
+                                        </div>
+                                        <div id="page2" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <img src="../static/resources/img/info2.png" width="20%" />
+                                                <h5 class="mt-3 i18n" name="info2_info1"></h5>
+
+                                                <p class="i18n" name="info2_info2"></p>
+                                                <p class="i18n" name="info2_info3"> </p>
+                                            </div>
+                                        </div>
+                                        <div id="page3" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+
+                                                <img src="../static/resources/img/info3.png" width="20%" />
+                                                <h5 class="mt-3 i18n" name="info3_info1"></h5>
+                                                <p class="i18n" name="info3_info2"></p>
+                                                <p class="i18n" name="info3_info3"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="guideModal" class="modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="text-left">
+                                    <h4 class="i18n" name="guide_title"></h4>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="stepCont stepCont1">
+                                    <div class='ystep-container ystep-lg ystep-blue' style="width: 100%;">
+                                    </div>
+                                    <div class="pageCont mt-0">
+                                        <div id="page1" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <h5 class="i18n" name="guide1_info1"></h5>
+                                                <img src="../static/resources/img/guide1.jpg" width="80%" />
+                                                <p class="i18n" name="guide1_info2"></p>
+                                                <p class="i18n" name="guide1_info3"> </p>
+                                            </div>
+                                        </div>
+                                        <div id="page2" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <h5 class="i18n" name="guide2_info1"></h5>
+                                                <img src="../static/resources/img/guide2.jpg" width="80%" />
+                                                <p class="i18n" name="guide2_info2"></p>
+                                                <p class="i18n" name="guide2_info3"> </p>
+                                            </div>
+                                        </div>
+                                        <div id="page3" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <h5 class="i18n" name="guide3_info1"></h5>
+                                                <img src="../static/resources/img/guide3.jpg" width="80%" />
+                                                <p class="i18n" name="guide3_info2"></p>
+                                                <p class="i18n" name="guide3_info3"></p>
+                                            </div>
+                                        </div>
+                                        <div id="page4" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <h5 class="i18n" name="guide4_info1"></h5>
+                                                <img src="../static/resources/img/guide4.jpg" width="80%" />
+                                                <p class="i18n" name="guide4_info2"></p>
+                                                <p class="i18n" name="guide4_info3"></p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

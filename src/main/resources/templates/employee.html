@@ -9,6 +9,7 @@
     <link rel="icon" href="../static/resources/img/icon.ico">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../static/resources/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/resources/bootstrapvalidator-0.5.2/dist/css/bootstrapValidator.min.css" />
 
     <title class="i18n" name="management_title"></title>
 </head>
@@ -40,30 +41,63 @@
             <div class="row">
                 <div class="col-2 m-3">
                     <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action i18n active" name="to_process" id="toprocess-list" data-toggle="list"
-                            href="#toprocess" role="tab" aria-controls="home"></a>
-                        <a class="list-group-item list-group-item-action i18n" name="processing" id="processing-list" data-toggle="list"
-                            href="#processing" role="tab" aria-controls="profile"></a>
-                        <a class="list-group-item list-group-item-action i18n" name="processed" id="processed-list" data-toggle="list"
-                            href="#processed" role="tab" aria-controls="profile"></a>
+                        <a class="list-group-item list-group-item-action i18n active" name="to_process"
+                            id="toprocess-list" data-toggle="list" href="#toprocess" role="tab"
+                            aria-controls="home"></a>
+                        <a class="list-group-item list-group-item-action i18n" name="processing" id="processing-list"
+                            data-toggle="list" href="#processing" role="tab" aria-controls="profile"></a>
+                        <a class="list-group-item list-group-item-action i18n" name="processed" id="processed-list"
+                            data-toggle="list" href="#processed" role="tab" aria-controls="profile"></a>
 
                     </div>
                 </div>
                 <div class="flex-column col-8 m-3">
-
                     <ul class="nav flex-row bg-dark justify-content-start align-items-center p-2 mb-3"
                         style="border-radius: 3px;">
-                        <li class="ml-2 mr-3">
-                            <button class="btn btn-sm btn-outline-light i18n" name="time_search"></button>
+                        <li class="ml-3 mr-3">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-light i18n dropdown-toggle" name="time_search"
+                                    type="button" id="time_select" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="time_select" id="time_active">
+                                    <div class="dropdown-item active" id="time1">顺序</div>
+                                    <div class="dropdown-item" id="time2">倒序</div>
+                                </div>
+                            </div>
                         </li>
-                        <li>
-                            <button class="btn btn-sm btn-outline-light i18n" name="place_search"></button>
+                        <li class="ml-3 mr-3">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-light i18n dropdown-toggle" name="place_search"
+                                    type="button" id="place_select" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="place_select" id="place_active">
+                                    <div class="dropdown-item active" id="place1">Beijing</div>
+                                    <div class="dropdown-item" id="place2">Shanghai</div>
+                                    <div class="dropdown-item" id="place3">Hangzhou</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ml-3 mr-3">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-light i18n dropdown-toggle" name="price_search"
+                                    type="button" id="price_select" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="price_select" id="price_active">
+                                    <div class="dropdown-item active" id="price1">0-100</div>
+                                    <div class="dropdown-item" id="price2">100-10000</div>
+                                    <div class="dropdown-item" id="price3">10000+</div>
+                                </div>
+                            </div>
                         </li>
                         <li class="ml-auto">
                             <form class="form-inline">
-                                <input class="form-control mr-sm-2 i18n-input" type="search" selectattr="placeholder" selectname="applicant_number"
-                                    aria-label="Search">
-                                <button class="btn btn-outline-success my-2 my-sm-0 i18n" name="policy_search" type="submit"></button>
+                                <input class="form-control mr-sm-2 i18n-input" type="search" selectattr="placeholder"
+                                    selectname="applicant_number" aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0 i18n" name="policy_search"
+                                    type="submit"></button>
                             </form>
                         </li>
                     </ul>
@@ -71,47 +105,193 @@
                         <!-- to process -->
                         <div class="tab-pane fade show active" id="toprocess" role="tabpanel"
                             aria-labelledby="toprocess-list">
-                            <!-- 保单列表中的一个保单 -->
-                            <div class="list-group">
-                                <a href="claimdetail.html" target="_blank"
-                                    class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">NO. 16372329</h5>
-                                        <small>Time</small>
-                                    </div>
-                                </a>
+                            <div class="list-group" id="toprocess_list">
+                                <a data-toggle="modal" href="#detailModal">kjshfkjsdf</a>
                             </div>
-
                         </div>
                         <!-- processing -->
                         <div class="tab-pane fade" id="processing" role="tabpanel" aria-labelledby="processing-list">
-                            <!-- 保单列表中的一个保单 -->
-                            <div class="list-group">
-                                <a href="claimdetail.html" target="_blank"
-                                    class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">List group processing</h5>
-                                        <small>3 days ago</small>
+                            <div class="list-group" id="processing_list">
+                            </div>
+                        </div>
+                        <!-- processed -->
+                        <div class="tab-pane fade" id="processed" role="tabpanel" aria-labelledby="processed-list">
+                            <div class="list-group" id="processed_list">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg text-dark text-left modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="i18n" name="claim_detail_title"></h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="p-3 m-2" style="border: black solid 2px;border-radius: 2%;">
+                                <fieldset>
+                                    <legend class="i18n" name="applicant_title"></legend>
+                                    <hr>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label class="i18n" name="applicant_number"></label>
+                                            <p id="applicant_number_value">xxxxxxxxx</p>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="i18n" name="applicant_name"></label>
+                                            <p id="applicant_name_value">xxx</p>
+                                        </div>
                                     </div>
-                                    <small class="text-truncate">Donec id elit non mi porta.</small>
-                                </a>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label class="i18n" name="applicant_id"></label>
+                                            <p id="applicant_id_value">xxxxxxxxx</p>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="i18n" name="applicant_tel"></label>
+                                            <p id="applicant_tel_value">xxxx-xxxxxxxx</p>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="form-row">
+                                                    <div class="col-5">
+                                                        <p>Address: </p>
+                                                        <address> xxxx xxxxx xxxxx</address>
+                                                    </div>
+                                                </div> -->
+                                </fieldset>
+                                <hr>
+                                <fieldset>
+                                    <legend class="i18n" name="items_title"></legend>
+                                    <hr>
+                                    <div class="form d-flex flex-row justify-content-start mt-3">
+                                        <!-- TODO checked -->
+                                        <div class="col-3 custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1"
+                                                disabled>
+                                            <label class="custom-control-label i18n" name="items_baggage"
+                                                for="customCheck1"></label>
+                                        </div>
+                                        <div class="col-3 custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck2"
+                                                disabled>
+                                            <label class="custom-control-label i18n" name="items_card"
+                                                for="customCheck2"></label>
+                                        </div>
+                                        <div class="col-3 custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck3"
+                                                disabled>
+                                            <label class="custom-control-label i18n" name="items_wallet"
+                                                for="customCheck3"></label>
+                                        </div>
+                                        <div class="col-3 custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck4"
+                                                disabled>
+                                            <label class="custom-control-label i18n" name="items_phone"
+                                                for="customCheck4"></label>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="custom-control custom-checkbox d-flex flex-row justify-content-start align-items-center mt-4">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck5" disabled>
+                                        <label class="custom-control-label i18n" name="items_else"
+                                            for="customCheck5"></label>
+
+                                        <input type="text" id="elseInput" class="form-control ml-3 col-6 i18n-input"
+                                            selectattr="placeholder" selectname="items_else_placeholder" disabled />
+                                    </div>
+                                    <div class="ml-auto col-3">
+                                        <button type="button" class="btn btn-dark i18n" name="view_button"
+                                            id="viewFileButton"></button>
+                                        <img id="fileImage" style="display: none;"
+                                            src="../static/resources/img/icon.png" class="figure-img img-fluid rounded"
+                                            alt="Fail to load file">
+                                    </div>
+                                </fieldset>
+
+                                <hr>
+                                <fieldset>
+                                    <legend class="i18n" name="claim_detail_title"></legend>
+                                    <hr>
+                                    <div class="form-row">
+                                        <div class="col-7 mb-3">
+                                            <label for="formPlace" class="i18n" name="claim_place"></label>
+                                            <address id="claim_place_value">skjfs</address>
+                                        </div>
+                                        <div class="col-3 mb-3">
+                                            <label for="formPlace" class="i18n" name="claim_date"></label>
+                                            <p id="claim_date_value">skjfs</p>
+                                            <!-- TODO -->
+                                        </div>
+                                        <div class="col-10">
+                                            <label class="i18n" name="claim_detail"></label>
+                                            <p id="claim_detail_value">skjfs</p>
+                                        </div>
+                                    </div>
+                                </fieldset>
                             </div>
                         </div>
 
-                        <!-- processed -->
-                        <div class="tab-pane fade" id="processed" role="tabpanel" aria-labelledby="processed-list">
-                            <!-- 保单列表中的一个保单 -->
-                            <div class="list-group">
-                                <a href="claimdetail.html" target="_blank"
-                                    class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">List group item heading</h5>
-                                        <small>3 days ago</small>
-                                    </div>
-                                    <small class="text-truncate">Donec id elit non mi porta.</small>
-                                </a>
-                            </div>
+                        <div class="modal-footer d-flex justify-content-start w-100">
+                            <fieldset style="width: 100%">
+                                <legend class="i18n" name="claim_result_title"></legend>
+                                <hr>
+                                <form id="claimdetail-form" class="d-flex flex-row align-items-center mb-3">
+                                    <div class="col-5 my-1">
 
+                                        <!-- 同意/不同意 -->
+                                        <select class="custom-select mr-sm-2" id="approveDropdown">
+                                            <option selected value="1" class="i18n" name="claim_approve">
+                                            </option>
+                                            <option value="2" class="i18n" name="claim_deny"></option>
+                                        </select>
+
+                                        <!-- 找回/未找回 -->
+                                        <select class="custom-select mr-sm-2" id="findDropdown" style="display: none;">
+                                            <option selected value="1" class="i18n" name="claim_find"></option>
+                                            <option value="2" class="i18n" name="claim_unfind"></option>
+                                        </select>
+
+                                        <!-- 如找回：寄出/未寄出 -->
+                                        <select class="custom-select mr-sm-2" id="result_findDropdown"
+                                            style="display: none;">
+                                            <option selected value="1" class="i18n" name="claim_deliver">
+                                            </option>
+                                            <option value="2" class="i18n" name="claim_deliver_fail"></option>
+                                        </select>
+
+                                        <!-- 未找回：赔偿/未赔偿 -->
+                                        <select class="custom-select mr-sm-2" id="result_unfindDropdown"
+                                            style="display: none;">
+                                            <option selected value="1" class="i18n" name="claim_compensation">
+                                            </option>
+                                            <option value="2" class="i18n" name="claim_compensation_fail">
+                                            </option>
+                                        </select>
+
+                                        <h3 id="deniedMes" class="text-danger"><b>Denied</b></h3>
+                                        <h3 id="findMes" class="text-danger" style="display: none;"><b>Found and Delivered</b></h3>
+                                        <h3 id="nonfindMes" class="text-danger" style="display: none;"><b>Made Compensation</b></h3>
+
+                                        <div id="more_info" class="form-group mt-2">
+                                            <div class="input-group">
+                                                <textarea class="form-control"　name="feedbackInput"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-auto ml-auto col-3">
+                                        <button class="btn btn-dark i18n" id="claimdetail_submit" name="submit"
+                                            type="button"></button>
+                                    </div>
+                                </form>
+                            </fieldset>
                         </div>
                     </div>
                 </div>
@@ -122,6 +302,10 @@
     <script src="../static/resources/bootstrap-4.0.0-dist/others/popper.min.js"></script>
     <script src="../static/resources/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
 
+    <script src="../static/resources/bootstrapvalidator-0.5.2/dist/js/bootstrapValidator.min.js"></script>
+    <script src="../static/resources/bootstrapvalidator-0.5.2/dist/js/language/en_US.js"></script>
+
     <script src="../static/resources/i18n/jquery.i18n.properties.js"></script>
     <script src="../static/resources/i18n/language.js"></script>
+    <script src="../static/js/employee.js"></script>
 </body>

@@ -1,28 +1,60 @@
 
 $(document).ready(function () {
 
-    function connect(address, params) {
-        $.ajax({
-            type: "POST",
-            // url: "http://101.132.96.76:8080/"+address,
-            url: "http://localhost:8080/" + address,
-            dataType: "text",
-            data: params,
-            success: function (data) {
-                // window.location.href = '../html-en/account.html';
+    // function connect(address, params) {
+    // var url = "http://localhost:8080/";
+    // // var url = "http://101.132.96.76:8080/";
+
+    $('#signin-form').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            phone_signin: {
+                validators: {
+                    notEmpty: {
+                    },
+                }
             },
-            error: function (jqXHR) {
-                alert("wrong: " + jqXHR.status)
+            password_signin: {
+                validators: {
+                    notEmpty: {
+                    },
+                }
             }
-        });
-    };
+        }
+    });
 
     //用户信息正确时，跳转到account页面，没写跳转
     $("#user_sign_in").click(function () {
         var params = {}
-        params.phone = $('#username_lo').val()
-        params.password = $('#password_lo').val()
-        connect("user/login", params)
+        params["phone_number"] = $('#phoneNumber_lo').val()
+        params["password"] = $('#password_lo').val()
+        console.log(params)
+        $.ajax({
+            type: "POST",
+            url: url + "user/login",
+            contentType: "application/json",
+            dataType:"json",
+            async: false,
+            data: JSON.stringify(params),
+            success: function (data) {
+                if(data["Checkcode"] === "100") {
+                    //如果成功
+                    $('#signin-form').data('bootstrapValidator').resetForm(true);
+                    $('#successModal').modal('show');
+                    window.location.href = url + "user/account"
+                }else{
+                    未成功
+                    $('#failModal').modal('show');
+                }
+            },
+            error: function (jqXHR) {
+                // return jqXHR.status.toString();
+            }
+        });
     });
 
     $('#signup-form').bootstrapValidator({
@@ -82,17 +114,80 @@ $(document).ready(function () {
         bootstrapValidator.validate();
         if (bootstrapValidator.isValid()) {
             //验证id和姓名，手机号和验证码，提交注册
-            var Params = {};
-            Params.phone_number = $("#phoneNumber_re").val();
-            Params.password = $("#userPassword_re").val();
-            Params.id_number = $("#userId_re").val();
-            Params.full_name = $("#userName_re").val();
-            connect("user/register", Params);
+            var params = {};
+            params["phone_number"] = $("#phoneNumber_re").val();
+            params["password"] = $("#userPassword_re").val();
+            params["id_number"] = $("#userId_re").val();
+            params["full_name"] = $("#userName_re").val();
+            console.log(params);
+            $.ajax({
+                type: "POST",
+                url: url + "user/register",
+                contentType: "application/json",
+                dataType:"json",
+                async: false,
+                data: JSON.stringify(params),
+                success: function (data) {
+                    if(data["Checkcode"] === "100") {
+                        //如果成功
+                        $('#signup-form').data('bootstrapValidator').resetForm(true);
+                        $('#signup').modal("hide");
+                        $('.modal-backdrop').remove();
+                        $('#successModal').modal('show');
+                    }else{
+                        //未成功
+                        $('#failModal').modal('show');
+                    }
+                },
+                error: function (jqXHR) {
+                    console.log(jqXHR.status.toString());
+                }
+            });
+        }
+    });
 
-            //如果成功
-            $('#signup-form').data('bootstrapValidator').resetForm(true);
-            $('#signup').modal("hide");
+    $('#signup .close').click(function () {
+        $('#signup-form').data('bootstrapValidator').resetForm(true);
+    });
+
+    $('#password-new-form').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            password_change: {
+                validators: {
+                    notEmpty: {
+                    },
+                    identical: {
+                        field: 'passpassword_change_confirmword',
+                    }
+                }
+            },
+            password_change_confirm: {
+                validators: {
+                    notEmpty: {
+                    },
+                    identical: {
+                        field: 'password_change',
+                    }
+                }
+            }
+        }
+    });
+
+    $("#password-change-submit").on("click", function () {
+        var bootstrapValidator = $("#password-new-form").data('bootstrapValidator');
+        bootstrapValidator.validate();
+        if (bootstrapValidator.isValid()) {
+            //提交新密码
+
+            $('#password-new-form').data('bootstrapValidator').resetForm(true);
+            $('#passwordModal_change').modal("hide");
             $('.modal-backdrop').remove();
+            //如果提交成功
             $('#successModal').modal('show');
 
             // //未成功
@@ -102,42 +197,6 @@ $(document).ready(function () {
 
     $('#signup .close').click(function () {
         $('#signup-form').data('bootstrapValidator').resetForm(true);
-    });
-
-    $('#signin-form').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            phone_signin: {
-                validators: {
-                    notEmpty: {
-                    },
-                }
-            },
-            password_signin: {
-                validators: {
-                    notEmpty: {
-                    },
-                }
-            }
-        }
-    });
-
-    $("#user_sign_in").on("click", function () {
-        var bootstrapValidator = $("#signin-form").data('bootstrapValidator');
-        bootstrapValidator.validate();
-        if (bootstrapValidator.isValid()) {
-
-            //如果成功
-            $('#signin-form').data('bootstrapValidator').resetForm(true);
-            $('#successModal').modal('show');
-
-            // //未成功
-            // $('#failModal').modal('show');
-        }
     });
 
     $('#bond-email-form').bootstrapValidator({
