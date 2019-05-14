@@ -79,13 +79,13 @@ public interface PolicyMapper {
 
 
     //Policy
-    @Insert("INSERT INTO policy (policy_number, policy_name, phone_number) VALUES (#{policy_number}, #{policy_name}, #{phone_number})")
+    @Insert("INSERT INTO policy (policy_number, policy_name, phone_number, start_time, end_time) VALUES (#{policy_number}, #{policy_name}, #{phone_number}, #{start_time}, #{end_time})")
     public int insertPolicy(JSONObject policy);
 
     @Delete("DELETE FROM policy  WHERE policy_number= #{policy_number} ")
     public int deletePolicyByPhoneNumber(@Param("policy_number") String policy_number);
 
-    @Update("UPDATE policy SET policy_name= #{policy_name}, phone_number= #{phone_number} WHERE policy_number= #{policy_number}")
+    @Update("UPDATE policy SET policy_name= #{policy_name}, phone_number= #{phone_number}, start_time=#{start_time}, end_time=#{end_time} WHERE policy_number= #{policy_number}")
     public int updatePolicy(JSONObject policy);
 
     @Select("SELECT * FROM policy WHERE policy_number= #{policy_number}")

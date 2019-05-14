@@ -14,6 +14,8 @@ public class Policy {
     private String policy_number;
     private String policy_name;
     private String phone_number;
+    private Date start_time;
+    private Date end_time;
 
     @CreatedDate
     private Date time;
@@ -85,6 +87,22 @@ public class Policy {
 
     public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
+    }
+
+    public Date getStart_time() {
+        return start_time;
+    }
+
+    public void setStart_time(Date start_time) {
+        this.start_time = start_time;
+    }
+
+    public Date getEnd_time() {
+        return end_time;
+    }
+
+    public void setEnd_time(Date end_time) {
+        this.end_time = end_time;
     }
 
     public Date getTime() {

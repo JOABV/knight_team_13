@@ -1,7 +1,9 @@
 package com.knight.app.Controller;
 
 import com.knight.app.Repository.UserRepository;
+import com.knight.app.entities.User;
 import com.knight.app.mapper.PolicyMapper;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -109,6 +111,9 @@ public class StaffClaimController {
 
             policy.putAll(policyMapper.getStates(policy_number));
 			policy.putAll(policyMapper.getPolicy(policy_number));
+			User user = userRepository.findOne(policy.getString("phone_number"));
+			policy.put("id_number", user.getId_number());
+			policy.put("full_name", user.getFullname());
 
 			back.put("Checkcode", "100");
 			back.put("Message", policy);
@@ -128,7 +133,7 @@ public class StaffClaimController {
 			JSONObject states = policyMapper.getStates(policy_number);
             String []claim_states = states.getString("states").split("@@");
 			String []feedbacks = policy.getString("feedback").split("@@");
-
+//			System.out.println(jso);
             for (int i = 1; i < claim_states.length; i++) {
 				if (claim_states[i].compareTo("0") == 0) {
 					claim_states[i] = jso.getString("states");

@@ -106,7 +106,6 @@
                         <div class="tab-pane fade show active" id="toprocess" role="tabpanel"
                             aria-labelledby="toprocess-list">
                             <div class="list-group" id="toprocess_list">
-                                <a data-toggle="modal" href="#detailModal">kjshfkjsdf</a>
                             </div>
                         </div>
                         <!-- processing -->
@@ -169,43 +168,43 @@
                                 <hr>
                                 <fieldset>
                                     <legend class="i18n" name="items_title"></legend>
-                                    <hr>
-                                    <div class="form d-flex flex-row justify-content-start mt-3">
-                                        <!-- TODO checked -->
-                                        <div class="col-3 custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1"
-                                                disabled>
-                                            <label class="custom-control-label i18n" name="items_baggage"
-                                                for="customCheck1"></label>
-                                        </div>
-                                        <div class="col-3 custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck2"
-                                                disabled>
-                                            <label class="custom-control-label i18n" name="items_card"
-                                                for="customCheck2"></label>
-                                        </div>
-                                        <div class="col-3 custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck3"
-                                                disabled>
-                                            <label class="custom-control-label i18n" name="items_wallet"
-                                                for="customCheck3"></label>
-                                        </div>
-                                        <div class="col-3 custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck4"
-                                                disabled>
-                                            <label class="custom-control-label i18n" name="items_phone"
-                                                for="customCheck4"></label>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="custom-control custom-checkbox d-flex flex-row justify-content-start align-items-center mt-4">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck5" disabled>
-                                        <label class="custom-control-label i18n" name="items_else"
-                                            for="customCheck5"></label>
+<!--                                    <hr>-->
+<!--                                    <div class="form d-flex flex-row justify-content-start mt-3">-->
+<!--                                        &lt;!&ndash; TODO checked &ndash;&gt;-->
+<!--                                        <div class="col-3 custom-control custom-checkbox">-->
+<!--                                            <input type="checkbox" class="custom-control-input" id="customCheck1"-->
+<!--                                                disabled>-->
+<!--                                            <label class="custom-control-label i18n" name="items_baggage"-->
+<!--                                                for="customCheck1"></label>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-3 custom-control custom-checkbox">-->
+<!--                                            <input type="checkbox" class="custom-control-input" id="customCheck2"-->
+<!--                                                disabled>-->
+<!--                                            <label class="custom-control-label i18n" name="items_card"-->
+<!--                                                for="customCheck2"></label>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-3 custom-control custom-checkbox">-->
+<!--                                            <input type="checkbox" class="custom-control-input" id="customCheck3"-->
+<!--                                                disabled>-->
+<!--                                            <label class="custom-control-label i18n" name="items_wallet"-->
+<!--                                                for="customCheck3"></label>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-3 custom-control custom-checkbox">-->
+<!--                                            <input type="checkbox" class="custom-control-input" id="customCheck4"-->
+<!--                                                disabled>-->
+<!--                                            <label class="custom-control-label i18n" name="items_phone"-->
+<!--                                                for="customCheck4"></label>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div-->
+<!--                                        class="custom-control custom-checkbox d-flex flex-row justify-content-start align-items-center mt-4">-->
+<!--                                        <input type="checkbox" class="custom-control-input" id="customCheck5" disabled>-->
+<!--                                        <label class="custom-control-label i18n" name="items_else"-->
+<!--                                            for="customCheck5"></label>-->
 
-                                        <input type="text" id="elseInput" class="form-control ml-3 col-6 i18n-input"
-                                            selectattr="placeholder" selectname="items_else_placeholder" disabled />
-                                    </div>
+<!--                                        <input type="text" id="elseInput" class="form-control ml-3 col-6 i18n-input"-->
+<!--                                            selectattr="placeholder" selectname="items_else_placeholder" disabled />-->
+<!--                                    </div>-->
                                     <div class="ml-auto col-3">
                                         <button type="button" class="btn btn-dark i18n" name="view_button"
                                             id="viewFileButton"></button>
@@ -244,44 +243,62 @@
                                 <hr>
                                 <form id="claimdetail-form" class="d-flex flex-row align-items-center mb-3">
                                     <div class="col-5 my-1">
+                                        <fieldset>
+<!--                                            <legend class="i18n" name="feedback_history">Feedback</legend>-->
+                                            <hr>
+                                            <div class="form-row">
+                                                <div class="col-11 mb-1" id="message1">
+                                                    <label id="message1_option">message1</label>
+                                                    <p id="message1_feedback"></p>
+                                                </div>
+                                                <div class="col-11 mb-1" id="message2">
+                                                    <label id="message2_option">message2</label>
+                                                    <p id="message2_feedback"></p>
+                                                </div>
+                                                <div class="col-11" id="message3">
+                                                    <label id="message3_option">message3</label>
+                                                    <p id="message3_feedback"></p>
+                                                </div>
+                                            </div>
+                                        </fieldset>
 
                                         <!-- 同意/不同意 -->
                                         <select class="custom-select mr-sm-2" id="approveDropdown">
-                                            <option selected value="1" class="i18n" name="claim_approve">
+                                            <option selected class="i18n" name="claim_approve">
                                             </option>
-                                            <option value="2" class="i18n" name="claim_deny"></option>
+                                            <option class="i18n" name="claim_deny"></option>
                                         </select>
 
                                         <!-- 找回/未找回 -->
                                         <select class="custom-select mr-sm-2" id="findDropdown" style="display: none;">
-                                            <option selected value="1" class="i18n" name="claim_find"></option>
-                                            <option value="2" class="i18n" name="claim_unfind"></option>
+                                            <option selected class="i18n" name="unselected"></option>
+                                            <option class="i18n" name="claim_find"></option>
+                                            <option class="i18n" name="claim_unfind"></option>
                                         </select>
 
                                         <!-- 如找回：寄出/未寄出 -->
                                         <select class="custom-select mr-sm-2" id="result_findDropdown"
                                             style="display: none;">
-                                            <option selected value="1" class="i18n" name="claim_deliver">
-                                            </option>
-                                            <option value="2" class="i18n" name="claim_deliver_fail"></option>
+                                            <option selected value="1" class="i18n" name="unselected"></option>
+                                            <option value="2" class="i18n" name="claim_deliver"></option>
+                                            <option value="3" class="i18n" name="claim_deliver_fail"></option>
                                         </select>
 
                                         <!-- 未找回：赔偿/未赔偿 -->
                                         <select class="custom-select mr-sm-2" id="result_unfindDropdown"
                                             style="display: none;">
-                                            <option selected value="1" class="i18n" name="claim_compensation">
-                                            </option>
-                                            <option value="2" class="i18n" name="claim_compensation_fail">
-                                            </option>
+                                            <option selected value="1" class="i18n" name="unselected"></option>
+                                            <option value="2" class="i18n" name="claim_compensation"></option>
+                                            <option value="3" class="i18n" name="claim_compensation_fail"></option>
                                         </select>
 
-                                        <h3 id="deniedMes" class="text-danger"><b>Denied</b></h3>
+                                        <h3 id="deniedMes" class="text-danger" style="display: none;"><b>Denied</b></h3>
                                         <h3 id="findMes" class="text-danger" style="display: none;"><b>Found and Delivered</b></h3>
                                         <h3 id="nonfindMes" class="text-danger" style="display: none;"><b>Made Compensation</b></h3>
 
                                         <div id="more_info" class="form-group mt-2">
                                             <div class="input-group">
-                                                <textarea class="form-control"　name="feedbackInput"></textarea>
+                                                <textarea class="form-control" type="text" id="more_info_input" name="feedbackInput"></textarea>
                                             </div>
                                         </div>
                                     </div>

@@ -5,6 +5,14 @@ $(document).ready(function () {
     // var url = "http://localhost:8080/";
     // // var url = "http://101.132.96.76:8080/";
 
+    //设置cookie
+    function setCookie(c_name,value,expiredays){
+        var exdate=new Date();
+        exdate.setDate(exdate.getDate()+expiredays);
+        document.cookie=c_name+ "=" +escape(value)+
+            ((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+    }
+
     $('#signin-form').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -45,9 +53,11 @@ $(document).ready(function () {
                     //如果成功
                     $('#signin-form').data('bootstrapValidator').resetForm(true);
                     $('#successModal').modal('show');
+                    window.localStorage.setItem('user_phone_number', params["phone_number"]);
+                    setCookie('user_phone_number',params["phone_number"],1); // cookie过期时间为1天。
                     window.location.href = url + "user/account"
                 }else{
-                    未成功
+                    //未成功
                     $('#failModal').modal('show');
                 }
             },

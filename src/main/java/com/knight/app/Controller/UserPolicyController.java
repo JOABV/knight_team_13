@@ -36,4 +36,28 @@ public class UserPolicyController {
 		}
 		return result;
 	}
+
+	@PostMapping(path="/renew")
+	public @ResponseBody JSONObject reNew(@RequestBody JSONObject jso) {
+		String policy_number = jso.getString("policy_number");
+		String newDate = jso.getString("end_date");
+
+//		List<JSONObject> policyList = policyMapper.getPolicyByPhoneNumber(phone_number);
+
+//		for(int i = 0 ; i < policyList.size(); i++){
+//			String policyNumber = policyList.get(i).getString("policy_number");
+//			policyList.get(i).putAll(policyMapper.getStates(policyNumber));
+//		}
+		JSONObject result = new JSONObject();
+
+//		if(policyList.size() == 0){
+//			result.put("Checkcode","200");
+//			result.put("Message","it doesn't exist");
+//		}else{
+//			result.put("Checkcode","100");
+//			result.put("Message", policyList);
+//		}
+		return result;
+	}
+
 }
