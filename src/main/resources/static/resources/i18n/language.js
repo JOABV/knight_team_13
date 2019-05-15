@@ -137,10 +137,12 @@ var execI18n = function () {
 
 /*页面执行加载执行*/
 $(function () {
-
     /*执行I18n翻译*/
     execI18n();
 
+    // console.toLocaleString(i18nLanguage);
+    // console.log()
+    // alert(i18nLanguage)
     /*将语言选择默认选中缓存中的值*/
     $("#language li a[value=" + i18nLanguage + "]").addClass("disabled");
 

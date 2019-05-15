@@ -1,8 +1,8 @@
 $(document).ready(function () {
     $("#employee_lo").val(getCookie('phone_number'));
 
-    var url = "http://localhost:8080/";
-    // var url = "http://101.132.96.76:8080/"
+    // var url = "http://localhost:8080/";
+    var url = "http://101.132.96.76:8080/"
 
     function connect(address, params) {
         $.ajax({

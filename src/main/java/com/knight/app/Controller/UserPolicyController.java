@@ -1,5 +1,6 @@
 package com.knight.app.Controller;
 
+import com.knight.app.Repository.UserRepository;
 import com.knight.app.entities.Policy;
 import com.knight.app.mapper.PolicyMapper;
 import net.sf.json.JSONObject;
@@ -13,6 +14,9 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping(path="/user/policy")
 public class UserPolicyController {
+    @Autowired
+    private UserRepository userRepository;
+
 	@Autowired
 	private PolicyMapper policyMapper;
 
@@ -23,7 +27,10 @@ public class UserPolicyController {
 
 		for(int i = 0 ; i < policyList.size(); i++){
 			String policyNumber = policyList.get(i).getString("policy_number");
-			policyList.get(i).putAll(policyMapper.getStates(policyNumber));
+			JSONObject onemsg = policyList.get(i);
+//			onemsg.put("id_number", userRepository.findOne(phone_number).getId_number());
+			onemsg.putAll(policyMapper.getStates(policyNumber));
+			policyList.set(i, onemsg);
 		}
 		JSONObject result = new JSONObject();
 
@@ -40,23 +47,15 @@ public class UserPolicyController {
 	@PostMapping(path="/renew")
 	public @ResponseBody JSONObject reNew(@RequestBody JSONObject jso) {
 		String policy_number = jso.getString("policy_number");
-		String newDate = jso.getString("end_date");
+		String newDate = jso.getString("end_time");
 
-//		List<JSONObject> policyList = policyMapper.getPolicyByPhoneNumber(phone_number);
+		JSONObject policy = policyMapper.getPolicy(policy_number);
+		policy.put("end_time", newDate);
+		policyMapper.updatePolicy(policy);
 
-//		for(int i = 0 ; i < policyList.size(); i++){
-//			String policyNumber = policyList.get(i).getString("policy_number");
-//			policyList.get(i).putAll(policyMapper.getStates(policyNumber));
-//		}
 		JSONObject result = new JSONObject();
-
-//		if(policyList.size() == 0){
-//			result.put("Checkcode","200");
-//			result.put("Message","it doesn't exist");
-//		}else{
-//			result.put("Checkcode","100");
-//			result.put("Message", policyList);
-//		}
+		result.put("Checkcode","100");
+		result.put("Message", "success");
 		return result;
 	}
 

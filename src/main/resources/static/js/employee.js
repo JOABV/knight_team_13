@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-    // var url = "http://101.132.96.76:8080/";
-    var url = "http://localhost:8080/";
+    var url = "http://101.132.96.76:8080/";
+    // var url = "http://localhost:8080/";
 
     function message(states) {
         var params = {};

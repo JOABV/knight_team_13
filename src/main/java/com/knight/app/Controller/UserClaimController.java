@@ -38,6 +38,7 @@ public class UserClaimController {
 			}else if(s.compareTo("3") == 0){
 				message.putAll(policyMapper.getOneMessageFromProcessed(policy_number));
 			}
+			message.put("id_number", userRepository.findOne(message.getString("phone_number")).getId_number());
 
 			result.put("Checkcode", "100");
 			result.put("Message", message);
@@ -52,6 +53,7 @@ public class UserClaimController {
 	public @ResponseBody JSONObject lost_luggage_submit (@RequestBody JSONObject policy) {
 		JSONObject p = policyMapper.getOneMessageFromToProcess(policy.getString("policy_number"));
 		JSONObject jso = new JSONObject();
+//		System.out.println(policy);
 		if ( p!= null){
 			policyMapper.UpdateToProcess(policy);
 			policyMapper.UpdateStates(policy);

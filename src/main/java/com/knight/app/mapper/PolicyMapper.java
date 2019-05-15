@@ -91,7 +91,7 @@ public interface PolicyMapper {
     @Select("SELECT * FROM policy WHERE policy_number= #{policy_number}")
     public JSONObject getPolicy(@Param("policy_number") String policy_number);
 
-    @Select("select policy_number, policy_name from policy where phone_number=#{phone_number}")
+    @Select("select * from policy where phone_number=#{phone_number}")
     public List<JSONObject> getPolicyByPhoneNumber(@Param("phone_number") String phone_number);
 
 

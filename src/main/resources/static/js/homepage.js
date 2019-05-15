@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     // function connect(address, params) {
     // var url = "http://localhost:8080/";
-    // // var url = "http://101.132.96.76:8080/";
+    var url = "http://101.132.96.76:8080/";
 
     //设置cookie
     function setCookie(c_name,value,expiredays){
@@ -66,6 +66,16 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('#navButton').click(function () {
+        if (!$("#navBar").hasClass('show')) {
+            $("header").css('animation', 'extend_header 0.5s');
+            $("header").css('height', '40%');
+        }else {
+            $("header").css('animation', 'shrink_header 1s');
+            $("header").css('height', '20%');
+        }
+    })
 
     $('#signup-form').bootstrapValidator({
         feedbackIcons: {
