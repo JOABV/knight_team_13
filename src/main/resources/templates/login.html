@@ -15,21 +15,21 @@
     <title class="i18n" name="signin_title"></title>
 </head>
 
-<body class="bg-image" onload="getCookie()">
-    <div class="login-container d-flex flex-column">
+<body class="bg-image">
+    <div class="d-flex h-100 flex-column">
         <header>
             <nav class="navbar navbar-light text-light justify-content-start"
-                style="background-color: rgba(0, 0, 0, 0.5);">
+                style="background-color: rgba(0, 0, 0, 0.6);">
                 <img src="../static/resources/img/icon.png" width="30" height="30" class="d-inline-block align-top">
                 <span class="i18n" name="management_title"></span>
 
-                <div class="ml-auto" style="margin-right: 10%;">
+                <div class="ml-auto">
                     <div class="dropdown show">
                         <a class="btn btn-sm btn-dark dropdown-toggle" href="#" role="button" id="language_button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         </a>
 
-                        <ul id="language" class="dropdown-menu">
+                        <ul id="language" class="dropdown-menu dropdown-menu-right text-left">
                             <li><a class="dropdown-item" href="#" value="zh-CN" disabled="false">中文简体</a></li>
                             <li><a class="dropdown-item" href="#" value="en" disabled="false">English</a></li>
                         </ul>
@@ -39,8 +39,8 @@
         </header>
 
         <main role="main">
-            <div class="d-flex justify-content-end">
-                <form class="login-form text-left p-4" style="color: white;width: 30%">
+            <div class="login-container d-flex w-100">
+                <form class="login-form text-left p-4" style="color: white;">
                     <div>
                         <h2 class="i18n" name="signin_title"></h2>
                     </div>
@@ -63,8 +63,8 @@
                             <input type="checkbox" value="remember-me" class="i18n" name="signin_remember">
                         </label>
                     </div>
-                    <button  onclick="location.href='101.132.96.76:8080/staff/employee'" id="employee_login" class="btn btn-lg btn-primary btn-block i18n" name="signin_button"
-                        type="submit"></button>
+                    <button id="employee_login" class="btn btn-lg btn-primary btn-block i18n" name="signin_button"
+                        ></button>
 
                 </form>
             </div>

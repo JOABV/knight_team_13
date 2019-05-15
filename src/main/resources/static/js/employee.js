@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
-    var url = "http://101.132.96.76:8080/";
-    // var url = "http://localhost:8080/";
+    // var url = "http://101.132.96.76:8080/";
+    var url = "http://localhost:8080/";
+
+    $("#processing-list").click();
 
     function message(states) {
         var params = {};
@@ -19,8 +21,10 @@ $(document).ready(function () {
             params["price"] = "101"
         } else if (price_idx === 1) {
             params["price"] = "102"
-        } else {
+        } else if(price_idx === 2){
             params["price"] = "103"
+        }else{
+            params["price"] = "104"
         }
         $.ajax({
             type: "POST",
@@ -108,18 +112,28 @@ $(document).ready(function () {
         $(this).addClass("active");
         $("#price2").removeClass("active")
         $("#price3").removeClass("active")
+        $("#price4").removeClass("active")
     });
 
     $("#price2").click(function () {
         $(this).addClass("active");
         $("#price1").removeClass("active")
         $("#price3").removeClass("active")
+        $("#price4").removeClass("active")
     });
 
     $("#price3").click(function () {
         $(this).addClass("active");
         $("#price1").removeClass("active")
         $("#price2").removeClass("active")
+        $("#price4").removeClass("active")
+    });
+
+    $("#price4").click(function () {
+        $(this).addClass("active");
+        $("#price1").removeClass("active")
+        $("#price2").removeClass("active")
+        $("#price3").removeClass("active")
     });
 
     $("#viewFileButton").click(function () {
@@ -177,7 +191,7 @@ $(document).ready(function () {
 
                 $.ajax({
                     type: "POST",
-                    url: url + "/staff/lost_luggage/claim_accept_OR_reject",
+                    url: url + "staff/lost_luggage/claim_accept_OR_reject",
                     contentType: "application/json",
                     dataType: "json",
                     async: false,
@@ -231,7 +245,7 @@ $(document).ready(function () {
                 // console.log(params)
                 $.ajax({
                     type: "POST",
-                    url: url + "/staff/lost_luggage/feedback_submit",
+                    url: url + "staff/lost_luggage/feedback_submit",
                     contentType: "application/json",
                     dataType: "json",
                     async: false,
@@ -260,7 +274,6 @@ $(document).ready(function () {
         // $('#nonfindMes').css('display', 'block');
     });
 
-
     $('#detailModal').on('shown.bs.modal', function (event) {
 
         var params = {};
@@ -273,7 +286,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: url + "/staff/lost_luggage/one_Message",
+            url: url + "staff/lost_luggage/one_Message",
             contentType: "application/json",
             dataType: "json",
             async: false,
@@ -287,6 +300,7 @@ $(document).ready(function () {
                 $("#claim_date_value").text(msg["time"]);
                 $("#claim_detail_value").text(msg["reason"]);
                 $("#applicant_id_value").text(msg["id_number"]);
+                $("#fileImage").attr("src", msg["picture"]);
                 claim_states = msg["states"].split("@@");
                 feedbacks = msg["feedback"].split("@@");
                 // alert(feedbacks)

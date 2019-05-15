@@ -1,9 +1,11 @@
 $(document).ready(function () {
-    // var url = "http://localhost:8080/";
-    var url = "http://101.132.96.76:8080/";
+    var url = "http://localhost:8080/";
+    // var url = "http://101.132.96.76:8080/";
     // console.log(window.localStorage.getItem("policies"))
     if (window.localStorage.getItem("policies") !== null)
         information();
+    else
+        $("#account-policy-tab").click()
 
     function information() {
         $("#policy_list").empty();
@@ -31,7 +33,7 @@ $(document).ready(function () {
                         "<a class='btn btn-sm btn-outline-light dropdown-toggle i18n' role='button' data-toggle='dropdown'>更多</a>" +
                         "<div class='dropdown-menu'>" +
                         "<a class='dropdown-item i18n' data-toggle='modal'  data-whatever='"+ list["policy_number"]+"' href='#detailModal'>关于保单</a>" +
-                        "<a id='remove_when_expired' class='dropdown-item i18n' data-toggle='modal' href='#formModal'>进行申报</a>" +
+                        "<a id='remove_when_expired' class='dropdown-item i18n' data-toggle='modal' data-whatever='"+ list["policy_number"]+"' href='#formModal'>进行申报</a>" +
                         "</div>" +
                         "</div>" +
                         "</td>";
@@ -65,7 +67,7 @@ $(document).ready(function () {
                         "<a class='btn btn-sm btn-outline-light dropdown-toggle i18n' role='button' data-toggle='dropdown'>更多</a>" +
                         "<div class='dropdown-menu'>" +
                         "<a class='dropdown-item i18n' data-toggle='modal' data-whatever='"+ list["policy_number"]+"' href='#detailModal'>关于保单</a>" +
-                        "<a id='remove_when_expired' class='dropdown-item i18n' data-toggle='modal' href='#formModal'>重新申报</a>" +
+                        "<a id='remove_when_expired' class='dropdown-item i18n' data-toggle='modal' data-whatever='"+ list["policy_number"]+"' href='#formModal'>重新申报</a>" +
                         "</div>" +
                         "</div>" +
                         "</td>";
@@ -87,7 +89,7 @@ $(document).ready(function () {
                         "<a class='btn btn-sm btn-outline-light dropdown-toggle i18n' role='button' data-toggle='dropdown'>More</a>" +
                         "<div class='dropdown-menu'>" +
                         "<a class='dropdown-item i18n' data-toggle='modal' data-whatever='"+ list["policy_number"]+"' href='#detailModal'>Details</a>" +
-                        "<a id='remove_when_expired' class='dropdown-item i18n' data-toggle='modal' href='#formModal'>Make Claim</a>" +
+                        "<a id='remove_when_expired' class='dropdown-item i18n' data-toggle='modal' data-whatever='"+ list["policy_number"]+"' href='#formModal'>Make Claim</a>" +
                         "</div>" +
                         "</div>" +
                         "</td>";
@@ -121,7 +123,7 @@ $(document).ready(function () {
                         "<a class='btn btn-sm btn-outline-light dropdown-toggle i18n' role='button' data-toggle='dropdown'>More</a>" +
                         "<div class='dropdown-menu'>" +
                         "<a class='dropdown-item i18n' data-toggle='modal' data-whatever='"+ list["policy_number"]+"' href='#detailModal'>Details</a>" +
-                        "<a id='remove_when_expired' class='dropdown-item i18n' data-toggle='modal' href='#formModal'>Make Claim</a>" +
+                        "<a id='remove_when_expired' class='dropdown-item i18n' data-toggle='modal' data-whatever='"+ list["policy_number"]+"' href='#formModal'>Make Claim</a>" +
                         "</div>" +
                         "</div>" +
                         "</td>";
@@ -132,6 +134,7 @@ $(document).ready(function () {
             // window.localStorage.removeItem()
         }
     }
+
 
     $('#detailModal').on('shown.bs.modal', function (event) {
         var policy_number = $(event.relatedTarget).data("whatever");
@@ -158,6 +161,11 @@ $(document).ready(function () {
                 $("#applicant_start_time").text(message["start_time"]);
                 $("#applicant_end_time").text(message["end_time"]);
 
+                // window.localStorage.setItem("cur_id", message["id_number"]);
+                // window.localStorage.setItem("cur_pn", message["policy_number"]);
+                // window.localStorage.setItem("cur_pna", message["policy_name"]);
+                // window.localStorage.setItem("cur_ph", message["phone_number"]);
+
                 if(message["states"].split("@@")[0] !== 0){
                     $("#detail_claimdetail").css("display", "block");
                     $("#claim_place_value").text(message["place"])
@@ -166,8 +174,8 @@ $(document).ready(function () {
                     $("#claim_detail_price").text(message["price"])
                     // $("#fileImage").css("display", "block")
                     $("#fileImage").attr("src", message["picture"]);
-                    console.log(message["picture"])
-                    console.log($("#fileImage").attr("src"))
+                    // console.log(message["picture"])
+                    // console.log($("#fileImage").attr("src"))
                 }else{
                     $("#detail_claimdetail").css("display", "none");
                 }
@@ -393,6 +401,34 @@ $(document).ready(function () {
         }
     });
 
+
+    $('#formModal').on('shown.bs.modal', function (event) {
+        var policy_number = $(event.relatedTarget).data("whatever");
+        var params = {};
+        params["policy_number"] = policy_number;
+        // console.log(params);
+        $.ajax({
+            type: "POST",
+            url: url + "user/lost_luggage/receive",
+            contentType: "application/json",
+            dataType: "json",
+            async: false,
+            data: JSON.stringify(params),
+            success: function (data) {
+                // $("#policy_list").empty()
+                var message = data["Message"];
+                // console.log(message);
+                $("#policy_number_input").val(message["policy_number"]);
+                $("#policy_name_input").val(message["policy_name"]);
+                $("#id_number_input").val(message["id_number"]);
+                $("#phone_number_input").val(message["phone_number"]);
+            },
+            error: function (jqXHR) {
+                alert("wrong: " + jqXHR.status)
+            }
+        });
+    })
+
     $("#form_submit").on("click", function () {
         var bootstrapValidator = $("#claimForm").data('bootstrapValidator');
         bootstrapValidator.validate();
@@ -403,9 +439,26 @@ $(document).ready(function () {
             params["policy_name"] = $("#policy_name_input").val();
             params["phone_number"] = $("#phone_number_input").val();
             params["time"] = $("#time_input").val();
-            params["place"] = $("#place_input").val();
+            // params["place"] = $("#place_input").val();
             params["reason"] = $("#detail_input").val();
-            params["price"] = $("#price_input").val();
+            // params["price"] = $("#price_input").val();
+
+            params["place"] = $("#place_input option:selected").text();
+            console.log(params["place"])
+
+            var option = $("#price_input option:selected").index();
+            console.log(option)
+            if(option === 0){
+                params["price"] = "101";
+            }else if(option === 1){
+                params["price"] = "102";
+            }else if(option === 2){
+                params["price"] = "103";
+            }else if(option === 3){
+                params["price"] = "104";
+            }
+
+
             // console.log("running")
             // params["picture"] = $("#imgFile").val();
             var file = $("#imgFile")[0].files[0];

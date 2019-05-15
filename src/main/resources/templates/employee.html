@@ -10,6 +10,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../static/resources/bootstrap-4.0.0-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/resources/bootstrapvalidator-0.5.2/dist/css/bootstrapValidator.min.css" />
+    <link rel="stylesheet" href="../static/css/employee.css" />
 
     <title class="i18n" name="management_title"></title>
 </head>
@@ -18,17 +19,17 @@
     <div class="login-container d-flex flex-column">
         <header>
             <nav class="navbar navbar-light text-light justify-content-start"
-                style="background-color: rgba(0, 0, 0, 0.5);">
+                style="background-color: rgba(0, 0, 0, 0.8);">
                 <img src="../static/resources/img/icon.png" width="30" height="30" class="d-inline-block align-top">
                 <span class="i18n" name="management_title"></span>
 
-                <div class="ml-auto" style="margin-right: 10%;">
-                    <div class="dropdown show">
+                <div class="ml-auto">
+                    <div class="dropdown">
                         <a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" id="language_button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         </a>
 
-                        <ul id="language" class="dropdown-menu">
+                        <ul id="language" class="dropdown-menu dropdown-menu-right text-light">
                             <li><a class="dropdown-item" href="#" value="zh-CN" disabled="false">中文简体</a></li>
                             <li><a class="dropdown-item" href="#" value="en" disabled="false">English</a></li>
                         </ul>
@@ -37,24 +38,23 @@
             </nav>
         </header>
 
-        <main role="main">
-            <div class="row">
-                <div class="col-2 m-3">
+        <main role="main" class="w-100">
+            <div class="container d-flex w-100">
+                <div class="nav-container mt-3">
                     <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action i18n active" name="to_process"
+                        <a class="list-group-item list-group-item-action list-group-item-dark i18n active" name="to_process"
                             id="toprocess-list" data-toggle="list" href="#toprocess" role="tab"
                             aria-controls="home"></a>
-                        <a class="list-group-item list-group-item-action i18n" name="processing" id="processing-list"
+                        <a class="list-group-item list-group-item-action list-group-item-dark i18n" name="processing" id="processing-list"
                             data-toggle="list" href="#processing" role="tab" aria-controls="profile"></a>
-                        <a class="list-group-item list-group-item-action i18n" name="processed" id="processed-list"
+                        <a class="list-group-item list-group-item-action list-group-item-dark i18n" name="processed" id="processed-list"
                             data-toggle="list" href="#processed" role="tab" aria-controls="profile"></a>
-
                     </div>
                 </div>
-                <div class="flex-column col-8 m-3">
-                    <ul class="nav flex-row bg-dark justify-content-start align-items-center p-2 mb-3"
-                        style="border-radius: 3px;">
-                        <li class="ml-3 mr-3">
+                <div class="list-container mt-3">
+                    <ul class="nav flex-row justify-content-start align-items-center p-2 mb-3"
+                        style="border-radius: 3px;background-color: rgba(0, 0, 0, 0.8);">
+                        <li class="ml-3">
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-outline-light i18n dropdown-toggle" name="time_search"
                                     type="button" id="time_select" data-toggle="dropdown" aria-haspopup="true"
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="ml-3 mr-3">
+                        <li class="ml-3">
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-outline-light i18n dropdown-toggle" name="place_search"
                                     type="button" id="place_select" data-toggle="dropdown" aria-haspopup="true"
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="ml-3 mr-3">
+                        <li class="ml-3">
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-outline-light i18n dropdown-toggle" name="price_search"
                                     type="button" id="price_select" data-toggle="dropdown" aria-haspopup="true"
@@ -87,19 +87,20 @@
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="price_select" id="price_active">
                                     <div class="dropdown-item active" id="price1">0-100</div>
-                                    <div class="dropdown-item" id="price2">100-10000</div>
-                                    <div class="dropdown-item" id="price3">10000+</div>
+                                    <div class="dropdown-item" id="price2">100-1000</div>
+                                    <div class="dropdown-item" id="price3">1000-10000</div>
+                                    <div class="dropdown-item" id="price4">10000+</div>
                                 </div>
                             </div>
                         </li>
-                        <li class="ml-auto">
+                        <!-- <li class="ml-auto">
                             <form class="form-inline">
                                 <input class="form-control mr-sm-2 i18n-input" type="search" selectattr="placeholder"
                                     selectname="applicant_number" aria-label="Search">
                                 <button class="btn btn-outline-success my-2 my-sm-0 i18n" name="policy_search"
                                     type="submit"></button>
                             </form>
-                        </li>
+                        </li> -->
                     </ul>
                     <div class="tab-content" id="nav-tabContent">
                         <!-- to process -->
@@ -205,7 +206,7 @@
 <!--                                        <input type="text" id="elseInput" class="form-control ml-3 col-6 i18n-input"-->
 <!--                                            selectattr="placeholder" selectname="items_else_placeholder" disabled />-->
 <!--                                    </div>-->
-                                    <div class="ml-auto col-3">
+                                    <div class="col-3">
                                         <button type="button" class="btn btn-dark i18n" name="view_button"
                                             id="viewFileButton"></button>
                                         <img id="fileImage" style="display: none;"

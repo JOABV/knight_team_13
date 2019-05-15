@@ -1,7 +1,6 @@
 html, body {
     height: 100%;
     width: 100%;
-    min-width: 600px;
 }
 
 .bg-image {
@@ -16,9 +15,40 @@ html, body {
     -ms-background-size: cover;
 }
 
+.login-container{
+    justify-content: flex-end;
+}
+
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
+
 .login-form {
     background-color: rgba(0, 0, 0, 0.5);
     margin-top: 5rem;
     margin-right: 10rem;
-    min-width: 20rem;
+    width:30%;
+}
+
+@keyframes expend_login {
+    0% {
+        width: 30%;
+    }
+    100% {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width:768px) {
+
+    .login-container{
+        justify-content: center !important;
+    }
+    
+    .login-form {
+        animation: expend_login 1s;
+        margin-right: 0rem;
+        width: 60%;
+    }
 }

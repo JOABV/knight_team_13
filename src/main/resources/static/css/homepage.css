@@ -24,6 +24,11 @@ body {
     left: auto;
 }
 
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
+
 .bg-image {
     background-image: url("../resources/img/background.png");
     background-position: center 0;

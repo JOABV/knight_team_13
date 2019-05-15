@@ -9,789 +9,809 @@
     <link rel="icon" href="../static/resources/img/icon.ico">
     <title class="i18n" name='title'></title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../static/resources/bootstrap-4.0.0-dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../static/resources/processbar/ystep.css"/>
-    <link rel="stylesheet" href="../static/resources/tipped/tipped.css"/>
-    <link rel="stylesheet" href="../static/resources/bootstrapvalidator-0.5.2/dist/css/bootstrapValidator.min.css"/>
-    <link rel="stylesheet" href="../static/resources/tooltipster/css/tooltipster.bundle.min.css"/>
+    <link rel="stylesheet" href="../static/resources/bootstrap-4.0.0-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../static/resources/processbar/ystep.css" />
+    <link rel="stylesheet" href="../static/resources/tipped/tipped.css" />
+    <link rel="stylesheet" href="../static/resources/bootstrapvalidator-0.5.2/dist/css/bootstrapValidator.min.css" />
+    <link rel="stylesheet" href="../static/resources/tooltipster/css/tooltipster.bundle.min.css" />
     <link rel="stylesheet" href="../static/css/account.css">
 </head>
 
 <body class="text-center bg-image">
 
-<div class="container d-flex h-100 p-3 flex-column">
-    <header class="w-100">
-        <nav class="navbar navbar-expand-md navbar-dark d-flex h-100 justify-content-end align-items-center">
-            <div class="container-fluid">
-                <!-- <div class="mr-auto align-items-center d-flex flex-row">
+    <div class="container d-flex h-100 p-3 flex-column">
+        <header class="w-100">
+            <nav class="navbar navbar-expand-md navbar-dark d-flex h-100 justify-content-end align-items-center">
+                <div class="container-fluid">
+                    <!-- <div class="mr-auto align-items-center d-flex flex-row">
                         <img src="../static/resources/img/icon.png" height="100" />
                     </div> -->
-                <button id="navButton" class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                    <button id="navButton" class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
                         data-target="#navBar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navBar">
-                    <ul id="myTab" class="nav nav-style ml-auto">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navBar">
+                        <ul id="myTab" class="nav nav-style ml-auto">
 
-                        <!-- 主页分页 -->
-                        <li class="nav-item">
-                            <a class="nav-link i18n" name="homepage" id="account-home-tab" data-toggle="tab"
-                               href="#account-home" role="tab" aria-controls="account-home"
-                               aria-selected="true"></a>
-                        </li>
+                            <!-- 主页分页 -->
+                            <li class="nav-item">
+                                <a class="nav-link i18n" name="homepage" id="account-home-tab" data-toggle="tab"
+                                    href="#account-home" role="tab" aria-controls="account-home"
+                                    aria-selected="true"></a>
+                            </li>
 
-                        <!-- 账户（保单）分页 -->
-                        <li class="nav-item">
-                            <a class="nav-link active i18n" name="policy" id="account-policy-tab" data-toggle="tab"
-                               href="#policy-tab" role="tab" aria-controls="policy-tab" aria-selected="false"></a>
+                            <!-- 账户（保单）分页 -->
+                            <li class="nav-item">
+                                <a class="nav-link active i18n" name="policy" id="account-policy-tab" data-toggle="tab"
+                                    href="#policy-tab" role="tab" aria-controls="policy-tab" aria-selected="false"></a>
 
-                        </li>
+                            </li>
 
-                        <!-- 不重要分页 -->
-                        <li class="nav-item">
-                            <a class="nav-link i18n" name="contact" id="account-contact-tab" data-toggle="tab"
-                               href="#account-contact" role="tab" aria-controls="account-contact"
-                               aria-selected="false"></a>
-                        </li>
+                            <!-- 不重要分页 -->
+                            <li class="nav-item">
+                                <a class="nav-link i18n" name="contact" id="account-contact-tab" data-toggle="tab"
+                                    href="#account-contact" role="tab" aria-controls="account-contact"
+                                    aria-selected="false"></a>
+                            </li>
 
-                        <!-- 账户信息（修改密码，修改邮箱，查看个人信息） -->
-                        <li id="account-dropdown" class="nav-item">
-                            <a class="ml-2 mr-3 tooltip-account" href="#"
-                               data-tooltip-content="#tooltip_content_account">
-                                <img src="../static/resources/img/account.png" height="30"/>
-                            </a>
-                            <div style="display: none;">
-                                <ul id='tooltip_content_account' class="account-container align-items-center"
-                                    style='list-style: none;margin:0; padding:0;'>
-                                    <div class="d-flex flex-column p-2 text-light">
-                                        <!-- 显示头像和姓名 -->
-                                        <li>
-                                            <div class="d-flex flex-column align-items-center">
-                                                <img src="../static/resources/img/portrait.png" width="50"/>
-                                                <p id="account-info">Account</p>
-                                                <!-- 显示姓名 -->
+                            <!-- 账户信息（修改密码，修改邮箱，查看个人信息） -->
+                            <li id="account-dropdown" class="nav-item">
+                                <a class="ml-2 mr-3 tooltip-account" href="#"
+                                    data-tooltip-content="#tooltip_content_account">
+                                    <img src="../static/resources/img/account.png" height="30" />
+                                </a>
+                                <div style="display: none;">
+                                    <ul id='tooltip_content_account' class="account-container align-items-center"
+                                        style='list-style: none;margin:0; padding:0;'>
+                                        <div class="d-flex flex-column p-2 text-light">
+                                            <!-- 显示头像和姓名 -->
+                                            <li>
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <img src="../static/resources/img/portrait.png" width="50" />
+                                                    <p id="account-info">Account</p>
+                                                    <!-- 显示姓名 -->
+                                                </div>
+                                            </li>
+                                            <div class="d-flex flex-column mt-0 align-items-start">
+
+                                                <!-- 账户信息：手机号，姓名，ID，邮箱 -->
+                                                <!-- 未绑定邮箱时： href="#accountModal"；绑定后：href="#accountModal_bonded"-->
+                                                <li class="account-link mb-2">
+                                                    <a data-toggle="modal" id="account_information">
+                                                        <img src="../static/resources/img/modify.png" height="20" />
+                                                        <span class="m-1 i18n" name="account_change"></span>
+                                                    </a>
+                                                </li>
+
+                                                <!-- 绑定/修改邮箱 -->
+                                                <!-- 未绑定邮箱时： href="#emailModal"；绑定后：href="#emailModal_bonded"-->
+                                                <li class="account-link mb-2">
+                                                    <a data-toggle="modal" href="#emailModal">
+                                                        <img src="../static/resources/img/email.png" height="20" />
+                                                        <span class="m-1 i18n" name="email_change"></span>
+                                                    </a>
+                                                </li>
+                                                <!-- 修改密码 -->
+                                                <li class="account-link mb-2">
+                                                    <a data-toggle="modal" href="#passwordModal_bonded">
+                                                        <img src="../static/resources/img/password.png" height="20" />
+                                                        <span class="m-1 i18n" name="password_change"></span>
+                                                    </a>
+                                                </li>
+                                                <!-- logout -->
+                                                <li class="account-link mb-2">
+                                                    <a href="homepage.html">
+                                                        <img src="../static/resources/img/logout.png" height="20" />
+                                                        <span class="m-1 i18n" name="logout"></span>
+                                                    </a>
+                                                </li>
                                             </div>
-                                        </li>
-                                        <div class="d-flex flex-column mt-0 align-items-start">
+                                        </div>
+                                    </ul>
+                                </div>
+                            </li>
 
-                                            <!-- 账户信息：手机号，姓名，ID，邮箱 -->
-                                            <!-- 未绑定邮箱时： href="#accountModal"；绑定后：href="#accountModal_bonded"-->
-                                            <li class="account-link mb-2">
-                                                <a data-toggle="modal" id="account_information">
-                                                    <img src="../static/resources/img/modify.png" height="20"/>
-                                                    <span class="m-1 i18n" name="account_change"></span>
-                                                </a>
-                                            </li>
+                            <!-- 语言切换 -->
+                            <li class="nav-item dropdown show">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" id="language_button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                </a>
 
-                                            <!-- 绑定/修改邮箱 -->
-                                            <!-- 未绑定邮箱时： href="#emailModal"；绑定后：href="#emailModal_bonded"-->
-                                            <li class="account-link mb-2">
-                                                <a data-toggle="modal" href="#emailModal">
-                                                    <img src="../static/resources/img/email.png" height="20"/>
-                                                    <span class="m-1 i18n" name="email_change"></span>
-                                                </a>
-                                            </li>
-                                            <!-- 修改密码 -->
-                                            <li class="account-link mb-2">
-                                                <a data-toggle="modal" href="#passwordModal_bonded">
-                                                    <img src="../static/resources/img/password.png" height="20"/>
-                                                    <span class="m-1 i18n" name="password_change"></span>
-                                                </a>
-                                            </li>
-                                            <!-- logout -->
-                                            <li class="account-link mb-2">
-                                                <a href="homepage.html">
-                                                    <img src="../static/resources/img/logout.png" height="20"/>
-                                                    <span class="m-1 i18n" name="logout"></span>
-                                                </a>
-                                            </li>
+                                <ul id="language" class="dropdown-menu text-light" aria-labelledby="language">
+                                    <li><a class="dropdown-item" href="#" value="zh-CN" disabled="false">中文简体</a></li>
+                                    <li><a class="dropdown-item" href="#" value="en" disabled="false">English</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main" class="w-100 inner" style="height:75%;">
+
+            <div class="tab-content d-flex h-100 justify-content-center">
+                <div class="tab-pane fade show active align-items-start w-100" id="policy-tab" role="tabpanel"
+                    aria-labelledby="account-policy-tab">
+                    <div class="d-flex flex-column table-responsive">
+                        <table class="table table-stripe table-hover">
+                            <thead class="thead">
+                                <tr>
+                                    <th scope="col" class="i18n" name="number_title"></th>
+                                    <th scope="col" class="i18n" name="buyer_title"></th>
+                                    <th scope="col" class="i18n" name="time_title"></th>
+                                    <th scope="col" class="i18n" name="status_title"></th>
+                                    <!-- overdue, processing, finished(approved, denied, message) -->
+                                    <th scope="col" class="i18n" name="operation_title"></th>
+                                </tr>
+                            </thead>
+
+                            <!-- 保单信息以列表方式显示：保单号，姓名，过期时间，状态（第一种：未申诉（过期/未过期），第二种：申诉（申诉后的流程）），操作（查看，申诉） -->
+                            <tbody id="policy_list">
+                                <!--                        <tr>-->
+                                <!--                            <th scope="row">16372329</th>-->
+                                <!--                            <td>Mark</td>-->
+                                <!--                            <td>05/13/2019</td>-->
+                                <!--                            <td>-->
+                                <!--                                &lt;!&ndash; 判断第一种状态/第二种状态；用 style="display: block; 显示判定结果 &ndash;&gt;-->
+
+                                <!--                                &lt;!&ndash; 第一种状态 &ndash;&gt;-->
+                                <!--                                <div id="not_claim">-->
+                                <!--                                    &lt;!&ndash; 判断已过期/未过期；用 style="display: block; 显示判定结果 &ndash;&gt;-->
+                                <!--                                    <p class="text-danger i18n" id="expired" name="expired"-->
+                                <!--                                       style="display: none;"></p>-->
+                                <!--                                    <p class="text-warning i18n" id="un_expired" name="not_expired"></p>-->
+                                <!--                                </div>-->
+
+                                <!--                                &lt;!&ndash; 第二种状态：显示申诉流程 &ndash;&gt;-->
+                                <!--                                <div id="made_claim" style="display: none;">-->
+                                <!--                                    <a class="btn btn-sm btn-outline-light i18n" name="view" role="button"-->
+                                <!--                                       data-toggle="modal" href="#processModal"></a>-->
+                                <!--                                </div>-->
+                                <!--                            </td>-->
+                                <!--                            <td>-->
+                                <!--                                <div class="dropdown dropright">-->
+                                <!--                                    <a class="btn btn-sm btn-outline-light dropdown-toggle i18n" name="more"-->
+                                <!--                                       role="button" data-toggle="dropdown">-->
+                                <!--                                    </a>-->
+                                <!--                                    <div class="dropdown-menu">-->
+                                <!--                                        <a class="dropdown-item i18n" name="details" data-toggle="modal"-->
+                                <!--                                           href="#detailModal"></a>-->
+                                <!--                                        <a id="remove_when_expired" class="dropdown-item i18n" name="make_claim"-->
+                                <!--                                           data-toggle="modal" href="#formModal"></a>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+                                <!--                            </td>-->
+                                <!--                        </tr>-->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 申诉表单 弹出窗 -->
+                    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg text-dark text-left modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title i18n" name="claim_title">
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="text-left" id="claimForm">
+                                        <legend class="i18n" name="applicant_title"></legend>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label class="i18n" name="applicant_number"></label>
+                                                <div>
+                                                    <input type="text" class="form-control i18n-input"
+                                                        id="policy_number_input" name="inputPolicyNo"
+                                                        selectname="signin_account_placeholder"
+                                                        selectattr="placeholder" disabled>
+                                                    <span class="span"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="i18n" name="applicant_name"></label>
+                                                <div>
+                                                    <input type="text" class="form-control i18n-input" name="inputName"
+                                                        selectname="applicant_name_placeholder" id="policy_name_input"
+                                                        selectattr="placeholder" disabled>
+                                                    <span class="span"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label class="i18n" name="applicant_id"></label>
+                                                <div>
+                                                    <input type="text" class="form-control i18n-input" name="inputID"
+                                                        id="id_number_input" selectname="applicant_id_placeholder"
+                                                        selectattr="placeholder" disabled>
+                                                    <span class="span"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="i18n" name="applicant_tel"></label>
+                                                <div>
+                                                    <input type="text" class="form-control i18n-input" name="inputTel"
+                                                        id="phone_number_input" selectname="applicant_tel_placeholder"
+                                                        selectattr="placeholder" disabled>
+                                                    <span class="span"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </fieldset>
+                                        <hr>
+                                        <fieldset class="form-group">
+                                            <legend class="i18n" name="claim_detail_title"></legend>
+                                            <div class="form-row">
+                                                <div class="col-5">
+                                                    <label class="i18n" name="claim_place"></label>
+                                                    <div>
+<!--                                                        <input type="text" class="form-control i18n-input"-->
+<!--                                                            name="formPlace" selectname="claim_place_placeholder"-->
+<!--                                                            id="place_input" selectattr="placeholder" required>-->
+                                                        <select class="custom-select mr-sm-2" id="place_input">
+                                                            <option selected>Beijing</option>
+                                                            <option>Shanghai</option>
+                                                            <option>Hangzhou</option>
+                                                        </select>
+                                                        <span class="span"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-5">
+                                                    <label class="i18n" name="claim_price"></label>
+                                                    <div>
+                                                        <select class="custom-select mr-sm-2" id="price_input">
+                                                            <option selected>0-100</option>
+                                                            <option>100-1000</option>
+                                                            <option>1000-10000</option>
+                                                            <option>10000+</option>
+                                                        </select>
+<!--                                                        <input type="text" class="form-control i18n-input"-->
+<!--                                                            name="formPlace" selectname="claim_price_placeholder"-->
+<!--                                                            id="price_input" selectattr="placeholder" required>-->
+                                                        <span class="span"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-10 mb-3">
+                                                    <label class="i18n" name="claim_date"></label>
+                                                    <div>
+                                                        <input type="date" class="form-control" name="formDate"
+                                                            id="time_input">
+                                                        <span class="span"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="input-group col-10">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text i18n" name="claim_detail"></span>
+                                                    </div>
+                                                    <textarea class="form-control" name="formDetail"
+                                                        aria-label="With textarea" id="detail_input"></textarea>
+                                                    <span class="span"></span>
+                                                </div>
+                                                <div class="mt-3 col-7">
+                                                    <div class="custom-file">
+                                                        <div class="uploadBox">
+                                                            <div id="preview">
+                                                                <p class="i18n" id="uploadFile" name="upload_file"
+                                                                    style="text-align: center;margin-top: 10rem;display:block;">
+                                                                </p>
+                                                            </div>
+                                                            <input type="file" id="imgFile"
+                                                                accept="image/png,image/gif,image/jpg"
+                                                                onchange="preview(this)" />
+                                                        </div>
+                                                        <!-- <label class="custom-file-label i18n" name="items_file"
+                                                            for="customFile"></label>
+                                                        <input type="file" class="custom-file-input" name="formFile"
+                                                            accept="image/png, image/jpeg"> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </fieldset>
+                                        <hr>
+                                        <div class="d-flex justify-content-end form-group mt-3 mb-3 mr-5">
+                                            <button id="form_submit" type="button" class="btn btn-dark i18n"
+                                                name="submit"></button>
+                                            <button id="form_cancel" class="btn btn-dark i18n ml-4" data-dismiss="modal"
+                                                name="cancel"></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 申诉流程 弹出窗 -->
+                    <div class="modal fade" id="processModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 id="to_process_title" class="i18n" name="to_process" style="display: none;">
+                                    </h4>
+                                    <h4 id="processing_title" class="i18n" name="processing" style="display: none;">
+                                    </h4>
+                                    <h4 id="processed_title" class="i18n" name="processed" style="display: none;"></h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" style="width: 100%">
+                                    <div class="stepCont stepCont2">
+                                        <!-- <div class="ystep"></div> -->
+                                        <div class='ystep-container ystep-lg ystep-blue'>
+                                        </div>
+                                        <div class="pageCont mt-0">
+                                            <div id="page1" class="stepPage">
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <p class="i18n" name="to_process_info"></p>
+                                                </div>
+                                            </div>
+                                            <div id="page2" class="stepPage">
+                                                <div id="processing_1" style="display: none;">
+                                                    <div class="d-flex flex-column align-items-center">
+                                                        <p class="i18n" name="processed_info1"></p>
+                                                    </div>
+                                                </div>
+                                                <div id="processing_2_1" style="display: none;">
+                                                    <div class="d-flex flex-column align-items-center">
+                                                        <p class="i18n" name="processing_info2"></p>
+                                                    </div>
+                                                </div>
+                                                <div id="processing_2_2" style="display: none;">
+                                                    <div class="d-flex flex-column align-items-center">
+                                                        <p class="i18n" name="processing_info3"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="page3" class="stepPage">
+                                                <div id="processed_1" style="display: none;">
+                                                    <div class="d-flex flex-column align-items-center">
+                                                        <p class="i18n" name="processed_info1"></p>
+                                                        <p class="i18n" name="processed_info2"></p>
+                                                    </div>
+                                                </div>
+                                                <div id="processed_2_1" style="display: none;">
+                                                    <div class="d-flex flex-column align-items-center">
+                                                        <p class="i18n" name="processed_info3"></p>
+                                                    </div>
+                                                </div>
+                                                <div id="processed_2_2" style="display: none;">
+                                                    <div class="d-flex flex-column align-items-center">
+                                                        <p class="i18n" name="processed_info4"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </ul>
+                                </div>
+
                             </div>
-                        </li>
+                        </div>
 
-                        <!-- 语言切换 -->
-                        <li class="nav-item dropdown show">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" id="language_button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            </a>
 
-                            <ul id="language" class="dropdown-menu text-light" aria-labelledby="language">
-                                <li><a class="dropdown-item" href="#" value="zh-CN" disabled="false">中文简体</a></li>
-                                <li><a class="dropdown-item" href="#" value="en" disabled="false">English</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+                    </div>
 
-    <main role="main" class="w-100 inner" style="height:75%;">
+                    <!-- 绑定邮箱 弹出窗 -->
+                    <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title i18n" name="email_change"></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="bond-email-form"
+                                        class="d-flex flex-column w-100 align-items-center justify-content-center">
 
-        <div class="tab-content d-flex h-100 justify-content-center">
-            <div class="tab-pane fade show active align-items-start w-100" id="policy-tab" role="tabpanel"
-                 aria-labelledby="account-policy-tab">
-                <div class="d-flex flex-column table-responsive">
-                    <table class="table table-stripe table-hover">
-                        <thead class="thead">
-                        <tr>
-                            <th scope="col" class="i18n" name="number_title"></th>
-                            <th scope="col" class="i18n" name="buyer_title"></th>
-                            <th scope="col" class="i18n" name="time_title"></th>
-                            <th scope="col" class="i18n" name="status_title"></th>
-                            <!-- overdue, processing, finished(approved, denied, message) -->
-                            <th scope="col" class="i18n" name="operation_title"></th>
-                        </tr>
-                        </thead>
+                                        <div class="form-group col-md-10 mb-3">
+                                            <label class="i18n" name="signup_email"></label>
+                                            <div class="d-flex flex-row align-items-center">
+                                                <div class="input-group">
+                                                    <input type="email" class="form-control i18n-input" id="email_input"
+                                                        name="email_info_bond" selectname="signup_email_placeholder"
+                                                        selectattr="placeholder" required>
+                                                    <!--                                                <div class="input-group-append">-->
+                                                    <!--                                                    <button class="btn btn-dark i18n" name="signup_code_button"-->
+                                                    <!--                                                            type="button"></button>-->
+                                                    <!--                                                </div>-->
+                                                </div>
+                                            </div>
+                                        </div>
 
-                        <!-- 保单信息以列表方式显示：保单号，姓名，过期时间，状态（第一种：未申诉（过期/未过期），第二种：申诉（申诉后的流程）），操作（查看，申诉） -->
-                        <tbody id="policy_list">
-<!--                        <tr>-->
-<!--                            <th scope="row">16372329</th>-->
-<!--                            <td>Mark</td>-->
-<!--                            <td>05/13/2019</td>-->
-<!--                            <td>-->
-<!--                                &lt;!&ndash; 判断第一种状态/第二种状态；用 style="display: block; 显示判定结果 &ndash;&gt;-->
+                                        <!--                                    <div class="form-group col-md-10 mb-3">-->
+                                        <!--                                        <label class="i18n" name="signup_code"></label>-->
+                                        <!--                                        <div class="input-group">-->
+                                        <!--                                            <input type="text" class="form-control i18n-input"-->
+                                        <!--                                                   selectattr="placeholder" selectname="signup_code_placeholder"-->
+                                        <!--                                                   name="email_info_code" required>-->
+                                        <!--                                        </div>-->
+                                        <!--                                    </div>-->
 
-<!--                                &lt;!&ndash; 第一种状态 &ndash;&gt;-->
-<!--                                <div id="not_claim">-->
-<!--                                    &lt;!&ndash; 判断已过期/未过期；用 style="display: block; 显示判定结果 &ndash;&gt;-->
-<!--                                    <p class="text-danger i18n" id="expired" name="expired"-->
-<!--                                       style="display: none;"></p>-->
-<!--                                    <p class="text-warning i18n" id="un_expired" name="not_expired"></p>-->
-<!--                                </div>-->
+                                        <div class="form-group mt-3 mb-3 ml-auto mr-5">
+                                            <button id="email_submit" type="submit" class="btn btn-dark i18n"
+                                                name="submit"></button>
+                                            <button id="email_cancel" type="button" class="btn btn-dark i18n ml-3"
+                                                data-dismiss="modal" name="cancel"></button>
+                                        </div>
 
-<!--                                &lt;!&ndash; 第二种状态：显示申诉流程 &ndash;&gt;-->
-<!--                                <div id="made_claim" style="display: none;">-->
-<!--                                    <a class="btn btn-sm btn-outline-light i18n" name="view" role="button"-->
-<!--                                       data-toggle="modal" href="#processModal"></a>-->
-<!--                                </div>-->
-<!--                            </td>-->
-<!--                            <td>-->
-<!--                                <div class="dropdown dropright">-->
-<!--                                    <a class="btn btn-sm btn-outline-light dropdown-toggle i18n" name="more"-->
-<!--                                       role="button" data-toggle="dropdown">-->
-<!--                                    </a>-->
-<!--                                    <div class="dropdown-menu">-->
-<!--                                        <a class="dropdown-item i18n" name="details" data-toggle="modal"-->
-<!--                                           href="#detailModal"></a>-->
-<!--                                        <a id="remove_when_expired" class="dropdown-item i18n" name="make_claim"-->
-<!--                                           data-toggle="modal" href="#formModal"></a>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </td>-->
-<!--                        </tr>-->
-                        </tbody>
-                    </table>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- 申诉表单 弹出窗 -->
-                <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="tab-pane fade align-self-center w-100" id="account-home" role="tabpanel"
+                    aria-labelledby="account-home-tab">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <h1 class="cover-heading i18n" name="slide1_title"></h1>
+                                <p class="lead p-3 pb-5 i18n" name="slide1_content"></p>
+                                <p class="lead mt-5">
+                                    <a href="#infoModal" data-toggle="modal"
+                                        class="btn btn-outline-light btn-secondary i18n" name="slide1_button"></a>
+                                </p>
+                            </div>
+                            <div class="carousel-item">
+                                <h1 class="cover-heading i18n" name="slide2_title"></h1>
+                                <p class="lead p-3 pb-5 i18n" name="slide2_content"></p>
+                                <p class="lead mt-5">
+                                    <a href="#guideModal" data-toggle="modal"
+                                        class="btn btn-outline-light btn-secondary i18n" name="slide2_button"></a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        <ol class="carousel-indicators" style="position:relative;top:0.5rem;">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        </ol>
+                    </div>
+                </div>
+
+
+                <!--            &lt;!&ndash; 修改邮箱 弹出窗 &ndash;&gt;-->
+                <!--            <div class="modal fade" id="emailModal_bonded" tabindex="-1" role="dialog" data-backdrop="static"-->
+                <!--                 data-keyboard="false" aria-hidden="true">-->
+                <!--                <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">-->
+                <!--                    <div class="modal-content">-->
+                <!--                        <div class="modal-header">-->
+                <!--                            <h5 class="modal-title i18n" name="email_change"></h5>-->
+                <!--                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                <!--                                <span aria-hidden="true">&times;</span>-->
+                <!--                            </button>-->
+                <!--                        </div>-->
+
+                <!--                        <div class="modal-body">-->
+
+                <!--                            <form id="bonded-email-form"-->
+                <!--                                  class="d-flex flex-column align-items-center justify-content-center">-->
+                <!--                                <div class="form-group col-md-10 mb-3">-->
+                <!--                                    <label class="i18n" name="signup_email"></label>-->
+                <!--                                    <div class="d-flex flex-row align-items-center">-->
+                <!--                                        <input type="email" class="form-control" id="account_info_email_change"-->
+                <!--                                               name="account_info_email" value="xxx@xx.xx" disabled>-->
+                <!--                                        <a id="change-email" class="tooltip-email" href="#"-->
+                <!--                                           data-tooltip-content="#tooltip_content_email">-->
+                <!--                                            <img src="../static/resources/img/lock.png" width="35"/>-->
+                <!--                                        </a>-->
+                <!--                                        <div style='display:none;'>-->
+                <!--                                            <div id="tooltip_content_email" class="modal-dialog modal-sm"-->
+                <!--                                                 style="margin: 0;" role="document">-->
+                <!--                                                <div class="modal-content" style=" border-radius: 5%;">-->
+                <!--                                                    <div class="modal-header">-->
+                <!--                                                        <h6 class="modal-title i18n" name="email_change_info">-->
+                <!--                                                        </h6>-->
+                <!--                                                    </div>-->
+                <!--                                                    <div class="modal-body">-->
+                <!--                                                        <p class="i18n" name="email_change_info_title"></p>-->
+                <!--                                                    </div>-->
+                <!--                                                    <div class="modal-footer">-->
+                <!--                                                        <button type="button" id="confirm-button"-->
+                <!--                                                                class="btn btn-outline-light btn-sm i18n"-->
+                <!--                                                                name="confirm"></button>-->
+                <!--                                                    </div>-->
+                <!--                                                </div>-->
+                <!--                                            </div>-->
+                <!--                                        </div>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                                <div id="change_email_code" class="form-group col-md-10 mb-3"-->
+                <!--                                     style="display: none;">-->
+                <!--                                    <label class="i18n" name="signup_code"></label>-->
+                <!--                                    <div class="input-group">-->
+                <!--                                        <input type="text" class="form-control i18n-input" selectattr="placeholder"-->
+                <!--                                               selectname="signup_code_placeholder" id="account-info-code"-->
+                <!--                                               name="account_info_code">-->
+                <!--                                        <span class="span"></span>-->
+                <!--                                        <div class="input-group-append">-->
+                <!--                                            <button class="btn btn-dark i18n" name="signup_code_button"-->
+                <!--                                                    type="button"></button>-->
+                <!--                                        </div>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                                <div id="change_email_button" class="form-group mt-3 mb-3 ml-auto mr-5"-->
+                <!--                                     style="display: none;">-->
+                <!--                                    <button id="email_bonded_submit" type="button" class="btn btn-dark i18n"-->
+                <!--                                            name="submit"></button>-->
+                <!--                                    <button id="email_bonded_cancel" type="button" class="ml-2 btn btn-dark i18n"-->
+                <!--                                            data-dismiss="modal" name="cancel"></button>-->
+                <!--                                </div>-->
+
+                <!--                            </form>-->
+
+                <!--                        </div>-->
+
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div>-->
+
+                <!-- 确定修改密码 弹出窗 确定进入passwordModal_check -->
+                <div class="modal fade" id="passwordModal_bonded" tabindex="-1" role="dialog" data-backdrop="static"
+                    data-keyboard="false" aria-hidden="true">
+                    <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h6 class="modal-title i18n" name="password_change"></h6>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <p class="i18n" name="password_change_info"></p>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button id="password-submit" type="button" data-dismiss="modal" data-toggle="modal"
+                                    data-target="#passwordModal_check" class="btn btn-sm btn-dark i18n"
+                                    name="confirm"></button>
+                                <button id="password_cancel" type="button" class="btn btn-sm btn-dark i18n"
+                                    data-dismiss="modal" name="cancel"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 修改密码：将输入值与旧密码作对比，匹配进入passwordModal_change -->
+                <div class="modal fade" id="passwordModal_check" tabindex="-1" role="dialog" data-backdrop="static"
+                    data-keyboard="false" aria-hidden="true">
+                    <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title i18n" name="password_change"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form id="change_password_form" class="d-flex flex-column align-items-center">
+                                    <div class="col-md-10 mb-3">
+                                        <label class="i18n" name="password_check"></label>
+                                        <input type="password" class="form-control i18n-input" id="passowrd-check-input"
+                                            name="passowrd_check_input" selectattr="placeholder"
+                                            selectname="password_check_placeholder">
+                                        <span class="span"></span>
+                                    </div>
+                                    <div class="form-group mt-3 mb-3 ml-auto mr-5">
+                                        <button id="password-check-submit" type="button" class="btn btn-dark i18n"
+                                            name="next"></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 输入新密码 弹出窗-->
+                <div class="modal fade" id="passwordModal_change" tabindex="-1" role="dialog" data-backdrop="static"
+                    data-keyboard="false" aria-hidden="true">
+                    <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title i18n" name="password_change"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form id="password-new-form">
+                                    <div class="form-group d-flex flex-column align-items-center">
+                                        <div class="col-md-10 mb-3">
+                                            <label class="i18n" name="password_new"></label>
+                                            <input type="password" class="form-control i18n-input"
+                                                selectattr="placeholder" selectname="password_new_placeholder"
+                                                id="password-change" name="password_change">
+                                            <span class="span"></span>
+                                        </div>
+
+                                        <div class="col-md-10 mb-3">
+                                            <label class="i18n" name="signup_confirm"></label>
+                                            <input type="password" class="form-control i18n-input"
+                                                selectattr="placeholder" selectname="signup_confirm_placeholder"
+                                                name="password_change_confirm" id="password-change-confirm">
+                                            <span class="span"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-3 mb-3 d-flex justify-content-end mr-5">
+                                        <button id="password-change-submit" type="submit" class="btn btn-dark i18n"
+                                            name="confirm"></button>
+                                        <button id="password-change-cancel" type="button" data-dismiss="modal"
+                                            class="btn btn-dark i18n ml-4" name="cancel"></button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 查看保单细节 弹出窗，如果进行了申诉，显示保单加申诉信息，获取保单/申诉信息 -->
+                <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg text-dark text-left modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title i18n" name="claim_title">
-                                </h5>
+                                <h5 class="modal-title i18n" name="claim_title"></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form class="text-left" id="claimForm">
+                                <fieldset>
                                     <legend class="i18n" name="applicant_title"></legend>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label class="i18n" name="applicant_number"></label>
-                                            <div>
-                                                <input type="text" class="form-control i18n-input" id="policy_number_input"
-                                                       name="inputPolicyNo" selectname="signin_account_placeholder"
-                                                       selectattr="placeholder">
-                                                <span class="span"></span>
-                                            </div>
+                                            <p id="applicant_number_value">sjfhs</p>
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-4">
                                             <label class="i18n" name="applicant_name"></label>
-                                            <div>
-                                                <input type="text" class="form-control i18n-input" name="inputName"
-                                                       selectname="applicant_name_placeholder" id="policy_name_input"
-                                                       selectattr="placeholder">
-                                                <span class="span"></span>
-                                            </div>
+                                            <p id="applicant_name_value">sjfhs</p>
                                         </div>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label class="i18n" name="applicant_id"></label>
-                                            <div>
-                                                <input type="text" class="form-control i18n-input" name="inputID" id="id_number_input"
-                                                       selectname="applicant_id_placeholder" selectattr="placeholder">
-                                                <span class="span"></span>
-                                            </div>
+                                            <p id="applicant_id_value">sjfhs</p>
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-4">
                                             <label class="i18n" name="applicant_tel"></label>
-                                            <div>
-                                                <input type="text" class="form-control i18n-input" name="inputTel" id="phone_number_input"
-                                                       selectname="applicant_tel_placeholder" selectattr="placeholder">
-                                                <span class="span"></span>
-                                            </div>
+                                            <p id="applicant_tel_value">sjfhs</p>
                                         </div>
                                     </div>
-                                    </fieldset>
-                                    <hr>
-                                    <fieldset class="form-group">
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label class="i18n" name="start_time"></label>
+                                            <p id="applicant_start_time">sjfhs</p>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="i18n" name="end_time"></label>
+                                            <p id="applicant_end_time">sjfhs</p>
+
+                                        </div>
+                                        <div class="form-group col-md-1">
+                                            <button id="renew" type="submit" class="btn btn-dark i18n"
+                                                name="renew"></button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!-- 申诉信息 -->
+                                <div id="detail_claimdetail" style="display: none;">
+
+                                    <fieldset>
                                         <legend class="i18n" name="claim_detail_title"></legend>
-                                        <div class="form-row">
-                                            <div class="col-4">
-                                                <label class="i18n" name="claim_place"></label>
-                                                <div>
-                                                    <input type="text" class="form-control i18n-input"
-                                                           name="formPlace" selectname="claim_place_placeholder" id="place_input"
-                                                           selectattr="placeholder" required>
-                                                    <span class="span"></span>
+                                        <form>
+                                            <div class="form-row">
+                                                <div class="col-7 mb-3">
+                                                    <label class="i18n" name="claim_place"></label>
+                                                    <p id="claim_place_value">skjfs</p>
+                                                </div>
+                                                <div class="col-5 mb-3">
+                                                    <label class="i18n" name="claim_date"></label>
+                                                    <p id="claim_date_value">skjfs</p>
                                                 </div>
                                             </div>
-                                            <div class="col-3">
-                                                <label class="i18n" name="claim_price"></label>
-                                                <div>
-                                                    <input type="text" class="form-control i18n-input"
-                                                           name="formPlace" selectname="claim_price_placeholder" id="price_input"
-                                                           selectattr="placeholder" required>
-                                                    <span class="span"></span>
+                                            <div class="form-row">
+                                                <div class="col-7 mb-3">
+                                                    <label class="i18n" name="claim_detail"></label>
+                                                    <p id="claim_detail_value">skjfs</p>
+                                                </div>
+                                                <div class="col-5 mb-3">
+                                                    <label class="i18n" name="claim_price"></label>
+                                                    <p id="claim_detail_price">skjfs</p>
                                                 </div>
                                             </div>
-
-                                            <div class="col-3 mb-3">
-                                                <label class="i18n" name="claim_date"></label>
-                                                <div>
-                                                    <input type="date" class="form-control" name="formDate" id="time_input">
-                                                    <span class="span"></span>
+                                            <div class="form-row">
+                                                <div class="col-3">
+                                                    <button type="button" class="btn btn-dark i18n" name="view_button"
+                                                        id="viewFileButton"></button>
+                                                    <img id="fileImage" style="display: none;"
+                                                        src="../static/resources/img/icon.png"
+                                                        class="figure-img img-fluid rounded" alt="Fail to load file">
                                                 </div>
                                             </div>
-                                            <div class="input-group col-10">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text i18n" name="claim_detail"></span>
-                                                </div>
-                                                <textarea class="form-control" name="formDetail"
-                                                          aria-label="With textarea" id="detail_input"></textarea>
-                                                <span class="span"></span>
-                                            </div>
-                                            <div class="mt-3 col-7">
-                                                <div class="custom-file">
-                                                    <div class="uploadBox">
-                                                        <div id="preview">
-                                                            <p class="i18n" id="uploadFile" name="upload_file"
-                                                               style="text-align: center;margin-top: 10rem;display:block;">
-                                                            </p>
-                                                        </div>
-                                                        <input type="file" id="imgFile"
-                                                               accept="image/png,image/gif,image/jpg"
-                                                               onchange="preview(this)"/>
-                                                    </div>
-                                                    <!-- <label class="custom-file-label i18n" name="items_file"
-                                                            for="customFile"></label>
-                                                        <input type="file" class="custom-file-input" name="formFile"
-                                                            accept="image/png, image/jpeg"> -->
-                                                </div>
-                                            </div>
-                                        </div>
-
+                                        </form>
                                     </fieldset>
-                                    <hr>
-                                    <div class="d-flex justify-content-end form-group mt-3 mb-3 mr-5">
-                                        <button id="form_submit" type="button" class="btn btn-dark i18n"
-                                                name="submit"></button>
-                                        <button id="form_cancel" class="btn btn-dark i18n ml-4" data-dismiss="modal"
-                                                name="cancel"></button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 申诉流程 弹出窗 -->
-                <div class="modal fade" id="processModal" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 id="to_process_title" class="i18n" name="to_process" style="display: none;">
-                                </h4>
-                                <h4 id="processing_title" class="i18n" name="processing" style="display: none;">
-                                </h4>
-                                <h4 id="processed_title" class="i18n" name="processed" style="display: none;"></h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body" style="width: 100%">
-                                <div class="stepCont stepCont2">
-                                    <!-- <div class="ystep"></div> -->
-                                    <div class='ystep-container ystep-lg ystep-blue'>
-                                    </div>
-                                    <div class="pageCont mt-0">
-                                        <div id="page1" class="stepPage">
-                                            <div class="d-flex flex-column align-items-center">
-                                                <p class="i18n" name="to_process_info"></p>
-                                            </div>
-                                        </div>
-                                        <div id="page2" class="stepPage">
-                                            <div  id="processing_1" style="display: none;">
-                                                <div class="d-flex flex-column align-items-center">
-                                                    <p class="i18n" name="processed_info1"></p>
-                                                </div>
-                                            </div>
-                                            <div id="processing_2_1" style="display: none;">
-                                                <div class="d-flex flex-column align-items-center">
-                                                    <p class="i18n" name="processing_info2"></p>
-                                                </div>
-                                            </div>
-                                            <div id="processing_2_2" style="display: none;">
-                                                <div class="d-flex flex-column align-items-center">
-                                                    <p class="i18n" name="processing_info3"></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="page3" class="stepPage">
-                                            <div  id="processed_1" style="display: none;">
-                                                <div class="d-flex flex-column align-items-center">
-                                                        <p class="i18n" name="processed_info1"></p>
-                                                        <p class="i18n" name="processed_info2"></p>
-                                                </div>
-                                            </div>
-                                            <div  id="processed_2_1" style="display: none;">
-                                                <div class="d-flex flex-column align-items-center">
-                                                    <p class="i18n" name="processed_info3"></p>
-                                                </div>
-                                            </div>
-                                            <div  id="processed_2_2" style="display: none;">
-                                                <div class="d-flex flex-column align-items-center">
-                                                    <p class="i18n" name="processed_info4"></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
-
                 </div>
 
-                <!-- 绑定邮箱 弹出窗 -->
-                <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <!-- 未绑定邮箱时的账户信息 弹出窗，获取账户信息：手机，姓名，ID -->
+                <div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title i18n" name="email_change"></h5>
+                                <h5 class="modal-title i18n" name="account_change"></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="bond-email-form"
-                                      class="d-flex flex-column w-100 align-items-center justify-content-center">
-
-                                    <div class="form-group col-md-10 mb-3">
-                                        <label class="i18n" name="signup_email"></label>
-                                        <div class="d-flex flex-row align-items-center">
-                                            <div class="input-group">
-                                                <input type="email" class="form-control i18n-input" id="email_input"
-                                                       name="email_info_bond" selectname="signup_email_placeholder"
-                                                       selectattr="placeholder" required>
-<!--                                                <div class="input-group-append">-->
-<!--                                                    <button class="btn btn-dark i18n" name="signup_code_button"-->
-<!--                                                            type="button"></button>-->
-<!--                                                </div>-->
-                                            </div>
-                                        </div>
-                                    </div>
-
-<!--                                    <div class="form-group col-md-10 mb-3">-->
-<!--                                        <label class="i18n" name="signup_code"></label>-->
-<!--                                        <div class="input-group">-->
-<!--                                            <input type="text" class="form-control i18n-input"-->
-<!--                                                   selectattr="placeholder" selectname="signup_code_placeholder"-->
-<!--                                                   name="email_info_code" required>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-
-                                    <div class="form-group mt-3 mb-3 ml-auto mr-5">
-                                        <button id="email_submit" type="submit" class="btn btn-dark i18n"
-                                                name="submit"></button>
-                                        <button id="email_cancel" type="button" class="btn btn-dark i18n ml-3"
-                                                data-dismiss="modal" name="cancel"></button>
-                                    </div>
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-pane fade align-self-center w-100" id="account-home" role="tabpanel"
-                 aria-labelledby="account-home-tab">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <h1 class="cover-heading i18n" name="slide1_title"></h1>
-                            <p class="lead p-3 pb-5 i18n" name="slide1_content"></p>
-                            <p class="lead mt-5">
-                                <a href="#infoModal" data-toggle="modal"
-                                   class="btn btn-outline-light btn-secondary i18n" name="slide1_button"></a>
-                            </p>
-                        </div>
-                        <div class="carousel-item">
-                            <h1 class="cover-heading i18n" name="slide2_title"></h1>
-                            <p class="lead p-3 pb-5 i18n" name="slide2_content"></p>
-                            <p class="lead mt-5">
-                                <a href="#guideModal" data-toggle="modal"
-                                   class="btn btn-outline-light btn-secondary i18n" name="slide2_button"></a>
-                            </p>
-                        </div>
-                    </div>
-
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-                       data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button"
-                       data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                    <ol class="carousel-indicators" style="position:relative;top:0.5rem;">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    </ol>
-                </div>
-            </div>
-
-
-<!--            &lt;!&ndash; 修改邮箱 弹出窗 &ndash;&gt;-->
-<!--            <div class="modal fade" id="emailModal_bonded" tabindex="-1" role="dialog" data-backdrop="static"-->
-<!--                 data-keyboard="false" aria-hidden="true">-->
-<!--                <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">-->
-<!--                    <div class="modal-content">-->
-<!--                        <div class="modal-header">-->
-<!--                            <h5 class="modal-title i18n" name="email_change"></h5>-->
-<!--                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                                <span aria-hidden="true">&times;</span>-->
-<!--                            </button>-->
-<!--                        </div>-->
-
-<!--                        <div class="modal-body">-->
-
-<!--                            <form id="bonded-email-form"-->
-<!--                                  class="d-flex flex-column align-items-center justify-content-center">-->
-<!--                                <div class="form-group col-md-10 mb-3">-->
-<!--                                    <label class="i18n" name="signup_email"></label>-->
-<!--                                    <div class="d-flex flex-row align-items-center">-->
-<!--                                        <input type="email" class="form-control" id="account_info_email_change"-->
-<!--                                               name="account_info_email" value="xxx@xx.xx" disabled>-->
-<!--                                        <a id="change-email" class="tooltip-email" href="#"-->
-<!--                                           data-tooltip-content="#tooltip_content_email">-->
-<!--                                            <img src="../static/resources/img/lock.png" width="35"/>-->
-<!--                                        </a>-->
-<!--                                        <div style='display:none;'>-->
-<!--                                            <div id="tooltip_content_email" class="modal-dialog modal-sm"-->
-<!--                                                 style="margin: 0;" role="document">-->
-<!--                                                <div class="modal-content" style=" border-radius: 5%;">-->
-<!--                                                    <div class="modal-header">-->
-<!--                                                        <h6 class="modal-title i18n" name="email_change_info">-->
-<!--                                                        </h6>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="modal-body">-->
-<!--                                                        <p class="i18n" name="email_change_info_title"></p>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="modal-footer">-->
-<!--                                                        <button type="button" id="confirm-button"-->
-<!--                                                                class="btn btn-outline-light btn-sm i18n"-->
-<!--                                                                name="confirm"></button>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div id="change_email_code" class="form-group col-md-10 mb-3"-->
-<!--                                     style="display: none;">-->
-<!--                                    <label class="i18n" name="signup_code"></label>-->
-<!--                                    <div class="input-group">-->
-<!--                                        <input type="text" class="form-control i18n-input" selectattr="placeholder"-->
-<!--                                               selectname="signup_code_placeholder" id="account-info-code"-->
-<!--                                               name="account_info_code">-->
-<!--                                        <span class="span"></span>-->
-<!--                                        <div class="input-group-append">-->
-<!--                                            <button class="btn btn-dark i18n" name="signup_code_button"-->
-<!--                                                    type="button"></button>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div id="change_email_button" class="form-group mt-3 mb-3 ml-auto mr-5"-->
-<!--                                     style="display: none;">-->
-<!--                                    <button id="email_bonded_submit" type="button" class="btn btn-dark i18n"-->
-<!--                                            name="submit"></button>-->
-<!--                                    <button id="email_bonded_cancel" type="button" class="ml-2 btn btn-dark i18n"-->
-<!--                                            data-dismiss="modal" name="cancel"></button>-->
-<!--                                </div>-->
-
-<!--                            </form>-->
-
-<!--                        </div>-->
-
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-            <!-- 确定修改密码 弹出窗 确定进入passwordModal_check -->
-            <div class="modal fade" id="passwordModal_bonded" tabindex="-1" role="dialog" data-backdrop="static"
-                 data-keyboard="false" aria-hidden="true">
-                <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h6 class="modal-title i18n" name="password_change"></h6>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <div class="modal-body">
-                            <p class="i18n" name="password_change_info"></p>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button id="password-submit" type="button" data-dismiss="modal" data-toggle="modal"
-                                    data-target="#passwordModal_check" class="btn btn-sm btn-dark i18n"
-                                    name="confirm"></button>
-                            <button id="password_cancel" type="button" class="btn btn-sm btn-dark i18n"
-                                    data-dismiss="modal" name="cancel"></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 修改密码：将输入值与旧密码作对比，匹配进入passwordModal_change -->
-            <div class="modal fade" id="passwordModal_check" tabindex="-1" role="dialog" data-backdrop="static"
-                 data-keyboard="false" aria-hidden="true">
-                <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title i18n" name="password_change"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <div class="modal-body">
-                            <form id="change_password_form" class="d-flex flex-column align-items-center">
-                                <div class="col-md-10 mb-3">
-                                    <label class="i18n" name="password_check"></label>
-                                    <input type="password" class="form-control i18n-input" id="passowrd-check-input"
-                                           name="passowrd_check_input" selectattr="placeholder"
-                                           selectname="password_check_placeholder">
-                                    <span class="span"></span>
-                                </div>
-                                <div class="form-group mt-3 mb-3 ml-auto mr-5">
-                                    <button id="password-check-submit" type="button" class="btn btn-dark i18n"
-                                            name="next"></button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 输入新密码 弹出窗-->
-            <div class="modal fade" id="passwordModal_change" tabindex="-1" role="dialog" data-backdrop="static"
-                 data-keyboard="false" aria-hidden="true">
-                <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title i18n" name="password_change"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <div class="modal-body">
-                            <form id="password-new-form">
-                                <div class="form-group d-flex flex-column align-items-center">
-                                    <div class="col-md-10 mb-3">
-                                        <label class="i18n" name="password_new"></label>
-                                        <input type="password" class="form-control i18n-input"
-                                               selectattr="placeholder" selectname="password_new_placeholder"
-                                               id="password-change" name="password_change">
-                                        <span class="span"></span>
-                                    </div>
-
-                                    <div class="col-md-10 mb-3">
-                                        <label class="i18n" name="signup_confirm"></label>
-                                        <input type="password" class="form-control i18n-input"
-                                               selectattr="placeholder" selectname="signup_confirm_placeholder"
-                                               name="password_change_confirm" id="password-change-confirm">
-                                        <span class="span"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group mt-3 mb-3 d-flex justify-content-end mr-5">
-                                    <button id="password-change-submit" type="submit" class="btn btn-dark i18n"
-                                            name="confirm"></button>
-                                    <button id="password-change-cancel" type="button" data-dismiss="modal"
-                                            class="btn btn-dark i18n ml-4" name="cancel"></button>
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- 查看保单细节 弹出窗，如果进行了申诉，显示保单加申诉信息，获取保单/申诉信息 -->
-            <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-lg text-dark text-left modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title i18n" name="claim_title"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <fieldset>
-                                <legend class="i18n" name="applicant_title"></legend>
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label class="i18n" name="applicant_number"></label>
-                                        <p id="applicant_number_value">sjfhs</p>
-                                    </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-5">
                                         <label class="i18n" name="applicant_name"></label>
-                                        <p id="applicant_name_value">sjfhs</p>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="account-info-name" value="Jo"
+                                                disabled>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-7 ml-auto">
                                         <label class="i18n" name="applicant_id"></label>
-                                        <p id="applicant_id_value">sjfhs</p>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label class="i18n" name="applicant_tel"></label>
-                                        <p id="applicant_tel_value">sjfhs</p>
+                                        <input type="text" class="form-control" id="account-info-id" value="xxx@xx.xx"
+                                            disabled>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label class="i18n" name="start_time"></label>
-                                        <p id="applicant_start_time">sjfhs</p>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label class="i18n" name="end_time"></label>
-                                        <p id="applicant_end_time">sjfhs</p>
-
-                                    </div>
-                                    <div class="form-group col-md-1">
-                                        <button id="renew" type="submit" class="btn btn-dark i18n"
-                                                name="renew"></button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <!-- 申诉信息 -->
-                            <div id="detail_claimdetail" style="display: none;">
-
-                                <fieldset>
-                                    <legend class="i18n" name="claim_detail_title"></legend>
-                                    <form>
-                                        <div class="form-row">
-                                            <div class="col-7 mb-3">
-                                                <label class="i18n" name="claim_place"></label>
-                                                <p id="claim_place_value">skjfs</p>
-                                            </div>
-                                            <div class="col-5 mb-3">
-                                                <label class="i18n" name="claim_date"></label>
-                                                <p id="claim_date_value">skjfs</p>
-                                            </div>
-                                            <div class="input-group col-5">
-                                                <label class="i18n" name="claim_detail"></label>
-                                                <p id="claim_detail_value">skjfs</p>
-                                            </div>
-                                            <div class="input-group col-5">
-                                                <label class="i18n" name="claim_price"></label>
-                                                <p id="claim_detail_price">skjfs</p>
-                                            </div>
+                                    <div class="form-group col-md-5">
+                                        <label class="i18n" name="applicant_tel"></label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="account-info-tel"
+                                                value="xx-xxxxx" disabled>
                                         </div>
-                                        <div class="ml-auto col-3">
-                                            <button type="button" class="btn btn-dark i18n" name="view_button"
-                                                    id="viewFileButton"></button>
-                                            <img id="fileImage" style="display: none;"
-                                                 src="../static/resources/img/icon.png"
-                                                 class="figure-img img-fluid rounded" alt="Fail to load file">
-                                        </div>
-                                    </form>
-                                </fieldset>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 未绑定邮箱时的账户信息 弹出窗，获取账户信息：手机，姓名，ID -->
-            <div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title i18n" name="account_change"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-row">
-                                <div class="form-group col-md-5">
-                                    <label class="i18n" name="applicant_name"></label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="account-info-name" value="Jo"
-                                               disabled>
                                     </div>
-                                </div>
-                                <div class="form-group col-md-7 ml-auto">
-                                    <label class="i18n" name="applicant_id"></label>
-                                    <input type="text" class="form-control" id="account-info-id" value="xxx@xx.xx"
-                                           disabled>
-                                </div>
-                            </div>
 
-                            <div class="form-row">
-                                <div class="form-group col-md-5">
-                                    <label class="i18n" name="applicant_tel"></label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="account-info-tel"
-                                               value="xx-xxxxx" disabled>
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-md-7">
-                                    <label class="i18n" name="signup_email"></label>
-                                    <div class="input-group">
-                                        <button type="button" class="btn btn-warning btn inline-bond i18n"
+                                    <div class="form-group col-md-7">
+                                        <label class="i18n" name="signup_email"></label>
+                                        <div class="input-group">
+                                            <button type="button" class="btn btn-warning btn inline-bond i18n"
                                                 style="width:100%;" name="bond_email" data-dismiss="modal"
                                                 data-toggle="modal" data-target="#emailModal"
                                                 data-tipped-options="inline: 'inline-tooltip-bond'"></button>
-                                        <div id='inline-tooltip-bond' style='display:none;'>
-                                            <div class="modal-content" style="border-radius: 5%;">
-                                                <div class="modal-header">
-                                                    <h6 class="i18n" name="email_bond_info"></h6>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p class="i18n" name="email_bond_info_detail"></p>
+                                            <div id='inline-tooltip-bond' style='display:none;'>
+                                                <div class="modal-content" style="border-radius: 5%;">
+                                                    <div class="modal-header">
+                                                        <h6 class="i18n" name="email_bond_info"></h6>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p class="i18n" name="email_bond_info_detail"></p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -801,198 +821,149 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- 绑定邮箱时的用户信息 弹出窗，获取信息：手机，姓名，ID，邮箱 -->
-            <div class="modal fade" id="accountModal_bonded" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title i18n" name="account_change"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-row">
-                                <div class="form-group col-md-5">
-                                    <label class="i18n" name="applicant_name"></label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="account-info-name" value="Jo"
-                                               disabled>
-                                    </div>
-
-                                    <!-- TODO -->
-                                </div>
-                                <div class="form-group col-md-7 ml-auto">
-                                    <label class="i18n" name="applicant_id"></label>
-                                    <input type="text" class="form-control" id="account-info-id" value="xxx@xx.xx"
-                                           disabled>
-                                </div>
+                <!-- 绑定邮箱时的用户信息 弹出窗，获取信息：手机，姓名，ID，邮箱 -->
+                <div class="modal fade" id="accountModal_bonded" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog text-dark text-left modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title i18n" name="account_change"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
+                            <div class="modal-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-5">
+                                        <label class="i18n" name="applicant_name"></label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="account-info-name" value="Jo"
+                                                disabled>
+                                        </div>
 
-                            <div class="form-row">
-                                <div class="form-group col-md-5">
-                                    <label class="i18n" name="applicant_tel"></label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="account-info-tel"
-                                               value="xx-xxxxx" disabled>
+                                        <!-- TODO -->
                                     </div>
-                                    <!-- TODO -->
-                                </div>
-
-                                <div class="form-group col-md-7">
-                                    <label class="i18n" name="signup_email"></label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="account-info-email"
-                                               value="xx@xxx.xx" disabled>
+                                    <div class="form-group col-md-7 ml-auto">
+                                        <label class="i18n" name="applicant_id"></label>
+                                        <input type="text" class="form-control" id="account-info-id" value="xxx@xx.xx"
+                                            disabled>
                                     </div>
                                 </div>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-5">
+                                        <label class="i18n" name="applicant_tel"></label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="account-info-tel"
+                                                value="xx-xxxxx" disabled>
+                                        </div>
+                                        <!-- TODO -->
+                                    </div>
 
-            <!-- 成功 弹出窗 -->
-            <div id="successModal" class="modal fade" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="text-left">
-                                <h3 class="i18n" name="success_title"></h3>
-                            </div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="text-left">
-                                <p class="i18n" name="success_info"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 失败弹出窗 -->
-            <div id="failModal" class="modal fade" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="text-left">
-                                <h3 class="i18n" name="fail_title"></h3>
-                            </div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="text-left">
-                                <h6 class="i18n" name="fail_info"></h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="infoModal" class="modal fade" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="text-left">
-                                <h4 class="i18n" name="info_title"></h4>
-                            </div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="stepCont stepCont3">
-                                <div class='ystep-container ystep-lg ystep-blue' style="width: 100%;">
-                                </div>
-                                <div class="pageCont mt-0">
-                                    <div id="page1" class="stepPage">
-                                        <div class="d-flex flex-column align-items-center">
-                                            <img src="../static/resources/img/info1.png" width="20%"/>
-                                            <h5 class="mt-3 i18n" name="info1_info1"></h5>
-
-                                            <p class="i18n" name="info1_info2"></p>
-                                            <p class="i18n" name="info1_info3"></p>
+                                    <div class="form-group col-md-7">
+                                        <label class="i18n" name="signup_email"></label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="account-info-email"
+                                                value="xx@xxx.xx" disabled>
                                         </div>
                                     </div>
-                                    <div id="page2" class="stepPage">
-                                        <div class="d-flex flex-column align-items-center">
-                                            <img src="../static/resources/img/info2.png" width="20%"/>
-                                            <h5 class="mt-3 i18n" name="info2_info1"></h5>
 
-                                            <p class="i18n" name="info2_info2"></p>
-                                            <p class="i18n" name="info2_info3"></p>
-                                        </div>
-                                    </div>
-                                    <div id="page3" class="stepPage">
-                                        <div class="d-flex flex-column align-items-center">
-
-                                            <img src="../static/resources/img/info3.png" width="20%"/>
-                                            <h5 class="mt-3 i18n" name="info3_info1"></h5>
-                                            <p class="i18n" name="info3_info2"></p>
-                                            <p class="i18n" name="info3_info3"></p>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div id="guideModal" class="modal fade" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="text-left">
-                                <h4 class="i18n" name="guide_title"></h4>
-                            </div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="stepCont stepCont1">
-                                <div class='ystep-container ystep-lg ystep-blue' style="width: 100%;">
+                <!-- 成功 弹出窗 -->
+                <div id="successModal" class="modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="text-left">
+                                    <h3 class="i18n" name="success_title"></h3>
                                 </div>
-                                <div class="pageCont mt-0">
-                                    <div id="page1" class="stepPage">
-                                        <div class="d-flex flex-column align-items-center">
-                                            <h5 class="i18n" name="guide2_info1"></h5>
-                                            <img src="../static/resources/img/guide2.jpg" width="80%"/>
-                                            <p class="i18n" name="guide2_info2"></p>
-                                            <p class="i18n" name="guide2_info3"></p>
-                                        </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="text-left">
+                                    <p class="i18n" name="success_info"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 失败弹出窗 -->
+                <div id="failModal" class="modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="text-left">
+                                    <h3 class="i18n" name="fail_title"></h3>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="text-left">
+                                    <h6 class="i18n" name="fail_info"></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="infoModal" class="modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="text-left">
+                                    <h4 class="i18n" name="info_title"></h4>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="stepCont stepCont3">
+                                    <div class='ystep-container ystep-lg ystep-blue' style="width: 100%;">
                                     </div>
-                                    <div id="page2" class="stepPage">
-                                        <div class="d-flex flex-column align-items-center">
-                                            <h5 class="i18n" name="guide3_info1"></h5>
-                                            <img src="../static/resources/img/guide3.jpg" width="80%"/>
-                                            <p class="i18n" name="guide3_info2"></p>
-                                            <p class="i18n" name="guide3_info3"></p>
+                                    <div class="pageCont mt-0">
+                                        <div id="page1" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <img src="../static/resources/img/info1.png" width="20%" />
+                                                <h5 class="mt-3 i18n" name="info1_info1"></h5>
+
+                                                <p class="i18n" name="info1_info2"></p>
+                                                <p class="i18n" name="info1_info3"></p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div id="page3" class="stepPage">
-                                        <div class="d-flex flex-column align-items-center">
-                                            <h5 class="i18n" name="guide4_info1"></h5>
-                                            <img src="../static/resources/img/guide4.jpg" width="80%"/>
-                                            <p class="i18n" name="guide4_info2"></p>
-                                            <p class="i18n" name="guide4_info3"></p>
+                                        <div id="page2" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <img src="../static/resources/img/info2.png" width="20%" />
+                                                <h5 class="mt-3 i18n" name="info2_info1"></h5>
+
+                                                <p class="i18n" name="info2_info2"></p>
+                                                <p class="i18n" name="info2_info3"></p>
+                                            </div>
+                                        </div>
+                                        <div id="page3" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+
+                                                <img src="../static/resources/img/info3.png" width="20%" />
+                                                <h5 class="mt-3 i18n" name="info3_info1"></h5>
+                                                <p class="i18n" name="info3_info2"></p>
+                                                <p class="i18n" name="info3_info3"></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1000,39 +971,87 @@
                         </div>
                     </div>
                 </div>
+
+                <div id="guideModal" class="modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="text-left">
+                                    <h4 class="i18n" name="guide_title"></h4>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="stepCont stepCont1">
+                                    <div class='ystep-container ystep-lg ystep-blue' style="width: 100%;">
+                                    </div>
+                                    <div class="pageCont mt-0">
+                                        <div id="page1" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <h5 class="i18n" name="guide2_info1"></h5>
+                                                <img src="../static/resources/img/guide2.jpg" width="80%" />
+                                                <p class="i18n" name="guide2_info2"></p>
+                                                <p class="i18n" name="guide2_info3"></p>
+                                            </div>
+                                        </div>
+                                        <div id="page2" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <h5 class="i18n" name="guide3_info1"></h5>
+                                                <img src="../static/resources/img/guide3.jpg" width="80%" />
+                                                <p class="i18n" name="guide3_info2"></p>
+                                                <p class="i18n" name="guide3_info3"></p>
+                                            </div>
+                                        </div>
+                                        <div id="page3" class="stepPage">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <h5 class="i18n" name="guide4_info1"></h5>
+                                                <img src="../static/resources/img/guide4.jpg" width="80%" />
+                                                <p class="i18n" name="guide4_info2"></p>
+                                                <p class="i18n" name="guide4_info3"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="account-contact" role="tabpanel" aria-labelledby="account-contact-tab">
+
+                </div>
+
             </div>
+        </main>
 
-            <div class="tab-pane fade" id="account-contact" role="tabpanel" aria-labelledby="account-contact-tab">
-
+        <footer class="mt-auto pb-0">
+            <div class="inner">
+                <p class="footer-style">Represented By Team Tirteen.</p>
             </div>
+        </footer>
 
-        </div>
-    </main>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../static/resources/bootstrap-4.0.0-dist/others/jquery-3.3.1.js"></script>
+    <script src="../static/resources/bootstrap-4.0.0-dist/others/popper.min.js"></script>
+    <script src="../static/resources/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+    <script src="../static/resources/tipped/tipped.js"></script>
+    <script src="../static/resources/tooltipster/js/tooltipster.bundle.min.js"></script>
 
-    <footer class="mt-auto pb-0">
-        <div class="inner">
-            <p class="footer-style">Represented By Team Tirteen.</p>
-        </div>
-    </footer>
+    <script src="../static/resources/bootstrapvalidator-0.5.2/dist/js/bootstrapValidator.min.js"></script>
+    <!-- <script src="../static/resources/bootstrapvalidator-0.5.2/dist/js/language/en_US.js"></script> -->
 
-</div>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="../static/resources/bootstrap-4.0.0-dist/others/jquery-3.3.1.js"></script>
-<script src="../static/resources/bootstrap-4.0.0-dist/others/popper.min.js"></script>
-<script src="../static/resources/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
-<script src="../static/resources/tipped/tipped.js"></script>
-<script src="../static/resources/tooltipster/js/tooltipster.bundle.min.js"></script>
+    <script src="../static/resources/processbar/setStep.js"></script>
 
-<script src="../static/resources/bootstrapvalidator-0.5.2/dist/js/bootstrapValidator.min.js"></script>
-<script src="../static/resources/bootstrapvalidator-0.5.2/dist/js/language/en_US.js"></script>
+    <script src="../static/resources/i18n/jquery.i18n.properties.js"></script>
+    <script src="../static/resources/i18n/language.js"></script>
 
-<script src="../static/resources/processbar/setStep.js"></script>
-
-<script src="../static/resources/i18n/jquery.i18n.properties.js"></script>
-<script src="../static/resources/i18n/language.js"></script>
-
-<script src="../static/js/account.js"></script>
+    <script src="../static/js/account.js"></script>
 </body>
 
 </html>

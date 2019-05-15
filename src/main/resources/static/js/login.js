@@ -1,8 +1,8 @@
 $(document).ready(function () {
     $("#employee_lo").val(getCookie('phone_number'));
 
-    // var url = "http://localhost:8080/";
-    var url = "http://101.132.96.76:8080/"
+    var url = "http://localhost:8080/";
+    // var url = "http://101.132.96.76:8080/"
 
     function connect(address, params) {
         $.ajax({
@@ -29,34 +29,27 @@ $(document).ready(function () {
         }
     }
 
-    // $('.login-form').bootstrapValidator({
-    //     feedbackIcons: {
-    //         valid: 'glyphicon glyphicon-ok',
-    //         invalid: 'glyphicon glyphicon-remove',
-    //         validating: 'glyphicon glyphicon-refresh'
-    //     },
-    //     fields: {
-    //         employee_name: {
-    //             validators: {
-    //                 notEmpty: {
-    //                 }
-    //             }
-    //         },
-    //         employee_password: {
-    //             validators: {
-    //                 notEmpty: {
-    //                 }
-    //             }
-    //         }
-    //     }
-    // });
-
-    // $("#employee_login").on("click", function () {
-    //     var bootstrapValidator = $(".login-form").data('bootstrapValidator');
-    //     bootstrapValidator.validate();
-    //     if (bootstrapValidator.isValid()) {
-    //         //登录
-    //         //登录成功，跳转到employee页面，跳转没写
+    $('.login-form').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            employee_name: {
+                validators: {
+                    notEmpty: {
+                    }
+                }
+            },
+            employee_password: {
+                validators: {
+                    notEmpty: {
+                    }
+                }
+            }
+        }
+    });
 
     $("#employee_login").on("click", function () {
         var bootstrapValidator = $(".login-form").data('bootstrapValidator');
@@ -71,6 +64,16 @@ $(document).ready(function () {
         }else{
             //登陆失败
             $('#failModal').modal('show');
+        }
+    });
+
+
+    // 改
+    $(document).keypress(function (e) {
+        var eCode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+        if (eCode == 13) {
+            $('#employee_login').click();
+            //自己写判断操作
         }
     });
 

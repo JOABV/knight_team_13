@@ -2,15 +2,15 @@
 $(document).ready(function () {
 
     // function connect(address, params) {
-    // var url = "http://localhost:8080/";
-    var url = "http://101.132.96.76:8080/";
+    var url = "http://localhost:8080/";
+    // var url = "http://101.132.96.76:8080/";
 
     //设置cookie
-    function setCookie(c_name,value,expiredays){
-        var exdate=new Date();
-        exdate.setDate(exdate.getDate()+expiredays);
-        document.cookie=c_name+ "=" +escape(value)+
-            ((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+    function setCookie(c_name, value, expiredays) {
+        var exdate = new Date();
+        exdate.setDate(exdate.getDate() + expiredays);
+        document.cookie = c_name + "=" + escape(value) +
+            ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString())
     }
 
     $('#signin-form').bootstrapValidator({
@@ -37,34 +37,39 @@ $(document).ready(function () {
 
     //用户信息正确时，跳转到account页面，没写跳转
     $("#user_sign_in").click(function () {
-        var params = {}
-        params["phone_number"] = $('#phoneNumber_lo').val()
-        params["password"] = $('#password_lo').val()
-        console.log(params)
-        $.ajax({
-            type: "POST",
-            url: url + "user/login",
-            contentType: "application/json",
-            dataType:"json",
-            async: false,
-            data: JSON.stringify(params),
-            success: function (data) {
-                if(data["Checkcode"] === "100") {
-                    //如果成功
-                    $('#signin-form').data('bootstrapValidator').resetForm(true);
-                    $('#successModal').modal('show');
-                    window.localStorage.setItem('user_phone_number', params["phone_number"]);
-                    setCookie('user_phone_number',params["phone_number"],1); // cookie过期时间为1天。
-                    window.location.href = url + "user/account"
-                }else{
-                    //未成功
-                    $('#failModal').modal('show');
+        // 改
+        var bootstrapValidator = $("#signin-form").data('bootstrapValidator');
+        bootstrapValidator.validate();
+        if (bootstrapValidator.isValid()) {
+            var params = {}
+            params["phone_number"] = $('#phoneNumber_lo').val()
+            params["password"] = $('#password_lo').val()
+            console.log(params)
+            $.ajax({
+                type: "POST",
+                url: url + "user/login",
+                contentType: "application/json",
+                dataType: "json",
+                async: false,
+                data: JSON.stringify(params),
+                success: function (data) {
+                    if (data["Checkcode"] === "100") {
+                        //如果成功
+                        $('#signin-form').data('bootstrapValidator').resetForm(true);
+                        $('#successModal').modal('show');
+                        window.localStorage.setItem('user_phone_number', params["phone_number"]);
+                        setCookie('user_phone_number', params["phone_number"], 1); // cookie过期时间为1天。
+                        window.location.href = url + "user/account"
+                    } else {
+                        //未成功
+                        $('#failModal').modal('show');
+                    }
+                },
+                error: function (jqXHR) {
+                    // return jqXHR.status.toString();
                 }
-            },
-            error: function (jqXHR) {
-                // return jqXHR.status.toString();
-            }
-        });
+            });
+        }
     });
 
     $('#navButton').click(function () {
@@ -144,17 +149,17 @@ $(document).ready(function () {
                 type: "POST",
                 url: url + "user/register",
                 contentType: "application/json",
-                dataType:"json",
+                dataType: "json",
                 async: false,
                 data: JSON.stringify(params),
                 success: function (data) {
-                    if(data["Checkcode"] === "100") {
+                    if (data["Checkcode"] === "100") {
                         //如果成功
                         $('#signup-form').data('bootstrapValidator').resetForm(true);
                         $('#signup').modal("hide");
                         $('.modal-backdrop').remove();
                         $('#successModal').modal('show');
-                    }else{
+                    } else {
                         //未成功
                         $('#failModal').modal('show');
                     }
@@ -354,6 +359,14 @@ $(document).ready(function () {
     });
     $('#infoModal').on('hidden.bs.modal', function () {
         $(".ystep-container").html('')
+    });
+
+    $(document).keypress(function (e) {
+        var eCode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+        if (eCode == 13) {
+            $('#user_sign_in').click();
+            //自己写判断操作
+        }
     });
 
 
